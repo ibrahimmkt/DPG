@@ -228,3 +228,80 @@ function initBackToTopWithAnimation() {
   backToTopButton.addEventListener('click', scrollToTop);
   toggleButtonVisibility();
 }
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    },
+    {
+      threshold: 0.5
+    }
+  );
+
+  const quoteContainer = document.querySelector('.quote-text-container');
+  observer.observe(quoteContainer);
+  
+        const menuCards = document.querySelectorAll(".menu-card");
+      const fullMenus = document.querySelectorAll(".full-menu");
+      const menuSelection = document.getElementById("menuSelection");
+
+      menuCards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const menuType = card.dataset.menu;
+          showMenu(menuType);
+        });
+      });
+
+      function showMenu(menuType) {
+        // Skjul menu selection
+        menuSelection.style.display = "none";
+
+        // Skjul alle menyer først
+        fullMenus.forEach((menu) => {
+          menu.classList.remove("active");
+        });
+
+        // Vis valgt meny
+        const selectedMenu = document.getElementById(menuType + "Menu");
+        if (selectedMenu) {
+          selectedMenu.classList.add("active");
+        }
+      }
+      function closeMenu() {
+        // Skjul alle full menyer
+        fullMenus.forEach((menu) => {
+          menu.classList.remove("active");
+        });
+
+        // Vis menu selection igjen
+        menuSelection.style.display = "grid";
+
+        // Scroll til toppen
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // Legg til keyboard support
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeMenu();
+        }
+      });
+
+      // Smooth scroll effekt
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".menu-card");
+        cards.forEach((card, index) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(50px)";
+
+          setTimeout(() => {
+            card.style.transition = "all 0.6s ease";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }, index * 200);
+        });
+      });

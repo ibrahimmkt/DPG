@@ -10,7 +10,7 @@
 
 body {
   font-family: "Outfit", sans-serif;
-  background-color: #fad0cd;
+  background-color: #ffffff;
   color: #111;
   line-height: 1.6;
 }
@@ -2011,7 +2011,7 @@ body.bedriftsavtale .footer {
 }
 
 .back-to-top::before {
-  content: "🍕";
+  content: "🥙";
   font-size: 28px;
   line-height: 1;
 }
@@ -2123,45 +2123,95 @@ body.bedriftsavtale .footer {
   color: #fff;
   font-size: 0.95rem;
 }
-  .quote-section {
-    width: 100%;
-    background-color: #fff;
-    padding: 3rem 1.5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
+.quote-section {
+  width: 100%;
+  background: linear-gradient(135deg, #fff5f5, #ffe5e5);
+  padding: 5rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
 
+.quote-text-container {
+  position: relative;
+  text-align: center;
+  max-width: 900px;
+  animation: waveBackground 10s ease-in-out infinite;
+}
+
+.quote-text {
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #b91c1c;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: scale(0.95) translateY(30px);
+  animation: fadeZoomIn 2s ease forwards;
+  animation-delay: 0.8s;
+  z-index: 1;
+  position: relative;
+}
+
+.quote-symbol {
+  font-size: 5rem;
+  color: #f87171;
+  opacity: 0.4;
+  position: absolute;
+  top: -40px;
+  left: -30px;
+  animation: floatQuote 6s ease-in-out infinite;
+  z-index: 0;
+}
+
+.quote-symbol.end {
+  top: auto;
+  bottom: -40px;
+  right: -30px;
+  left: auto;
+  transform: rotate(180deg);
+  animation-delay: 3s;
+}
+
+@keyframes fadeZoomIn {
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes floatQuote {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(5deg);
+  }
+}
+
+@keyframes waveBackground {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@media (min-width: 768px) {
   .quote-text {
-    font-size: 1.5rem;
-    max-width: 800px;
-    font-weight: 600;
-    font-style: italic;
-    color: #c53030; /* fin rød tone */
-    text-align: center;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.15);
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1s ease-out forwards;
+    font-size: 2.3rem;
   }
 
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .quote-symbol {
+    font-size: 7rem;
   }
+}
 
-  /* Responsive tekststørrelse */
-  @media (min-width: 768px) {
-    .quote-text {
-      font-size: 2rem;
-    }
+@media (min-width: 1024px) {
+  .quote-text {
+    font-size: 2.8rem;
   }
-
-  @media (min-width: 1024px) {
-    .quote-text {
-      font-size: 2.5rem;
-    }
-  }
+}
