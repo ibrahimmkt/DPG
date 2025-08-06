@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Namnam Lier</title>
+    <title>Drammen Pizza og Grill</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,10 +15,11 @@
   <body>
     <header>
       <div class="logo-container">
+        <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
+
         <h1>
           <a href="#" class="logo">Drammen Pizza & Grill</a>
         </h1>
-        <img src="bilder/logo.png" alt="NamNam-logo" class="header-logo" />
       </div>
       <button
         class="hamburger"
@@ -34,126 +35,67 @@
         <a href="main.html">Hjem</a>
         <a href="meny.html">Meny</a>
         <a href="kontakt.html">Kontakt</a>
+        <a href="om-oss.html">Om Oss</a>
       </nav>
     </header>
 
     <section class="hero">
       <div class="hero-content">
-        <h2>Velkommen til Dramnen Pizza og Grill</h2>
+        <h2>Velkommen til Drammen Pizza og Grill</h2>
         <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
 
         <!-- Legg til disse to under -->
-        <img
-          src="bilder/logo.png"
-          alt="Logo animasjon"
-          class="logo-animasjon"
-        />
+        <br />
+        <a
+          class="order-btn"
+          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e&return_url=https%3A%2F%2Fnamnam.no%2Findex.html&client_is_mobile=true"
+          target="_blank"
+          >Ring og Bestill</a
+        >
       </div>
     </section>
-
     <section id="retter" class="section">
-      <h2>Våre Signaturretter</h2>
-      <div class="retter-grid">
+      <h2>Drammens Klassikere</h2>
+      <div class="retter-list">
         <a
-          class="rett"
+          class="rett-flex"
           href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
           target="_blank"
         >
-          <img src="bilder/BurgerCloseUp.jpeg" alt="Cheeseburger" />
-          <h3>Hamburger</h3>
-          <p>Klassikeren du aldri blir lei av.</p>
+          <img src="bilder/MixGrillTallerkenFIn.jpeg" alt="Cheeseburger" />
+          <div class="rett-info">
+            <h3>Hamburger</h3>
+            <p>Klassikeren du aldri blir lei av.</p>
+          </div>
         </a>
-        <a
-          class="rett"
-          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
-          target="_blank"
-        >
-          <img src="bilder/KebabCloseUP.jpeg" alt="Kebabtallerken" />
-          <h3>Kebab-middag</h3>
-          <p>Full pakke! Kebab, pommes og digg saus – klar til å nytes.</p>
-        </a>
-        <a
-          class="rett"
-          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
-          target="_blank"
-        >
-          <img src="bilder/KyllingTallerken.jpg" alt="KyllingTallerken" />
-          <h3>Kyllingkebab-middag</h3>
-          <p>Mørt, krydret kyllingkjøtt med sprø fries og friske grønnsaker.</p>
-        </a>
-        <a
-          class="rett"
-          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
-          target="_blank"
-        >
-          <img src="bilder/Kebab i pita.jpg" alt="Kebab i pita" />
-          <h3>Kebab i Pita</h3>
-          <p>
-            Håndholdt favoritt! Fersk pita fylt med juicy kebab og frisk salat.
-          </p>
-        </a>
-        <a
-          class="rett"
-          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
-          target="_blank"
-        >
-          <img src="bilder/NuggetsTallerken.jpeg" alt="NuggetsTallerken" />
-          <h3>Nuggetstallerken</h3>
-          <p>Sprø nuggets, gyllen fries og dipp. En sikker vinner.</p>
-        </a>
-        <a
-          class="rett"
-          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
-          target="_blank"
-        >
-          <img src="bilder/Skinkepizza.jpg" alt="Skinkepizza" />
-          <h3>A La Pat</h3>
-          <p>
-            Bunn med smeltet ost og masse pepperoni og skinke. En ekte
-            pizzaklassiker!
-          </p>
-        </a>
-      </div>
 
-      <div class="bestill-knapper">
         <a
-          href="https://www.foodbooking.com/ordering/restaurant/menu?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e&client_is_mobile=true"
-          class="bestill-btn foodbooking"
+          class="rett-flex"
+          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
           target="_blank"
-          >Bestill</a
         >
+          <img src="bilder/kyllingkebab.png" alt="Kebabtallerken" />
+          <div class="rett-info">
+            <h3>Kebab-middag</h3>
+            <p>Full pakke! Kebab, pommes og digg saus – klar til å nytes.</p>
+          </div>
+        </a>
 
-        <a href="meny.html" class="bestill-btn meny">Se hele menyen</a>
-      </div>
-    </section>
-
-    <section id="om-oss" class="section">
-      <h2>Om Oss</h2>
-      <div class="om-oss-boks">
-        <p>
-          Velkommen til <strong>Namnam</strong> – stedet hvor ekte smak møter
-          ekte kjærlighet til mat! Vi er stolte av å servere saftige burgere,
-          rykende kebabtallerkener og sprø nuggets laget med ferske råvarer og
-          stor lidenskap. <br /><br />
-          Hos oss handler det ikke bare om mat – det handler om opplevelsen. En
-          varm atmosfære, rask service og en meny som frister hele familien.
-          <br /><br />
-          Ta turen innom – vi lover deg en smak du vil huske.
-        </p>
+        <!-- Gjenta for flere retter... -->
       </div>
     </section>
 
     <section id="galleri" class="section">
       <h2>Bilder av Lokalet i Lier</h2>
       <div class="gallery">
-        <a href="bilder/UteNamNamLier.png" class="fullscreen-img"
-          ><img src="bilder/UteNamNamLier.png" alt="lokal 1"
+        <a href="bilder/utenfor lokalet.png" class="fullscreen-img"
+          ><img src="bilder/utenfor lokalet.png" alt="lokal 1"
         /></a>
-        <a href="bilder/insidenAvNamNamLier.png" class="fullscreen-img"
-          ><img src="bilder/insidenAvNamNamLier.png" alt="lokal 2"
+        <a href="bilder/Innafor lokalet 1.jpeg" class="fullscreen-img"
+          ><img src="bilder/Innafor lokalet 1.jpeg" alt="lokal 2"
         /></a>
         <a href="bilder/InnsidenMedKunder.png" class="fullscreen-img"
-          ><img src="bilder/InnsidenMedKunder.png" alt="lokal 3"
+          ><img src="bilder/Utafor lokalet2.jpeg" alt="lokal 3"
         /></a>
       </div>
     </section>

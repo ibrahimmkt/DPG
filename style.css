@@ -10,7 +10,7 @@
 
 body {
   font-family: "Outfit", sans-serif;
-  background-color: #ffdbcc;
+  background-color: #FFFFFF;
   color: #111;
   line-height: 1.6;
 }
@@ -20,8 +20,9 @@ body {
    ============================================== */
 
 header {
-  background: #f3eded;
-  color: #ff0000;
+  background: #B7322C
+;
+  color: #fff;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,10 +43,13 @@ header h1 {
   color: inherit;
   font-size: 1.5rem;
   font-weight: bold;
+  color: #FFFFFF;
 }
 
 .logo:hover {
   opacity: 0.8;
+  color: #FCEEDC
+;
 }
 
 .logo-container {
@@ -67,7 +71,8 @@ nav {
 }
 
 nav a {
-  color: #ff0000;
+  color: #FFFFFF
+;
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s;
@@ -236,7 +241,7 @@ nav a:hover {
    ============================================== */
 
 .hero {
-  background: url("bilder/Burger+kebab.jpeg") center/cover no-repeat;
+  background: url("bilder/MixGrillTallerkenFIn.jpeg") center/cover no-repeat;
   height: 70vh;
   display: flex;
   align-items: center;
@@ -264,7 +269,7 @@ nav a:hover {
 .hero-content h2 {
   font-size: 3rem;
   font-weight: 800;
-  color: #ffd700;
+  color: red;
   
   text-shadow: 2px 2px #000;
 }
@@ -366,63 +371,89 @@ section.show {
   border-bottom: 3px solid #ffd700;
 }
 
-.menu-items,
-.retter-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+.retter-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
   margin-top: 2rem;
 }
 
-.menu-item,
-.rett {
+.rett-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
   background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-  border: 2px solid #ffd700;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  padding: 1rem 1.2rem;
   text-decoration: none;
   color: inherit;
-  display: block;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: 2px solid transparent;
 }
 
-.menu-item:hover,
-.rett:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+.rett-flex:hover {
+  transform: scale(1.015);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
   border-color: #f80505;
+  background-color: #fff8f8;
 }
 
-.menu-item h3,
-.menu-item h4,
-.rett h3 {
-  color: #cc0000;
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
-}
-
-.rett img {
-  width: 100%;
-  height: 300px;
+.rett-flex img {
+  width: 360px;
+  height: 240px;
   object-fit: cover;
-  border-bottom: 3px solid #ffd700;
-  border-radius: 12px 12px 0 0;
+  border-radius: 14px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
 }
 
-.menu-item-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.5rem;
+.rett-flex:hover img {
+  transform: scale(1.04);
 }
 
-.price {
-  color: #e60000;
-  font-weight: bold;
-  font-size: 1.1rem;
+.rett-info {
+  flex: 1;
+  padding-right: 0.5rem;
 }
+
+.rett-info h3 {
+  font-size: 1.5rem;
+  color: #cc0000;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+}
+
+.rett-info p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Responsivt: mobilvennlig */
+@media (max-width: 768px) {
+  .rett-flex {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .rett-flex img {
+    width: 100%;
+    height: auto;
+  }
+
+.rett-info {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+}
+
+
 
 /* ==============================================
    GALLERI
@@ -565,8 +596,8 @@ section.show {
    ============================================== */
 
 .opening-hours {
-  background: linear-gradient(to right, #fff200, #ffd700);
-  padding: 40px 20px;
+background: linear-gradient(to right, #cc0000, #ff4d4d);
+    padding: 40px 20px;
   border-radius: 20px;
   text-align: center;
   margin: 40px auto;
@@ -1910,4 +1941,73 @@ body.bedriftsavtale .footer {
   .back-to-top::before {
     font-size: 20px;
   }
+}
+
+/* OM OSS */
+.om-oss-side {
+  padding: 4rem 2rem;
+  background-color: #fefefe;
+  font-family: 'Outfit', sans-serif;
+}
+
+.om-oss-side h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.om-oss-innhold {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.om-tekst {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  text-align: left;
+  max-width: 600px;
+}
+
+.eier-bilde-container {
+  text-align: center;
+}
+
+.eier-bilde-container img {
+  width: 280px;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.eier-tekst {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #444;
+}
+
+@media (min-width: 768px) {
+  .om-oss-innhold {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .om-tekst {
+    text-align: left;
+  }
+
+  .eier-bilde-container {
+    margin-left: 2rem;
+  }
+}
+
+.footer-basic {
+  text-align: center;
+  padding: 2rem;
+  background-color: #111;
+  color: #fff;
+  font-size: 0.95rem;
 }
