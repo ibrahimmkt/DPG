@@ -13,35 +13,35 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <div class="logo-container">
-        <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
-
-        <h1>
-          <a href="#" class="logo">Drammen Pizza & Grill</a>
-        </h1>
-      </div>
-      <button
-        class="hamburger"
-        aria-label="Meny"
-        aria-expanded="false"
-        aria-controls="nav-menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav id="nav-menu">
-        <a href="main.html">Hjem</a>
-        <a href="meny.html">Meny</a>
-        <a href="kontakt.html">Kontakt</a>
-        <a href="om-oss.html">Om Oss</a>
-      </nav>
-    </header>
-
     <section class="hero">
+      <header>
+        <div class="logo-container">
+          <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
+
+          <h1>
+            <a href="#" class="logo">Drammen Pizza & Grill</a>
+          </h1>
+        </div>
+        <button
+          class="hamburger"
+          aria-label="Meny"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="nav-menu">
+          <a href="main.html">Hjem</a>
+          <a href="meny.html">Meny</a>
+          <a href="kontakt.html">Kontakt</a>
+          <a href="om-oss.html">Om Oss</a>
+          <a href="bedriftsavtale.html">Bedriftsavtale</a>
+        </nav>
+      </header>
       <div class="hero-content">
-        <h2>Velkommen til Drammen Pizza og Grill</h2>
+        <h2 class="velkommen-tekst">Velkommen til Drammen Pizza og Grill</h2>
         <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
 
         <!-- Legg til disse to under -->
@@ -62,10 +62,32 @@
           href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
           target="_blank"
         >
-          <img src="bilder/MixGrillTallerkenFIn.jpeg" alt="Cheeseburger" />
+          <img src="bilder/pizza.png" alt="Cheeseburger" />
           <div class="rett-info">
-            <h3>Hamburger</h3>
-            <p>Klassikeren du aldri blir lei av.</p>
+            <h3>Kebab Pizza – En smakfull kombinasjon</h3>
+            <p>
+              Vår kebab pizza er en ekte favoritt! Saftig kebabkjøtt, frisk
+              salat og smakfull saus på en sprø pizzabunn – en perfekt balanse
+              mellom det beste fra to verdener. Hver bit byr på autentiske
+              smaker som tilfredsstiller både pizza- og kebab-elskere. Prøv den
+              hos oss for en uforglemmelig smaksopplevelse!
+            </p>
+          </div>
+        </a>
+        <a
+          class="rett-flex"
+          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
+          target="_blank"
+        >
+          <img src="bilder/kebabtallerken.png" alt="Kebabtallerken" />
+          <div class="rett-info">
+            <h3>Kebabtallerken – En klassiker du alltid kan stole på</h3>
+            <p>
+              Vår kebabtallerken serveres med saftig kebabkjøtt, sprø pommes
+              frites eller ris, friske grønnsaker og våre hjemmelagde sauser. Et
+              mettende og smakfullt måltid som passer perfekt til både lunsj og
+              middag!
+            </p>
           </div>
         </a>
 
@@ -74,75 +96,63 @@
           href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
           target="_blank"
         >
-          <img src="bilder/kyllingkebab.png" alt="Kebabtallerken" />
+          <img src="bilder/MixGrillTallerkenFIn.jpeg" alt="Kebabtallerken" />
           <div class="rett-info">
-            <h3>Kebab-middag</h3>
-            <p>Full pakke! Kebab, pommes og digg saus – klar til å nytes.</p>
+            <h3>Mix Grill Kebab – Det beste fra grillen</h3>
+            <p>
+              Opplev en smakfull kombinasjon med vår Mix Grill Kebab! Her får du
+              mørt kebabkjøtt, saftig kylling og grillet kjøtt – servert med
+              friske grønnsaker og våre deilige sauser. Perfekt for deg som vil
+              ha litt av alt på tallerkenen!
+            </p>
+          </div>
+        </a>
+
+        <a
+          class="rett-flex"
+          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
+          target="_blank"
+        >
+          <img src="bilder/kylling shawarma.png" alt="Kebabtallerken" />
+          <div class="rett-info">
+            <h3>Kylling Rull – Smakfull og praktisk</h3>
+            <p>
+              Vår kylling rull er fylt med saftig, krydret kylling, friske
+              grønnsaker og gode sauser, alt rullet inn i en myk og varm
+              tortilla. Perfekt som et raskt og smakfullt måltid på farten! .
+            </p>
           </div>
         </a>
 
         <!-- Gjenta for flere retter... -->
       </div>
     </section>
+    <section class="quote-section">
+      <div class="quote-text-container">
+        <p class="quote-text">
+          "Den beste tradisjonelle kebaben i Drammen" - Drammens Tidende, 2012
+        </p>
+      </div>
+    </section>
 
     <section id="galleri" class="section">
-      <h2>Bilder av Lokalet i Lier</h2>
+      <h2>Bilder av Lokalet i Drammen</h2>
       <div class="gallery">
         <a href="bilder/utenfor lokalet.png" class="fullscreen-img"
-          ><img src="bilder/utenfor lokalet.png" alt="lokal 1"
+          ><img src="bilder/utenfor lokalet.png" alt="lokal 2"
         /></a>
-        <a href="bilder/Innafor lokalet 1.jpeg" class="fullscreen-img"
-          ><img src="bilder/Innafor lokalet 1.jpeg" alt="lokal 2"
-        /></a>
-        <a href="bilder/InnsidenMedKunder.png" class="fullscreen-img"
+        <a href="bilder/Utafor lokalet2.jpeg" class="fullscreen-img"
           ><img src="bilder/Utafor lokalet2.jpeg" alt="lokal 3"
         /></a>
+        <a href="bilder/Innafor lokalet 1.jpeg" class="fullscreen-img"
+          ><img src="bilder/Innafor lokalet 1.jpeg" alt="lokal 1"
+        /></a>
+        <a href="bilder/InnaforLokaletOpp.jpeg" class="fullscreen-img"
+          ><img src="bilder/InnaforLokaletOpp.jpeg" alt="lokal 3"
+        /></a>
       </div>
     </section>
 
-    <section id="apningstider" class="section opening-hours">
-      <h2>🕒 Åpningstider</h2>
-      <div class="hours-container">
-        <div class="day-hours">
-          <span class="day">Mandag–Fredag</span>
-          <span class="time">10:00–22:00</span>
-        </div>
-        <div class="day-hours">
-          <span class="day">Lørdag–Søndag</span>
-          <span class="time">10:00–22:00</span>
-        </div>
-      </div>
-      <br />
-      <span id="open-status-text"></span>
-      <span id="open-status-countdown"></span>
-    </section>
-
-    <section id="kontakt" class="section kontakt-oss">
-      <h2>📞 Kontakt Oss</h2>
-      <div class="kontakt-info">
-        <div class="kontakt-item">
-          <i class="fas fa-phone-alt" aria-label="Telefon"></i>
-          <p><b>📞 987 65 432</b></p>
-        </div>
-        <div class="kontakt-item">
-          <i class="fas fa-envelope" aria-label="E-post"></i>
-          <p><b>📧 kontakt@namnam.no</b></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="map-section">
-      <h2>📍 Besøk oss i Lier</h2>
-      <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d64312.44257964633!2d10.179665614726424!3d59.75337151682623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x46413cfaad9a1969%3A0xec0c2ae888a86032!2sLierstranda%20139%2C%203414%20Lier!3m2!1d59.753397299999996!2d10.2620653!5e0!3m2!1sno!2sno!4v1752608443299!5m2!1sno!2sno"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen=""
-        >
-        </iframe>
-      </div>
-    </section>
     <div class="delivery-popup" id="deliveryPopup">
       <div class="popup-content">
         <span class="close-popup" onclick="closePopup()">×</span>
@@ -163,10 +173,10 @@
       </video>
 
       <div class="footer-content">
-        <p>Namnam Lier AS | Org.nr. 921 144 261</p>
+        <p>Drammen Pizza og Grill | Org.nr. 921 144 261</p>
         <p>Følg oss på Instagram og Facebook</p>
         <p style="margin-top: 10px; font-size: 0.95rem">
-          Designet og utviklet av <strong>Zebratek</strong> – Kontakt tlf:
+          Designet og utviklet av <strong>S&I Studios</strong> – Kontakt tlf:
           <a href="tel:93939393" style="color: #fff; text-decoration: underline"
             >+47 939 39 393</a
           >
