@@ -1,0 +1,1913 @@
+/* ==============================================
+   RESET OG GRUNNLEGGENDE STILER
+   ============================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  background-color: #ffdbcc;
+  color: #111;
+  line-height: 1.6;
+}
+
+/* ==============================================
+   HEADER OG NAVIGASJON
+   ============================================== */
+
+header {
+  background: #f3eded;
+  color: #ff0000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.logo {
+  text-decoration: none;
+  color: inherit;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.logo:hover {
+  opacity: 0.8;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-logo {
+  width: 80px;
+  height: auto;
+  border-radius: 50%;
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+nav a {
+  color: #ff0000;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffd700;
+}
+
+/* Hamburger menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 28px;
+  height: 22px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.hamburger span {
+  width: 28px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s linear;
+  transform-origin: 1px;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* ==============================================
+   KNAPPER
+   ============================================== */
+
+.order-btn,
+.category-order-btn {
+  display: inline-block;
+  background-color: #f80505;
+  color: white;
+  padding: 0.9rem 1.5rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 100px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pulse 2s infinite;
+  margin-left: 1rem;
+}
+
+.order-btn:hover,
+.category-order-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  background-color: #e50000;
+}
+
+.foodora-btn {
+  background-color: #d60265;
+  color: white;
+  font-weight: 700;
+  padding: 0.2rem 1.2rem 0.2rem 0.7rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+  box-shadow: 0 6px 15px #d60265;
+
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.foodora-btn:hover {
+  background-color: #b8024e;
+  box-shadow: 0 8px 20px rgba(214, 2, 101, 0.7);
+}
+
+.foodora-btn img {
+  height: 50px;
+  margin-left: 10px;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+}
+
+.foodora-btn img:hover {
+  transform: scale(1.1);
+}
+
+.business-deal-btn {
+  display: inline-block;
+  background-color: #ff9900;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 30px;
+  margin-left: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.business-deal-btn:hover {
+  background-color: #e88e00;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #ff9900;
+}
+
+.business-deal-btn .emoji {
+  display: inline-block;
+  margin-right: 8px;
+  animation: handshake 2s infinite;
+}
+
+.bestill-knapper {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.bestill-btn {
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 12px;
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.bestill-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.bestill-btn.foodbooking {
+  background-color: #f80505;
+}
+
+.bestill-btn.meny {
+  background-color: #ffae00;
+}
+
+/* ==============================================
+   HERO SEKSJON
+   ============================================== */
+
+.hero {
+  background: url("bilder/Burger+kebab.jpeg") center/cover no-repeat;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-content h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffd700;
+  
+  text-shadow: 2px 2px #000;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  color: #fff;
+}
+
+.tagline {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 2px 2px #000;
+  display: block;
+  animation: rideIn 1.2s ease-out forwards;
+}
+
+.logo-animasjon {
+  width: 110px;
+  margin-top: 2.2rem;
+  animation: logoFlyIn 1.5s ease-out forwards;
+  opacity: 0;
+  border: 3px solid #ffff2b;
+  border-radius: 50%;
+  box-shadow: 0 0 20px 5px #88880f;
+  background-color: rgb(6, 4, 4);
+  padding: 0.5rem;
+}
+
+/* ==============================================
+   SEKSJONER OG INNHOLD
+   ============================================== */
+
+.section {
+  padding: 2rem 2rem;
+  max-width: 1200px;
+  margin: auto;
+    transition: opacity 0.8s ease, transform 0.8s ease;
+
+}
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #e60000;
+  text-align: center;
+  
+}
+
+.om-oss-boks {
+  background-color: #fffbea;
+  padding: 2rem;
+  margin-top: 2rem;
+  border-left: 8px solid #ffd700;
+  border-radius: 16px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  font-family: "Georgia", serif;
+  color: #333;
+}
+
+.om-oss-boks strong {
+  color: #cc0000;
+  font-weight: bold;
+}
+
+/* ==============================================
+   MENY OG RETTER
+   ============================================== */
+
+.menu-category {
+  margin-bottom: 3rem;
+}
+
+.menu-category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.menu-category h3 {
+  font-size: 1.8rem;
+  color: #cc0000;
+  margin: 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 3px solid #ffd700;
+}
+
+.menu-items,
+.retter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.menu-item,
+.rett {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  border: 2px solid #ffd700;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.menu-item:hover,
+.rett:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  border-color: #f80505;
+}
+
+.menu-item h3,
+.menu-item h4,
+.rett h3 {
+  color: #cc0000;
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.rett img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-bottom: 3px solid #ffd700;
+  border-radius: 12px 12px 0 0;
+}
+
+.menu-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  color: #e60000;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* ==============================================
+   GALLERI
+   ============================================== */
+
+/* ==============================================
+   GALLERI - OPPDATERT FOR MOBIL SENTRERING
+   ============================================== */
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center; /* Legger til vertikal sentrering */
+}
+
+.gallery img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 8px;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  display: block; /* Sikrer at bildene oppfører seg som blokkelementer */
+  margin: 0 auto; /* Sentrerer bildene horisontalt */
+}
+
+.gallery a {
+  display: block;
+  text-align: center; /* Sentrerer innholdet i lenke-elementet */
+  flex: 0 1 auto; /* Fleksibel basis for responsive oppførsel */
+}
+
+/* ==============================================
+   MOBILTILPASNING - TABLETS (768px og mindre)
+   ============================================== */
+
+@media screen and (max-width: 768px) {
+  /* Galleri - forbedret mobilversjon */
+  .gallery {
+    display: flex;
+    flex-direction: column; /* Endrer til kolonne for bedre mobil layout */
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 0 1rem; /* Legger til padding på sidene */
+  }
+
+  .gallery a {
+    width: 100%;
+    max-width: 350px; /* Øker maksbredde for tablet */
+    display: block;
+    text-align: center;
+  }
+
+  .gallery img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: 12px; /* Øker border-radius for moderne look */
+  }
+  
+}
+
+/* ==============================================
+   MOBILTILPASNING - SMÅSKJERMER (480px og mindre)
+   ============================================== */
+
+@media screen and (max-width: 480px) {
+  /* Galleri småskjerm */
+  .gallery {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .gallery a {
+    max-width: 300px;
+  }
+
+  .gallery img {
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* ==============================================
+   EKSTRA SMÅSKJERM TILPASNING (320px og mindre)
+   ============================================== */
+
+@media screen and (max-width: 320px) {
+  /* Galleri ekstra småskjerm */
+  .gallery {
+    gap: 0.8rem;
+    padding: 0 0.3rem;
+  }
+
+  .gallery a {
+    max-width: 280px;
+  }
+
+  .gallery img {
+    border-radius: 6px;
+  }
+}
+.fullscreen-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.fullscreen-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 10px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  z-index: 10000;
+  font-weight: bold;
+}
+
+/* ==============================================
+   ÅPNINGSTIDER
+   ============================================== */
+
+.opening-hours {
+  background: linear-gradient(to right, #fff200, #ffd700);
+  padding: 40px 20px;
+  border-radius: 20px;
+  text-align: center;
+  margin: 40px auto;
+  max-width: 700px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.opening-hours h2 {
+  font-size: 2rem;
+  color: #222;
+  margin-bottom: 20px;
+  text-shadow: 1px 1px 0 #fff;
+}
+
+.hours-container,
+.hours-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.day-hours,
+.hour-item {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 15px 20px;
+  font-weight: bold;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.hour-item:hover {
+  transform: translateY(-2px);
+}
+
+.day,
+.day-name {
+  color: #000;
+}
+
+.time,
+.time-range {
+  color: #e63946;
+}
+#open-status-text {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 1.3rem;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 30px;
+  background-color: #4CAF50;
+  color: #fff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+  animation: pulse 1.5s infinite;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#open-status-text.closed {
+  background-color: #e63946;
+  animation: none;
+}
+
+  #open-status-countdown {
+    color: red;
+    display: block;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    font-family: 'Bebas Neue', ;
+    letter-spacing: 1px;
+  } 
+
+  /* ÅPNINGSTIDER - Mobiltilpasning */
+
+@media (max-width: 600px) {
+  .opening-hours {
+    padding: 30px 15px;
+    margin: 20px 10px;
+    border-radius: 15px;
+  }
+
+  .opening-hours h2 {
+    font-size: 1.5rem;
+  }
+
+  .day-hours,
+  .hour-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 12px 15px;
+  }
+
+  .day,
+  .day-name,
+  .time,
+  .time-range {
+    font-size: 1rem;
+  }
+
+  #open-status-text {
+    font-size: 1rem;
+    padding: 8px 16px;
+    margin-top: 15px;
+  }
+
+  #open-status-countdown {
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+}
+
+/* ==============================================
+   KONTAKT SEKSJONER
+   ============================================== */
+
+.kontakt-oss {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+
+.kontakt-oss h2 {
+  font-size: 2.2rem;
+  color: #e60000;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+
+.kontakt-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+.kontakt-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  justify-content: center;
+  background: #fff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.kontakt-item:hover {
+  transform: scale(1.02);
+}
+
+
+
+.kontakt-item i {
+  font-size: 1.5rem;
+  color: #cc0000;
+}
+
+.kontakt-item p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.kontakt-container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.kontakt-venstre {
+  background: linear-gradient(135deg, #fff200, #ffd700);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.kontakt-høyre {
+  background: #fff;
+  padding: 2.8rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+}
+
+.adresse-info {
+  background-color: #f8f9fa;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border-radius: 12px;
+  border-left: 4px solid #ffd700;
+}
+
+.adresse-info h3 {
+  color: #cc0000;
+  margin-bottom: 0.5rem;
+  font-size: 1.3rem;
+}
+
+.adresse-info p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+/* ==============================================
+   SKJEMAER OG BEDRIFTSAVTALE
+   ============================================== */
+
+.kontakt-skjema-seksjon {
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.form-container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+.form-container h2 {
+  color: #d62828;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.form-container p {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 25px;
+}
+
+.kontakt-skjema input,
+.kontakt-skjema textarea,
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.kontakt-skjema button,
+.contact-form button {
+  background-color: #d62828;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.kontakt-skjema button:hover,
+.contact-form button:hover {
+  background-color: #ba1f1f;
+}
+
+/* Bedriftsavtale spesifikke stiler */
+body.bedriftsavtale .hero-section {
+  text-align: center;
+  padding: 80px 20px 50px;
+  background: linear-gradient(135deg, #ffe9b0, #fff7da);
+  color: #2b2b2b;
+  box-shadow: inset 0 -10px 30px rgba(0, 0, 0, 0.05);
+  border-bottom: 4px solid #f4b400;
+}
+
+body.bedriftsavtale .hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #1a1a1a;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+body.bedriftsavtale .hero-section p {
+  font-size: 1.3rem;
+  max-width: 750px;
+  margin: auto;
+  color: #444;
+  opacity: 0.95;
+}
+
+body.bedriftsavtale .form-section {
+  padding: 30px 30px;
+  max-width: 750px;
+  margin: 30px auto;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 1.2s ease;
+}
+
+body.bedriftsavtale .contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+body.bedriftsavtale .contact-form input:focus,
+body.bedriftsavtale .contact-form textarea:focus {
+  border-color: #f4b400;
+  box-shadow: 0 0 8px rgba(244, 180, 0, 0.2);
+  outline: none;
+}
+
+body.bedriftsavtale .contact-form button {
+  padding: 16px;
+  background: linear-gradient(135deg, #f4b400, #ff9900);
+  font-weight: bold;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+body.bedriftsavtale .contact-form button:hover {
+  background: linear-gradient(135deg, #e09e00, #f48c00);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+/* ==============================================
+   FOOTER
+   ============================================== */
+
+footer,
+body.bedriftsavtale .footer {
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+.footer-with-video {
+  position: relative;
+  overflow: hidden;
+  height: 250px;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.4);
+  z-index: 0;
+}
+
+.footer-content {
+  position: relative;
+  z-index: 1;
+  font-size: 1.1rem;
+  padding: 20px;
+  text-shadow: 1px 1px 6px #000;
+}
+
+/* ==============================================
+   ANIMASJONER
+   ============================================== */
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  70% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes pulseWithShadow {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@keyframes rideIn {
+  0% {
+    transform: translateX(-100vw);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes logoFlyIn {
+  0% {
+    transform: translateY(80px) rotate(-90deg);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(-10px) rotate(15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes handshake {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==============================================
+   MOBILTILPASNING - TABLETS (768px og mindre)
+   ============================================== */
+
+@media screen and (max-width: 768px) {
+  /* Header og navigasjon */
+  header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+ nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    padding: 80px 20px 20px;
+    gap: 0;
+    align-items: stretch;
+    z-index: 1050;
+    overflow-y: auto;
+    
+    /* Skjul menyen som standard */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-100%);
+    
+    /* Smooth overgang */
+    transition: all 0.3s ease-in-out;
+  }
+
+  /* Vis menyen når .show klassen er aktiv */
+  nav.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  /* Navigasjonslenker med forbedret animasjon */
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    width: 100%;
+    
+    /* Animasjon for individuell lenke */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+  }
+
+  /* Når menyen vises, animér lenkene inn en etter en */
+  nav.show a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Forsinkelse for hver lenke for cascade-effekt */
+  nav.show a:nth-child(1) { transition-delay: 0.1s; }
+  nav.show a:nth-child(2) { transition-delay: 0.15s; }
+  nav.show a:nth-child(3) { transition-delay: 0.2s; }
+  nav.show a:nth-child(4) { transition-delay: 0.25s; }
+  nav.show a:nth-child(5) { transition-delay: 0.3s; }
+  nav.show a:nth-child(6) { transition-delay: 0.35s; }
+
+  /* Hover-effekt */
+  nav a:hover {
+    background: rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.3);
+    color: #ffd700;
+    transform: translateY(-2px);
+  }
+
+  /* Hamburger knapp stiler */
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 28px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+    position: relative;
+  }
+
+  .hamburger span {
+    width: 28px;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s linear;
+    transform-origin: 1px;
+  }
+
+  /* Hamburger animasjon når aktiv */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+
+  /* Forbedrede mobilknapper */
+  .order-btn,
+  .business-deal-btn,
+  .foodora-btn {
+    background: linear-gradient(135deg, #ff4444, #cc0000);
+    color: white;
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 68, 68, 0.3);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .business-deal-btn {
+    background: linear-gradient(135deg, #ffaa00, #ff8800);
+    box-shadow: 0 4px 12px rgba(255, 170, 0, 0.3);
+  }
+
+  .foodora-btn {
+    background: linear-gradient(135deg, #e91e63, #c2185b);
+    box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+    gap: 8px;
+  }
+
+  .foodora-btn img {
+    height: 24px;
+    width: 24px;
+    border-radius: 4px;
+    margin-left: 0;
+  }
+
+  /* Hover-effekter for knapper */
+  .order-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 68, 68, 0.4);
+    background: linear-gradient(135deg, #ff5555, #dd0000);
+  }
+
+  .business-deal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 170, 0, 0.4);
+    background: linear-gradient(135deg, #ffbb11, #ff9900);
+  }
+
+  .foodora-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233, 30, 99, 0.4);
+    background: linear-gradient(135deg, #f06292, #d81b60);
+  }
+
+  /* Seksjoner */
+  .section {
+    padding: 2rem 1rem;
+  }
+
+  .section h2 {
+    font-size: 1.8rem;
+  }
+
+  /* Meny og retter */
+  .menu-items,
+  .retter-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .menu-category-header {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .category-order-btn {
+    margin-left: 0;
+    width: 100%;
+  }
+
+
+  /* Åpningstider */
+  .day-hours,
+  .hour-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  /* Kontakt */
+  .kontakt-info {
+    flex-direction: column;
+  }
+
+  .kontakt-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .kontakt-venstre,
+  .kontakt-høyre {
+    padding: 1.5rem;
+  }
+
+  .kontakt-venstre h2,
+  .kontakt-høyre h2 {
+    font-size: 1.8rem;
+  }
+
+  .map-wrapper {
+    height: 350px;
+  }
+
+
+  /* Bedriftsavtale */
+  body.bedriftsavtale .hero-section {
+    padding: 60px 15px 40px;
+  }
+
+  body.bedriftsavtale .hero-section h1 {
+    font-size: 1.8rem;
+  }
+
+  body.bedriftsavtale .hero-section p {
+    font-size: 1.1rem;
+    padding: 0 10px;
+  }
+
+  body.bedriftsavtale .form-section {
+    padding: 20px 15px;
+    margin: 20px 10px;
+  }
+
+  body.bedriftsavtale .form-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+  }
+
+  /* Bestill knapper */
+  .bestill-knapper {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .bestill-btn {
+    width: 90%;
+    max-width: 300px;
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* ==============================================
+   MOBILTILPASNING - SMÅSKJERMER (480px og mindre)
+   ============================================== */
+
+@media screen and (max-width: 480px) {
+  /* Header */
+  header {
+    padding: 0.8rem 1rem;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-logo {
+    width: 60px;
+  }
+
+  /* Hero */
+  .hero {
+    height: 40vh;
+  }
+
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .tagline {
+    font-size: 1.4rem;
+  }
+
+  .logo-animasjon {
+    width: 60px;
+  }
+
+  /* Seksjoner */
+  .section {
+    padding: 1.5rem 0.8rem;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Knapper */
+  .order-btn,
+  .foodora-btn,
+  .business-deal-btn,
+  .bestill-btn {
+    width: 95%;
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  /* Meny elementer */
+  .menu-item,
+  .rett {
+    padding: 1rem;
+  }
+
+  .menu-item h3,
+  .menu-item h4,
+  .rett h3 {
+    font-size: 1.1rem;
+  }
+
+  .rett img {
+    height: 200px;
+  }
+
+  /* Kontakt */
+  .kontakt-oss {
+    padding: 40px 15px;
+  }
+
+  .kontakt-oss h2 {
+    font-size: 2rem;
+  }
+
+  .kontakt-item,
+  .kontakt-info-item {
+    font-size: 1rem;
+    gap: 10px;
+  }
+
+  .kontakt-venstre,
+  .kontakt-høyre {
+    padding: 1rem;
+  }
+
+  .kontakt-venstre h2,
+  .kontakt-høyre h2 {
+    font-size: 1.5rem;
+  }
+
+  /* Åpningstider */
+  .opening-hours {
+    padding: 30px 15px;
+  }
+
+  .opening-hours h2 {
+    font-size: 1.5rem;
+  }
+
+  .day-hours,
+  .hour-item {
+    padding: 12px 15px;
+    font-size: 0.9rem;
+  }
+
+  /* Skjemaer */
+  .form-container {
+    padding: 20px 15px;
+  }
+
+  .form-container h2 {
+    font-size: 1.5rem;
+  }
+
+  .kontakt-skjema input,
+  .kontakt-skjema textarea,
+  .contact-form input,
+  .contact-form textarea {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .kontakt-skjema button,
+  .contact-form button {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+  }
+
+  /* Bedriftsavtale småskjerm */
+  body.bedriftsavtale .hero-section h1 {
+    font-size: 1.5rem;
+  }
+
+  body.bedriftsavtale .hero-section p {
+    font-size: 1rem;
+  }
+
+  body.bedriftsavtale .form-section {
+    padding: 15px 10px;
+    margin: 15px 5px;
+  }
+
+  body.bedriftsavtale .form-section h2 {
+    font-size: 1.3rem;
+  }
+
+  /* Om oss boks */
+  .om-oss-boks {
+    padding: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* Adresse info */
+  .adresse-info {
+    padding: 1rem;
+  }
+
+  .adresse-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .adresse-info p {
+    font-size: 1rem;
+  }
+
+  /* Map */
+  .map-wrapper {
+    height: 250px;
+  }
+
+  /* Fullscreen overlay */
+  .close-btn {
+    top: 15px;
+    right: 20px;
+    font-size: 1.5rem;
+  }
+
+  /* Footer */
+  footer,
+  body.bedriftsavtale .footer {
+    padding: 1.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ==============================================
+   EKSTRA SMÅSKJERM TILPASNING (320px og mindre)
+   ============================================== */
+
+@media screen and (max-width: 320px) {
+  /* Header */
+  header {
+    padding: 0.5rem;
+  }
+
+  header h1 {
+    font-size: 1.2rem;
+  }
+
+  .header-logo {
+    width: 50px;
+  }
+
+  /* Hero */
+  .hero {
+    height: 35vh;
+  }
+
+  .hero-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .hero-content p {
+    font-size: 0.8rem;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+  }
+
+  .logo-animasjon {
+    width: 50px;
+  }
+
+  /* Seksjoner */
+  .section {
+    padding: 1rem 0.5rem;
+  }
+
+  .section h2 {
+    font-size: 1.3rem;
+  }
+
+  /* Knapper */
+  .order-btn,
+  .foodora-btn,
+  .business-deal-btn,
+  .bestill-btn {
+    width: 100%;
+    padding: 0.7rem;
+    font-size: 0.8rem;
+    margin: 0.5rem 0;
+  }
+
+  /* Meny */
+  .menu-item,
+  .rett {
+    padding: 0.8rem;
+  }
+
+  .rett img {
+    height: 150px;
+  }
+
+  /* Kontakt */
+  .kontakt-oss h2 {
+    font-size: 1.5rem;
+  }
+
+  .kontakt-item,
+  .kontakt-info-item {
+    font-size: 0.9rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+  }
+
+  /* Åpningstider */
+  .opening-hours h2 {
+    font-size: 1.3rem;
+  }
+
+  .day-hours,
+  .hour-item {
+    padding: 10px;
+    font-size: 0.8rem;
+  }
+
+  /* Skjemaer */
+  .form-container {
+    padding: 15px 10px;
+  }
+
+  .form-container h2 {
+    font-size: 1.3rem;
+  }
+
+  /* Bedriftsavtale */
+  body.bedriftsavtale .hero-section h1 {
+    font-size: 1.3rem;
+  }
+
+  body.bedriftsavtale .hero-section p {
+    font-size: 0.9rem;
+  }
+
+  /* Om oss */
+  .om-oss-boks {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Map */
+  .map-wrapper {
+    height: 200px;
+  }
+}
+
+/* ==============================================
+   UTSKRIFT OPTIMALISERING
+   ============================================== */
+
+@media print {
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .hamburger,
+  .order-btn,
+  .foodora-btn,
+  .business-deal-btn,
+  .bestill-btn,
+  nav {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .hero::before {
+    display: none;
+  }
+
+  .section {
+    padding: 1rem 0;
+  }
+
+  .menu-item,
+  .rett {
+    border: 1px solid #ccc;
+    break-inside: avoid;
+  }
+
+  iframe {
+    display: none;
+  }
+
+  .fullscreen-overlay {
+    display: none !important;
+  }
+}
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Juster knappestil hvis ønskelig */
+.order-btn {
+  background-color: #cc0000;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.order-btn:hover {
+  background-color: #a30000;
+}
+
+/* Delivery-popup */
+/* hjemmelevering poppup */ 
+.delivery-popup {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #fff8e1;
+  border: 2px solid #ff9800;
+  border-radius: 15px;
+  padding: 15px;
+  width: 260px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  font-family: 'Outfit', sans-serif;
+  display: none;
+  z-index: 1000;
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.delivery-popup .popup-content p {
+  margin: 0;
+  font-weight: 500;
+  color: #444;
+}
+
+.delivery-popup .popup-content a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #ff9800;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.delivery-popup .popup-content a:hover {
+  background-color: #e68900;
+}
+
+.close-popup {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 18px;
+  color: #999;
+  cursor: pointer;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.map-section {
+  padding: 60px 20px;
+  text-align: center;
+  background: none; /* Ingen bakgrunnsfarge her */
+}
+
+.map-section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  color: #e60000;
+  font-weight: 700;
+  padding-bottom: 10px;
+  display: inline-block;
+}
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border: 2px solid #000; /* Svart border rundt map-container */
+}
+
+.map-container iframe {
+  width: 100%;
+  max-width: 850px;
+  height: 400px;
+  border: 2px solid #000; /* Svart border rundt iframe */
+  border-radius: 10px;
+}
+/* ==============================================
+   TILBAKE TIL TOPPEN KNAPP
+   ============================================== */
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #ff4444, #cc0000);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 24px;
+  font-weight: bold;
+  box-shadow: 0 4px 20px rgba(255, 68, 68, 0.4);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: linear-gradient(135deg, #ff5555, #dd0000);
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 8px 25px rgba(255, 68, 68, 0.6);
+}
+
+.back-to-top:active {
+  transform: scale(0.95);
+}
+
+.back-to-top::before {
+  content: "🍕";
+  font-size: 28px;
+  line-height: 1;
+}
+
+/* Alternativ med pil-ikon */
+.back-to-top.arrow::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid white;
+}
+
+/* Mobiltilpasning */
+@media screen and (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .back-to-top::before {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .back-to-top {
+    bottom: 15px;
+    right: 15px;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+  
+  .back-to-top::before {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Namnam Lier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bedriftsavtale">
+    <header>
+      <div class="logo-container">
+        <h1>
+          <a href="main.html" class="logo">NamNam Lier</a>
+        </h1>
+        <img
+          src="bilder/LogoTransparent.png"
+          alt="NamNam-logo"
+          class="header-logo"
+        />
+      </div>
+      <button
+        class="hamburger"
+        aria-label="Meny"
+        aria-expanded="false"
+        aria-controls="nav-menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="nav-menu">
+        <a href="main.html">Hjem</a>
+        <a href="meny.html">Meny</a>
+        <a href="#kontakt">Kontakt</a>
+        <a
+          class="order-btn"
+          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e&return_url=https%3A%2F%2Fnamnam.no%2Findex.html&client_is_mobile=true"
+          target="_blank"
+          >Bestill</a
+        >
+        <a class="business-deal-btn" href="bedriftsavtale.html"
+          >Bedriftsavtale</a
+        >
+        <a
+          class="foodora-btn"
+          href="https://www.foodora.no/restaurant/kf0s/namnam-drammen-and-lier"
+          target="_blank"
+          title="Bestill via Foodora"
+        >
+          <img
+            src="https://play-lh.googleusercontent.com/v5ikywKFSu_03hxZ3fjx-RZT16DU6l7_F--bNrXwIzvK_Hvp3drYtyjFk8xKVzn8W9-u"
+            alt="Foodora"
+          />
+        </a>
+      </nav>
+    </header>
+
+    <section class="hero-section">
+      <h1>🤝 Bedriftsavtale med NamNam - Vi tilbyr catering</h1>
+      <p>
+        Skap gode matopplevelser på arbeidsplassen med vår skreddersydde
+        bedriftsavtale. Perfekt for møter, lunsjer og arrangementer.
+      </p>
+    </section>
+
+    <main class="form-section">
+      <h2>Interessert? Fyll ut skjemaet!</h2>
+      <form class="contact-form" id="contactForm" onsubmit="sendEmail(event)">
+        <label for="firma">Firmanavn</label>
+        <input
+          type="text"
+          id="firma"
+          name="firma"
+          placeholder="F.eks. AS Eksempel"
+          required
+        />
+
+        <label for="kontaktperson">Kontaktperson</label>
+        <input
+          type="text"
+          id="kontaktperson"
+          name="kontaktperson"
+          placeholder="Fullt navn"
+          required
+        />
+
+        <label for="telefon">Telefonnummer</label>
+        <input
+          type="tel"
+          id="telefon"
+          name="telefon"
+          placeholder="123 45 678"
+          required
+        />
+
+        <label for="epost">E-postadresse</label>
+        <input
+          type="email"
+          id="epost"
+          name="epost"
+          placeholder="epost@firma.no"
+          required
+        />
+
+        <label for="melding">Hva kan vi hjelpe dere med?</label>
+        <textarea
+          id="melding"
+          name="melding"
+          rows="5"
+          placeholder="Fortell oss om dine behov eller ønsker"
+        ></textarea>
+
+        <button type="submit">Send inn henvendelse</button>
+      </form>
+    </main>
+
+    <footer class="footer-with-video">
+      <video autoplay muted loop playsinline class="footer-video">
+        <source src="video/matlaging.mp4" type="video/mp4" />
+        Din nettleser støtter ikke video.
+      </video>
+
+      <div class="footer-content">
+        <p>Namnam Lier AS | Org.nr. 921 144 261</p>
+        <p>Følg oss på Instagram og Facebook</p>
+        <p style="margin-top: 10px; font-size: 0.95rem">
+          Designet og utviklet av <strong>Zebratek</strong> – Kontakt tlf:
+          <a href="tel:93939393" style="color: #fff; text-decoration: underline"
+            >+47 939 39 393</a
+          >
+        </p>
+      </div>
+    </footer>
+    <button
+      class="back-to-top"
+      id="backToTop"
+      aria-label="Gå til toppen av siden"
+      title="Tilbake til toppen"
+    ></button>
+    <script src="script.js"></script>
+  </body>
+</html>
