@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kontakt Oss - Namnam Lier</title>
+    <title>Drammen Pizza og Grill</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,50 +13,47 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <div class="logo-container">
-        <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
-        <h1>
-          <a href="main.html" class="logo">Drammen Pizza & Grill</a>
-        </h1>
-      </div>
-      <button
-        class="hamburger"
-        aria-label="Meny"
-        aria-expanded="false"
-        aria-controls="nav-menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav id="nav-menu">
-        <a href="main.html">Hjem</a>
-        <a href="meny.html">Meny</a>
-        <a href="kontakt.html">Kontakt</a>
+    <section class="hero-kontakt">
+      <header>
+        <div class="logo-container">
+          <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
 
+          <h1>
+            <a href="#" class="logo">Drammen Pizza & Grill</a>
+          </h1>
+        </div>
+        <button
+          class="hamburger"
+          aria-label="Meny"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="nav-menu">
+          <a href="main.html">Hjem</a>
+          <a href="meny.html">Meny</a>
+          <a href="kontakt.html">Kontakt</a>
+          <a href="om-oss.html">Om Oss</a>
+          <a href="bedriftsavtale.html">Bedriftsavtale</a>
+        </nav>
+      </header>
+      <div class="hero-content">
+        <h2 class="velkommen-tekst">Velkommen til Drammen Pizza og Grill</h2>
+        <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
+
+        <!-- Legg til disse to under -->
+        <br />
         <a
           class="order-btn"
           href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e&return_url=https%3A%2F%2Fnamnam.no%2Findex.html&client_is_mobile=true"
           target="_blank"
-          >Bestill</a
+          >Ring og Bestill</a
         >
-        <a class="business-deal-btn" href="bedriftsavtale.html"
-          >Bedriftsavtale</a
-        >
-        <a
-          class="foodora-btn"
-          href="https://www.foodora.no/restaurant/kf0s/namnam-drammen-and-lier"
-          target="_blank"
-          title="Bestill via Foodora"
-        >
-          <img
-            src="https://play-lh.googleusercontent.com/v5ikywKFSu_03hxZ3fjx-RZT16DU6l7_F--bNrXwIzvK_Hvp3drYtyjFk8xKVzn8W9-u"
-            alt="Foodora"
-          />
-        </a>
-      </nav>
-    </header>
+      </div>
+    </section>
 
     <main>
       <section class="section">
@@ -77,12 +74,12 @@
             <h2>🕒 Åpningstider</h2>
             <div class="hours-list">
               <div class="hour-item">
-                <span class="day-name">Mandag–Fredag</span>
-                <span class="time-range">10:00–22:00</span>
+                <span class="day-name">Mandag–Lørdag</span>
+                <span class="time-range">10:00–23:00</span>
               </div>
               <div class="hour-item">
-                <span class="day-name">Lørdag–Søndag</span>
-                <span class="time-range">10:00–22:00</span>
+                <span class="day-name">Søndag</span>
+                <span class="time-range">11:00–23:00</span>
               </div>
               <span id="open-status-text"></span>
               <span id="open-status-countdown"></span>
@@ -91,15 +88,15 @@
             <div class="kontakt-info-boks">
               <div class="kontakt-info-item">
                 <span class="kontakt-ikon">📍</span>
-                <span>Vestre Liervei 123, 3400 Lier</span>
+                <span>Tordenskioldsgate 42 3044 Drammen</span>
               </div>
               <div class="kontakt-info-item">
                 <span class="kontakt-ikon">📞</span>
-                <span>987 65 432</span>
+                <span>32830500</span>
               </div>
               <div class="kontakt-info-item">
                 <span class="kontakt-ikon">✉️</span>
-                <span>kontakt@namnam.no</span>
+                <span>Drammenpizza@gmail.com</span>
               </div>
             </div>
           </div>
@@ -109,9 +106,7 @@
             <h2>📍 Finn Oss</h2>
             <div class="map-wrapper">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d64312.44257964633!2d10.179665614726424!3d59.75337151682623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x46413cfaad9a1969%3A0xec0c2ae888a86032!2sLierstranda%20139%2C%203414%20Lier!3m2!1d59.753397299999996!2d10.2620653!5e0!3m2!1sno!2sno!4v1752608443299!5m2!1sno!2sno"
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4013.050467519235!2d10.190000315255926!3d59.74350097974357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46413d6803b15cd1%3A0xYOURPLACEID!2sTordenskioldsgate+42%2C+3044+Drammen!5e0!3m2!1sno!2sno!4v0000000000000!5m2!1sno!2sno"
                 allowfullscreen=""
               >
               </iframe>

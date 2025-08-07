@@ -42,13 +42,16 @@ function updateOpenStatus() {
   const statusCountdown = document.getElementById("open-status-countdown");
 
   const now = new Date();
+  const day = now.getDay(); // 0 = søndag, 1 = mandag, ..., 6 = lørdag
   const hour = now.getHours();
   const minute = now.getMinutes();
   const second = now.getSeconds();
   const currentSeconds = hour * 3600 + minute * 60 + second;
 
-  const openTime = 10 * 3600;  // 10:00
-  const closeTime = 22 * 3600; // 22:00
+  // Åpningstider
+  const openHour = day === 0 ? 11 : 10; // Søndag åpner 11, ellers 10
+  const openTime = openHour * 3600;
+  const closeTime = 23 * 3600; // Alle dager stenger 23:00
 
   let isOpen = currentSeconds >= openTime && currentSeconds < closeTime;
 
@@ -62,9 +65,14 @@ function updateOpenStatus() {
   } else {
     let secondsUntilOpen = 0;
     if (currentSeconds < openTime) {
+      // Åpner senere i dag
       secondsUntilOpen = openTime - currentSeconds;
     } else {
-      secondsUntilOpen = 24 * 3600 - currentSeconds + openTime;
+      // Åpner i morgen
+      const nextDay = (day + 1) % 7;
+      const nextOpenHour = nextDay === 0 ? 11 : 10;
+      secondsUntilOpen =
+        24 * 3600 - currentSeconds + nextOpenHour * 3600;
     }
     const timeStr = formatCountdown(secondsUntilOpen);
     statusText.textContent = `❌ Vi har stengt nå.`;

@@ -17,7 +17,6 @@
       <header>
         <div class="logo-container">
           <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
-
           <h1>
             <a href="#" class="logo">Drammen Pizza & Grill</a>
           </h1>
@@ -43,25 +42,14 @@
       <div class="hero-content">
         <h2 class="velkommen-tekst">Velkommen til Drammen Pizza og Grill</h2>
         <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
-
-        <!-- Legg til disse to under -->
         <br />
-        <a
-          class="order-btn"
-          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e&return_url=https%3A%2F%2Fnamnam.no%2Findex.html&client_is_mobile=true"
-          target="_blank"
-          >Ring og Bestill</a
-        >
+        <!-- Fjernet bestillingslink -->
       </div>
     </section>
     <section id="retter" class="section">
       <h2>Drammens Klassikere</h2>
       <div class="retter-list">
-        <a
-          class="rett-flex"
-          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
-          target="_blank"
-        >
+        <a class="rett-flex">
           <img src="bilder/pizza.png" alt="Cheeseburger" />
           <div class="rett-info">
             <h3>Kebab Pizza – En smakfull kombinasjon</h3>
@@ -74,11 +62,7 @@
             </p>
           </div>
         </a>
-        <a
-          class="rett-flex"
-          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
-          target="_blank"
-        >
+        <a class="rett-flex">
           <img src="bilder/kebabtallerken.png" alt="Kebabtallerken" />
           <div class="rett-info">
             <h3>Kebabtallerken – En klassiker du alltid kan stole på</h3>
@@ -91,11 +75,7 @@
           </div>
         </a>
 
-        <a
-          class="rett-flex"
-          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
-          target="_blank"
-        >
+        <a class="rett-flex">
           <img src="bilder/MixGrillTallerkenFIn.jpeg" alt="Kebabtallerken" />
           <div class="rett-info">
             <h3>Mix Grill Kebab – Det beste fra grillen</h3>
@@ -108,11 +88,7 @@
           </div>
         </a>
 
-        <a
-          class="rett-flex"
-          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
-          target="_blank"
-        >
+        <a class="rett-flex">
           <img src="bilder/kylling shawarma.png" alt="Kebabtallerken" />
           <div class="rett-info">
             <h3>Kylling Rull – Smakfull og praktisk</h3>
@@ -124,7 +100,7 @@
           </div>
         </a>
 
-        <!-- Gjenta for flere retter... -->
+        <!-- Flere retter kan legges til uten bestillingslink -->
       </div>
     </section>
     <section class="quote-section" id="quote-section">
@@ -150,19 +126,10 @@
       </div>
     </section>
 
-    <div class="delivery-popup" id="deliveryPopup">
-      <div class="popup-content">
-        <span class="close-popup" onclick="closePopup()">×</span>
-        <p>🚚 Visste du at vi tilbyr <strong>hjemmelevering?</strong></p>
-        <a
-          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e"
-          target="_blank"
-        >
-          🍔 Bestill nå
-        </a>
-      </div>
+    <!-- <div class="delivery-popup" id="deliveryPopup" style="display: none">
+       Skjult popup som viste Foodbooking, fjernet innhold
     </div>
-
+-->
     <footer class="footer-with-video">
       <video autoplay muted loop playsinline class="footer-video">
         <source src="video/matlaging.mp4" type="video/mp4" />

@@ -13,31 +13,47 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header>
-      <div class="logo-container">
-        <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
+    <section class="hero-om-Oss">
+      <header>
+        <div class="logo-container">
+          <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
 
-        <h1>
-          <a href="#" class="logo">Drammen Pizza & Grill</a>
-        </h1>
+          <h1>
+            <a href="#" class="logo">Drammen Pizza & Grill</a>
+          </h1>
+        </div>
+        <button
+          class="hamburger"
+          aria-label="Meny"
+          aria-expanded="false"
+          aria-controls="nav-menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav id="nav-menu">
+          <a href="main.html">Hjem</a>
+          <a href="meny.html">Meny</a>
+          <a href="kontakt.html">Kontakt</a>
+          <a href="om-oss.html">Om Oss</a>
+          <a href="bedriftsavtale.html">Bedriftsavtale</a>
+        </nav>
+      </header>
+      <div class="hero-content">
+        <h2 class="velkommen-tekst">Velkommen til Drammen Pizza og Grill</h2>
+        <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
+
+        <!-- Legg til disse to under -->
+        <br />
+        <a
+          class="order-btn"
+          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e&return_url=https%3A%2F%2Fnamnam.no%2Findex.html&client_is_mobile=true"
+          target="_blank"
+          >Ring og Bestill</a
+        >
       </div>
-      <button
-        class="hamburger"
-        aria-label="Meny"
-        aria-expanded="false"
-        aria-controls="nav-menu"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <nav id="nav-menu">
-        <a href="main.html">Hjem</a>
-        <a href="meny.html">Meny</a>
-        <a href="kontakt.html">Kontakt</a>
-        <a href="om-oss.html">Om Oss</a>
-      </nav>
-    </header>
+    </section>
 
     <section class="om-oss-side">
       <h2>Om Oss</h2>
