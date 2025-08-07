@@ -118,7 +118,7 @@ function sendEmail(event) {
   );
 
   // Åpner e-postklienten
-  window.location.href = `mailto:kontakt@namnam.no?subject=${subject}&body=${body}`;
+  window.location.href = `mailto:drammenpizza@gmail.como?subject=${subject}&body=${body}`;
 }
 
 /*live status åpningstider
@@ -313,3 +313,8 @@ function initBackToTopWithAnimation() {
           }, index * 200);
         });
       });
+
+         function toggleMeny(id) {
+        const meny = document.getElementById(id);
+        meny.style.display = meny.style.display === "none" ? "flex" : "none";
+      }
