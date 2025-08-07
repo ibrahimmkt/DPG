@@ -6,6 +6,8 @@
     <title>Drammen Pizza og Grill</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/png" href="bilder/logo.png" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap"
       rel="stylesheet"
@@ -36,14 +38,15 @@
           <a href="meny.html">Meny</a>
           <a href="kontakt.html">Kontakt</a>
           <a href="om-oss.html">Om Oss</a>
-          <a href="bedriftsavtale.html">Bedriftsavtale</a>
+          <a href="bedriftsavtale.html">Firmaavtale</a>
+          <a href="barnebursdag.html">Barnebursdag</a>
         </nav>
       </header>
       <div class="hero-content">
         <h2 class="velkommen-tekst">Velkommen til Drammen Pizza og Grill</h2>
         <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
         <br />
-        <!-- Fjernet bestillingslink -->
+        <a class="order-btn" href="#" id="orderBtn">Ring og Bestill</a>
       </div>
     </section>
     <section id="retter" class="section">
@@ -153,6 +156,17 @@
       aria-label="Gå til toppen av siden"
       title="Tilbake til toppen"
     ></button>
+    <!-- Modal popup for telefonnummer -->
+    <div id="phoneModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Ring Drammen Pizza & Grill</h2>
+        <p>Telefonnummer:</p>
+        <a href="tel:32830500" class="phone-number">328 30 500</a> <br />
+        <button id="modalCloseBtn" class="modal-close-button">Lukk</button>
+      </div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

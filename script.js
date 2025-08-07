@@ -318,3 +318,40 @@ function initBackToTopWithAnimation() {
         const meny = document.getElementById(id);
         meny.style.display = meny.style.display === "none" ? "flex" : "none";
       }
+
+      /* ringeknapp */
+document.addEventListener("DOMContentLoaded", function () {
+  const orderBtn = document.getElementById("orderBtn");
+  const modal = document.getElementById("phoneModal");
+  const closeBtn = modal.querySelector(".close-btn");
+  const modalCloseButton = document.getElementById("modalCloseBtn");
+
+  orderBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+    modal.style.display = "block";
+  });
+
+  // Lukk modal når man klikker på X
+  closeBtn.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
+
+  // Lukk modal når man klikker på Lukk-knappen
+  modalCloseButton.addEventListener("click", function () {
+    modal.style.display = "none";
+  });
+
+  // Lukk modal når man klikker utenfor modal-innholdet
+  window.addEventListener("click", function (e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
+    }
+  });
+
+  // Optional: Lukk modal med ESC-tast
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal.style.display === "block") {
+      modal.style.display = "none";
+    }
+  });
+});

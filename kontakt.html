@@ -6,6 +6,8 @@
     <title>Drammen Pizza og Grill</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" type="image/png" href="bilder/logo.png" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap"
       rel="stylesheet"
@@ -37,7 +39,8 @@
           <a href="meny.html">Meny</a>
           <a href="kontakt.html">Kontakt</a>
           <a href="om-oss.html">Om Oss</a>
-          <a href="bedriftsavtale.html">Bedriftsavtale</a>
+          <a href="bedriftsavtale.html">Firmaavtale</a>
+          <a href="barnebursdag.html">Barnebursdag</a>
         </nav>
       </header>
       <div class="hero-content">
@@ -46,12 +49,7 @@
 
         <!-- Legg til disse to under -->
         <br />
-        <a
-          class="order-btn"
-          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e&return_url=https%3A%2F%2Fnamnam.no%2Findex.html&client_is_mobile=true"
-          target="_blank"
-          >Ring og Bestill</a
-        >
+        <a class="order-btn" href="#" id="orderBtn">Ring og Bestill</a>
       </div>
     </section>
 
@@ -139,5 +137,23 @@
       title="Tilbake til toppen"
     ></button>
     <script src="script.js"></script>
+    <!-- Modal Popup for telefonnummer -->
+    <div
+      id="phoneModal"
+      class="modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalTitle"
+      tabindex="-1"
+    >
+      <div class="modal-content" role="document">
+        <button class="modal-close" aria-label="Lukk popup">&times;</button>
+        <h2 id="modalTitle">Kontakt oss</h2>
+        <p>Ring restauranten på telefon:</p>
+        <a href="tel:32830500" class="phone-link">📞 32 83 05 00</a>
+        <button class="modal-close-btn">Lukk</button>
+      </div>
+    </div>
   </body>
 </html>

@@ -178,7 +178,7 @@ nav a:hover {
 
 .hero-bedrift {
  position: relative;
-  background-image: url('bilder/kyllingkebab.png');
+  background-image: url('bilder/MixGrillTallerkenFIn.jpeg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -304,64 +304,6 @@ nav a:hover {
   background-color: #e50000;
 }
 
-.foodora-btn {
-  background-color: #d60265;
-  color: white;
-  font-weight: 700;
-  padding: 0.2rem 1.2rem 0.2rem 0.7rem;
-  text-align: center;
-  text-decoration: none;
-  font-size: 1.2rem;
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  animation: pulse 2s infinite;
-  box-shadow: 0 6px 15px #d60265;
-}
-
-.foodora-btn:hover {
-  background-color: #b8024e;
-  box-shadow: 0 8px 20px rgba(214, 2, 101, 0.7);
-}
-
-.foodora-btn img {
-  height: 50px;
-  margin-left: 10px;
-  vertical-align: middle;
-  transition: transform 0.3s ease;
-}
-
-.foodora-btn img:hover {
-  transform: scale(1.1);
-}
-
-.business-deal-btn {
-  display: inline-block;
-  background-color: #ff9900;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 30px;
-  margin-left: 8px;
-  font-weight: bold;
-  text-decoration: none;
-  font-size: 16px;
-  transition: all 0.3s ease;
-  animation: pulse 2s infinite;
-  position: relative;
-  overflow: hidden;
-}
-
-.business-deal-btn:hover {
-  background-color: #e88e00;
-  transform: scale(1.05);
-  box-shadow: 0 0 15px #ff9900;
-}
-
-.business-deal-btn .emoji {
-  display: inline-block;
-  margin-right: 8px;
-  animation: handshake 2s infinite;
-}
-
 .bestill-knapper {
   display: flex;
   justify-content: center;
@@ -393,6 +335,140 @@ nav a:hover {
 .bestill-btn.meny {
   background-color: #ffae00;
 }
+/*Ringeknapp pop - up*/
+/* Modal bakgrunn */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  inset: 0; /* shorthand for top, right, bottom, left = 0 */
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  overflow-y: auto;
+  transition: opacity 0.3s ease;
+}
+
+/* Modal innhold */
+.modal-content {
+  background-color: #fff;
+  margin: 8vh auto 10vh;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  max-width: 380px;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.1),
+    0 6px 6px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+  animation: slideDownFadeIn 0.4s ease forwards;
+}
+
+/* Animasjon på åpning */
+@keyframes slideDownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Lukk-knapp (X) */
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.25s ease;
+  user-select: none;
+}
+
+.close-btn:hover {
+  color: #d62828;
+}
+
+/* Overskrift */
+.modal-content h2 {
+  margin-bottom: 1rem;
+  font-weight: 800;
+  color: #d62828;
+  font-size: 1.9rem;
+}
+
+/* Informasjonstekst */
+.modal-content p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+/* Telefonnummer-lenke */
+.phone-number {
+  display: inline-block;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #d62828;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  margin: 1rem 0 2rem 0;
+  transition: color 0.3s ease;
+}
+
+.phone-number:hover,
+.phone-number:focus {
+  color: #a71d1d;
+  text-decoration: underline;
+  outline: none;
+}
+
+/* Lukk knapp nederst */
+.modal-close-button {
+  background-color: #d62828;
+  border: none;
+  color: white;
+  padding: 0.85rem 2rem;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow:
+    0 4px 8px rgba(214, 40, 40, 0.3);
+  user-select: none;
+}
+
+.modal-close-button:hover,
+.modal-close-button:focus {
+  background-color: #a71d1d;
+  outline: none;
+}
+
+/* Mobiltilpasning */
+@media (max-width: 440px) {
+  .modal-content {
+    margin: 5vh 1rem 8vh;
+    padding: 2rem 1.5rem;
+    width: calc(100% - 2rem);
+  }
+
+  .phone-number {
+    font-size: 1.6rem;
+  }
+
+  .modal-close-button {
+    width: 100%;
+    padding: 1rem 0;
+  }
+}
+
 
 /* Tilbake til toppen knapp */
 .back-to-top {
@@ -484,41 +560,62 @@ section.show {
 /* Om oss side */
 .om-oss-side {
   padding: 4rem 2rem;
-  background-color: #fefefe;
-  font-family: 'Outfit', sans-serif;
+  background-color: white;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .om-oss-side h2 {
   text-align: center;
   font-size: 2.5rem;
+  color: #c62828;
   margin-bottom: 2rem;
 }
-
 .om-oss-innhold {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2.5rem;
-  max-width: 1000px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 3rem;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
+
 .om-tekst {
-  font-size: 1.15rem;
+  background: #fff7f7;
+  border-radius: 1rem; 
+  padding: 2rem;
+  flex: 1;
+  min-width: 280px;
   line-height: 1.8;
-  text-align: left;
-  max-width: 600px;
+  font-size: 1.1rem;
+}
+
+
+.om-tekst strong {
+  color: #c62828;
+}
+
+.om-tekst em {
+  display: block;
+  margin-top: 2rem;
+  font-style: italic;
+  font-size: 1.3rem;
+  color: #ff0000;
 }
 
 .eier-bilde-container {
+  flex: 1;
   text-align: center;
+  min-width: 250px;
 }
 
+
 .eier-bilde-container img {
-  width: 280px;
+  max-width: 80%;
   height: auto;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .eier-tekst {
@@ -581,9 +678,65 @@ section.show {
 }
 
 /* ==============================================
-   6. MENY OG RETTER
+   6. MENY, RABATT, LEVERING OG RETTER
    ============================================== */
-/* Ramme rundt hele menyseksjonen */
+.levering-lite {
+  background-color: #fff0f0;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  border: 1px solid #d93838;
+  border-radius: 0.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.levering-lite p {
+  margin: 0;
+  color: #b82929;
+  font-weight: 500;
+}
+
+.levering-lite .levering-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.4rem 1rem;
+  font-size: 0.9rem;
+  background-color: #d93838;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.3rem;
+  transition: background 0.2s ease;
+}
+
+.levering-lite .levering-link:hover {
+  background-color: #aa1f1f;
+}
+
+/* Studentrabatt*/
+.studentrabatt-section {
+  background-color: #ffd700; /* Gult, som matcher Drammen Pizza & Grill farger */
+  color: #a80000; /* Dyp rød for kontrast */
+  padding: 1.5rem 2rem;
+  margin: 1rem 0;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.studentrabatt-section h2 {
+  margin-bottom: 0.5rem;
+  font-size: 1.8rem;
+}
+.studentrabatt-section p {
+  margin: 0.2rem 0;
+  font-size: 1.1rem;
+}
+
+   /* Ramme rundt hele menyseksjonen */
 .meny-wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -591,19 +744,6 @@ section.show {
   box-sizing: border-box;
 }
 
-   .ukens-tilbud {
-  margin: 3rem 0;
-  display: flex;
-  justify-content: center;
-}
-
-.ukens-tilbud img {
-  width: 100%;
-  max-width: 980px;
-  border-radius: 18px;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
-  object-fit: cover;
-}
 
 /* Kategori-knapper */
 .menu-category-header button {
@@ -2167,4 +2307,83 @@ body.bedriftsavtale .footer {
   .fullscreen-overlay {
     display: none !important;
   }
+}
+
+/* ==============================================
+   18. BARNEBURSDAG
+   ============================================== */
+   .barnebursdag {
+  padding: 4rem 2rem;
+}
+
+.barnebursdag .content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.barnebursdag .text {
+  flex: 1;
+}
+
+.barnebursdag .text h2 {
+  font-size: 2.5rem;
+  color: #d62828;
+  margin-bottom: 1rem;
+}
+
+.barnebursdag .text p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.barnebursdag ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 1.5rem;
+}
+
+.barnebursdag ul li {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.barnebursdag .bestill-btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: #d62828;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+.barnebursdag .bestill-btn:hover {
+  background-color: #a71d1d;
+}
+
+.barnebursdag .image {
+  flex: 1;
+  text-align: center;
+}
+
+.barnebursdag .image img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 18px;
+  object-fit: cover;
+  border: 4px solid #ffffff; /* Rød ramme */
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
+}
+
+.barnebursdag .image img:hover {
+   transform: scale(1.03);
+  box-shadow: 0 12px 38px rgba(255, 0, 0, 0.35);
+  border-color: #ff4d4d;
 }
