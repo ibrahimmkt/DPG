@@ -331,6 +331,37 @@ function initPhoneModal() {
 }
 
 
+/* ==============================================
+   GOOGLE TRANSLATE – SPRÅKVELGER
+   ============================================== */
+
+// Denne funksjonen kalles av Google Translate scriptet
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    {
+      pageLanguage: 'no',
+      includedLanguages: 'no,en,ar',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    },
+    'google_translate_element'
+  );
+}
+
+// Tilpasset knapp-klikk for å endre språk
+function initLanguageSwitcher() {
+  const langButtons = document.querySelectorAll('.custom-lang-switcher button');
+  langButtons.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const lang = this.getAttribute('data-lang');
+      const select = document.querySelector("#google_translate_element select");
+      if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event("change"));
+      }
+    });
+  });
+}
+
 
 /* ==============================================
    INITIALISER ALT NÅR DOM ER LASTET
