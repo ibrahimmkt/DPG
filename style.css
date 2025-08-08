@@ -2552,6 +2552,12 @@ body.bedriftsavtale .footer {
   border-color: #ff4d4d;
 }
 
+
+
+/* ==============================================
+   18. Google translate Widget
+   ============================================== */
+
 /* Wrapper for språkvelger med rød/gull skinneeffekt */
 #language-wrapper {
   display: inline-flex;
