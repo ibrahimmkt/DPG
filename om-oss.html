@@ -49,12 +49,7 @@
 
         <!-- Legg til disse to under -->
         <br />
-        <a
-          class="order-btn"
-          href="https://www.foodbooking.com/ordering/?restaurant_uid=b5f0da45-b714-4bd8-8238-c69d5273969e&return_url=https%3A%2F%2Fnamnam.no%2Findex.html&client_is_mobile=true"
-          target="_blank"
-          >Ring og Bestill</a
-        >
+        <a class="order-btn" href="#" id="orderBtn">Ring og Bestill</a>
       </div>
     </section>
 
@@ -114,9 +109,34 @@
       aria-label="Gå til toppen av siden"
       title="Tilbake til toppen"
     ></button>
-    <footer class="footer-basic">
-      <p>Drammen Pizza & Grill © 2025</p>
+    <footer class="footer-with-video">
+      <video autoplay muted loop playsinline class="footer-video">
+        <source src="video/matlaging.mp4" type="video/mp4" />
+        Din nettleser støtter ikke video.
+      </video>
+
+      <div class="footer-content">
+        <p>Drammen Pizza og Grill | Org.nr. 914 812 801</p>
+        <p>Følg oss på Instagram og Facebook</p>
+        <p style="margin-top: 10px; font-size: 0.95rem">
+          Designet og utviklet av <strong>S&I Studios</strong> – Kontakt tlf:
+          <a href="tel:93939393" style="color: #fff; text-decoration: underline"
+            >+47 939 39 393</a
+          >
+        </p>
+      </div>
     </footer>
+    <!-- Modal popup for telefonnummer -->
+    <div id="phoneModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Ring Drammen Pizza & Grill</h2>
+        <p>Telefonnummer:</p>
+        <a href="tel:32830500" class="phone-number">328 30 500</a>
+        <br />
+        <button id="modalCloseBtn" class="modal-close-button">Lukk</button>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

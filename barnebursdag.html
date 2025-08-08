@@ -20,7 +20,7 @@
         <div class="logo-container">
           <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
           <h1>
-            <a href="#" class="logo">Drammen Pizza & Grill</a>
+            <a href="main.html" class="logo">Drammen Pizza & Grill</a>
           </h1>
         </div>
         <button
@@ -58,7 +58,7 @@
             barnebursdag. La oss ordne alt, ring oss for mer informasjon!
             <br />
             <br />
-            <a href="#kontakt" class="bestill-btn">Bestill barnebursdag</a>
+            <a class="order-btn" href="#" id="orderBtn">Bestill Barnebursdag</a>
           </p>
         </div>
 
@@ -98,6 +98,17 @@
       aria-label="Gå til toppen av siden"
       title="Tilbake til toppen"
     ></button>
+    <!-- Modal popup for telefonnummer -->
+    <div id="phoneModal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Ring Drammen Pizza & Grill</h2>
+        <p>Telefonnummer:</p>
+        <a href="tel:32830500" class="phone-number">328 30 500</a>
+        <br />
+        <button id="modalCloseBtn" class="modal-close-button">Lukk</button>
+      </div>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>

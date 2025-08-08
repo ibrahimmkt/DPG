@@ -1,45 +1,80 @@
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.getElementById("nav-menu");
 
-  const hamburger = document.querySelector(".hamburger");
-  const navMenu = document.getElementById("nav-menu");
-
+if (hamburger && navMenu) {
   hamburger.addEventListener("click", () => {
+    // Toggle aktiv klasse på hamburger for animasjon
     hamburger.classList.toggle("active");
+    
+    // Toggle vis/skjul nav
     navMenu.classList.toggle("show");
 
-    const expanded =
-      hamburger.getAttribute("aria-expanded") === "true" || false;
+    // Oppdater aria-expanded for tilgjengelighet
+    const expanded = hamburger.getAttribute("aria-expanded") === "true" || false;
     hamburger.setAttribute("aria-expanded", !expanded);
+    
+    // Forhindre scrolling av body når nav er åpen
+    if (navMenu.classList.contains("show")) {
+      document.body.classList.add("nav-open");
+    } else {
+      document.body.classList.remove("nav-open");
+    }
   });
 
-   document.querySelectorAll(".fullscreen-img").forEach(link => {
-    link.addEventListener("click", function (e) {
-      e.preventDefault();
-      const src = this.getAttribute("href");
-
-      const overlay = document.createElement("div");
-      overlay.className = "fullscreen-overlay";
-
-      const img = document.createElement("img");
-      img.src = src;
-
-      const closeBtn = document.createElement("button");
-      closeBtn.className = "close-btn";
-      closeBtn.innerHTML = "✕";
-      closeBtn.addEventListener("click", () => {
-        overlay.remove();
-      });
-
-      overlay.appendChild(img);
-      overlay.appendChild(closeBtn);
-      document.body.appendChild(overlay);
+  // Lukk nav når man klikker på en lenke (mobil)
+  const navLinks = navMenu.querySelectorAll("a");
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("active");
+      navMenu.classList.remove("show");
+      hamburger.setAttribute("aria-expanded", false);
+      document.body.classList.remove("nav-open");
     });
   });
 
-  /*live status åpningstider*/
+  // Lukk nav med ESC-tast
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && navMenu.classList.contains("show")) {
+      hamburger.classList.remove("active");
+      navMenu.classList.remove("show");
+      hamburger.setAttribute("aria-expanded", false);
+      document.body.classList.remove("nav-open");
+    }
+  });
 
+  // Lukk nav hvis vinduet endrer størrelse til desktop
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768 && navMenu.classList.contains("show")) {
+      hamburger.classList.remove("active");
+      navMenu.classList.remove("show");
+      hamburger.setAttribute("aria-expanded", false);
+      document.body.classList.remove("nav-open");
+    }
+  });
+}
+
+// CSS for å forhindre scrolling når nav er åpen
+const navOpenStyles = `
+.nav-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+}
+`;
+
+// Legg til CSS i head hvis den ikke finnes
+if (!document.querySelector('#nav-open-styles')) {
+  const style = document.createElement('style');
+  style.id = 'nav-open-styles';
+  style.textContent = navOpenStyles;
+  document.head.appendChild(style);
+}
+/*live status åpningstider*/
 function updateOpenStatus() {
   const statusText = document.getElementById("open-status-text");
   const statusCountdown = document.getElementById("open-status-countdown");
+
+  if (!statusText || !statusCountdown) return;
 
   const now = new Date();
   const day = now.getDay(); // 0 = søndag, 1 = mandag, ..., 6 = lørdag
@@ -93,11 +128,6 @@ function pad(n) {
   return n < 10 ? "0" + n : n;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  updateOpenStatus();
-  setInterval(updateOpenStatus, 1000);
-});
-
 /*kontaktskjema*/
 function sendEmail(event) {
   event.preventDefault(); // Hindrer at siden lastes på nytt
@@ -118,36 +148,13 @@ function sendEmail(event) {
   );
 
   // Åpner e-postklienten
-  window.location.href = `mailto:drammenpizza@gmail.como?subject=${subject}&body=${body}`;
+  window.location.href = `mailto:drammenpizza@gmail.com?subject=${subject}&body=${body}`;
 }
-
-/*live status åpningstider
-  function updateCountdown() {
-    const countdownEl = document.getElementById("countdown");
-    const deadline = new Date("July 31, 2025 23:59:59").getTime();
-    const now = new Date().getTime();
-    const diff = deadline - now;
-
-    if (diff <= 0) {
-      countdownEl.textContent = "❌ Tilbudet er utgått.";
-      return;
-    }
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    countdownEl.textContent = `Tilbudet er ferdig om ${days}d ${hours}t ${minutes}m ${seconds}s`;
-  }
-
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-*/
 
 /*hjemmelevering poppup*/
 function closePopup() {
-  document.getElementById("deliveryPopup").style.display = "none";
+  const popup = document.getElementById("deliveryPopup");
+  if (popup) popup.style.display = "none";
 }
 
 window.addEventListener("load", () => {
@@ -197,161 +204,167 @@ function initBackToTop() {
   toggleButtonVisibility();
 }
 
-// Initialiser når DOM er lastet
-document.addEventListener('DOMContentLoaded', initBackToTop);
-
-// Alternativ med animasjon (valgfritt)
-function initBackToTopWithAnimation() {
-  const backToTopButton = document.getElementById('backToTop');
-  
-  if (!backToTopButton) return;
-
-  function toggleButtonVisibility() {
-    if (window.pageYOffset > 300) {
-      backToTopButton.classList.add('show');
-    } else {
-      backToTopButton.classList.remove('show');
-    }
-  }
-
-  function scrollToTop() {
-    // Legg til loading-animasjon
-    backToTopButton.style.transform = 'scale(0.8)';
-    
-    const scrollToTopAnimation = () => {
-      const currentPosition = window.pageYOffset;
-      if (currentPosition > 0) {
-        window.scrollTo(0, currentPosition - currentPosition / 8);
-        requestAnimationFrame(scrollToTopAnimation);
-      } else {
-        // Tilbakestill knapp-animasjon
-        backToTopButton.style.transform = '';
+// Quote animation
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
       }
-    };
-    
-    requestAnimationFrame(scrollToTopAnimation);
+    });
+  },
+  {
+    threshold: 0.5
   }
+);
 
-  window.addEventListener('scroll', toggleButtonVisibility);
-  backToTopButton.addEventListener('click', scrollToTop);
-  toggleButtonVisibility();
+const quoteContainer = document.querySelector('.quote-text-container');
+if (quoteContainer) {
+  observer.observe(quoteContainer);
 }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    },
-    {
-      threshold: 0.5
-    }
-  );
+// Menu functionality
+const menuCards = document.querySelectorAll(".menu-card");
+const fullMenus = document.querySelectorAll(".full-menu");
+const menuSelection = document.getElementById("menuSelection");
 
-  const quoteContainer = document.querySelector('.quote-text-container');
-  observer.observe(quoteContainer);
-  
-        const menuCards = document.querySelectorAll(".menu-card");
-      const fullMenus = document.querySelectorAll(".full-menu");
-      const menuSelection = document.getElementById("menuSelection");
+menuCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    const menuType = card.dataset.menu;
+    showMenu(menuType);
+  });
+});
 
-      menuCards.forEach((card) => {
-        card.addEventListener("click", () => {
-          const menuType = card.dataset.menu;
-          showMenu(menuType);
-        });
-      });
+function showMenu(menuType) {
+  // Skjul menu selection
+  if (menuSelection) menuSelection.style.display = "none";
 
-      function showMenu(menuType) {
-        // Skjul menu selection
-        menuSelection.style.display = "none";
+  // Skjul alle menyer først
+  fullMenus.forEach((menu) => {
+    menu.classList.remove("active");
+  });
 
-        // Skjul alle menyer først
-        fullMenus.forEach((menu) => {
-          menu.classList.remove("active");
-        });
+  // Vis valgt meny
+  const selectedMenu = document.getElementById(menuType + "Menu");
+  if (selectedMenu) {
+    selectedMenu.classList.add("active");
+  }
+}
 
-        // Vis valgt meny
-        const selectedMenu = document.getElementById(menuType + "Menu");
-        if (selectedMenu) {
-          selectedMenu.classList.add("active");
-        }
-      }
-      function closeMenu() {
-        // Skjul alle full menyer
-        fullMenus.forEach((menu) => {
-          menu.classList.remove("active");
-        });
+function closeMenu() {
+  // Skjul alle full menyer
+  fullMenus.forEach((menu) => {
+    menu.classList.remove("active");
+  });
 
-        // Vis menu selection igjen
-        menuSelection.style.display = "grid";
+  // Vis menu selection igjen
+  if (menuSelection) menuSelection.style.display = "grid";
 
-        // Scroll til toppen
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+  // Scroll til toppen
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
 
-      // Legg til keyboard support
-      document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") {
-          closeMenu();
-        }
-      });
+function toggleMeny(id) {
+  const meny = document.getElementById(id);
+  if (meny) {
+    meny.style.display = meny.style.display === "none" ? "flex" : "none";
+  }
+}
 
-      // Smooth scroll effekt
-      document.addEventListener("DOMContentLoaded", () => {
-        const cards = document.querySelectorAll(".menu-card");
-        cards.forEach((card, index) => {
-          card.style.opacity = "0";
-          card.style.transform = "translateY(50px)";
 
-          setTimeout(() => {
-            card.style.transition = "all 0.6s ease";
-            card.style.opacity = "1";
-            card.style.transform = "translateY(0)";
-          }, index * 200);
-        });
-      });
+/* ==============================================
+   MODAL POPUP FOR TELEFONNUMMER - ALLE SIDER
+   ============================================== */
 
-         function toggleMeny(id) {
-        const meny = document.getElementById(id);
-        meny.style.display = meny.style.display === "none" ? "flex" : "none";
-      }
-
-      /* ringeknapp */
-document.addEventListener("DOMContentLoaded", function () {
+function initPhoneModal() {
   const orderBtn = document.getElementById("orderBtn");
   const modal = document.getElementById("phoneModal");
-  const closeBtn = modal.querySelector(".close-btn");
-  const modalCloseButton = document.getElementById("modalCloseBtn");
+  
+  if (!orderBtn || !modal) return;
 
+  const closeBtn = modal.querySelector(".close-btn");
+  const modalCloseButton = document.getElementById("modalCloseBtn") || modal.querySelector(".modal-close-btn") || modal.querySelector(".modal-close-button");
+
+  // Åpne modal når "Ring og Bestill" klikkes
   orderBtn.addEventListener("click", function (e) {
     e.preventDefault();
     modal.style.display = "block";
+    modal.setAttribute("aria-hidden", "false");
+    // Fokus på modal for tilgjengelighet
+    modal.focus();
   });
 
-  // Lukk modal når man klikker på X
-  closeBtn.addEventListener("click", function () {
-    modal.style.display = "none";
-  });
+  // Lukk modal med X-knapp
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function () {
+      closeModal();
+    });
+  }
 
-  // Lukk modal når man klikker på Lukk-knappen
-  modalCloseButton.addEventListener("click", function () {
-    modal.style.display = "none";
-  });
+  // Lukk modal med lukk-knappen
+  if (modalCloseButton) {
+    modalCloseButton.addEventListener("click", function () {
+      closeModal();
+    });
+  }
 
   // Lukk modal når man klikker utenfor modal-innholdet
   window.addEventListener("click", function (e) {
     if (e.target === modal) {
-      modal.style.display = "none";
+      closeModal();
     }
   });
 
-  // Optional: Lukk modal med ESC-tast
+  // Lukk modal med ESC-tast
   window.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && modal.style.display === "block") {
-      modal.style.display = "none";
+      closeModal();
     }
   });
+
+  function closeModal() {
+    modal.style.display = "none";
+    modal.setAttribute("aria-hidden", "true");
+    // Returner fokus til knappen som åpnet modalen
+    orderBtn.focus();
+  }
+}
+
+
+
+/* ==============================================
+   INITIALISER ALT NÅR DOM ER LASTET
+   ============================================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialiser åpningstider status
+  updateOpenStatus();
+  setInterval(updateOpenStatus, 1000);
+  
+  // Initialiser tilbake til toppen knapp
+  initBackToTop();
+  
+  // Initialiser telefon modal
+  initPhoneModal();
+
+  // Legg til keyboard support for menyer
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeMenu();
+    }
+  });
+
+  // Smooth scroll effekt for menu cards
+  const cards = document.querySelectorAll(".menu-card");
+  cards.forEach((card, index) => {
+    card.style.opacity = "0";
+    card.style.transform = "translateY(50px)";
+
+    setTimeout(() => {
+      card.style.transition = "all 0.6s ease";
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    }, index * 200);
+  });
 });
+
