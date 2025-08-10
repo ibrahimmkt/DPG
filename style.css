@@ -156,8 +156,8 @@ nav a:hover {
 
   /* Vis hamburger knapp på mobil */
   .hamburger {
-    display: flex;
-  }
+ position: relative;
+  z-index: 2001; /* høy nok til å ligge over Google Translate-knapper */  }
 
   /* Skjul desktop nav og vis mobil nav */
   nav {
@@ -190,16 +190,23 @@ nav a:hover {
     /* Smooth animasjon */
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     
-    z-index: 1050;
+  z-index: 2000; /* høyere enn widgeten */
     overflow-y: auto;
   }
 
   /* Vis nav når hamburger er aktiv */
-  nav.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(0);
-  }
+nav.show a {
+  position: relative;
+  z-index: 2003;
+}
+  /* Når menyen er åpen, skal X-knappen være foran bakgrunn, men bak lenker */
+nav.show .hamburger {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2002; /* høyere enn nav bakgrunn, men lenker kan fortsatt klikkes */
+}
+
 
   /* Mobil nav lenker */
   nav a {
@@ -242,7 +249,7 @@ nav a:hover {
   nav a:hover {
     background: rgba(255, 215, 0, 0.15);
     border-color: rgba(255, 215, 0, 0.4);
-    color: #ffd700;
+    color: #ff0000;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
   }
@@ -422,10 +429,7 @@ nav a:hover {
   font-family: 'Great Vibes', cursive;
   font-size: 3rem;
   color: #fff;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: skrivetekst 4s ease-out forwards;
+
   padding-right: 8px;
 }
 
@@ -2550,6 +2554,22 @@ body.bedriftsavtale .footer {
    transform: scale(1.03);
   box-shadow: 0 12px 38px rgba(255, 0, 0, 0.35);
   border-color: #ff4d4d;
+}
+
+/* Mobiltilpasning for bildet */
+@media screen and (max-width: 768px) {
+  .image img {
+    width: 100%;      /* Bildet fyller containerens bredde */
+    height: auto;     /* Proporsjonalt høyde */
+    max-width: 400px; /* Maks bredde for større mobiler/tablets */
+    display: block;
+    margin: 0 auto;   /* Sentrerer bildet horisontalt */
+    border-radius: 8px; /* Litt avrunding hvis ønskelig */
+  }
+
+  .image {
+    padding: 0 1rem;  /* Litt luft på sidene på mobil */
+  }
 }
 
 

@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="language-wrapper">
+      <label for="google_translate_element"> Choose language:</label>
+      <div id="google_translate_element"></div>
+    </div>
     <section class="hero-bedrift">
       <header>
         <div class="logo-container">
@@ -114,19 +118,14 @@
       </form>
     </main>
 
-    <footer class="footer-with-video">
-      <video autoplay muted loop playsinline class="footer-video">
-        <source src="video/matlaging.mp4" type="video/mp4" />
-        Din nettleser støtter ikke video.
-      </video>
-
+    <footer>
       <div class="footer-content">
         <p>Drammen Pizza og Grill | Org.nr. 914 812 801</p>
         <p>Følg oss på Instagram og Facebook</p>
         <p style="margin-top: 10px; font-size: 0.95rem">
-          Designet og utviklet av <strong>S&I Studios</strong> – Kontakt tlf:
+          Designet og utviklet av <strong>WebPlug</strong> – Kontakt tlf:
           <a href="tel:93939393" style="color: #fff; text-decoration: underline"
-            >+47 939 39 393</a
+            >+47 996 72 557</a
           >
         </p>
       </div>
@@ -148,6 +147,8 @@
         <button id="modalCloseBtn" class="modal-close-button">Lukk</button>
       </div>
     </div>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <script src="script.js"></script>
   </body>
 </html>

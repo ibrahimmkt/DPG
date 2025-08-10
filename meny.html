@@ -15,6 +15,10 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div id="language-wrapper">
+      <label for="google_translate_element"> Choose language:</label>
+      <div id="google_translate_element"></div>
+    </div>
     <section class="hero-meny">
       <header>
         <div class="logo-container">
@@ -70,7 +74,6 @@
         <p>
           Vi kjører kun ved bestillinger på over 165 kr. (ekskl. kjøretillegg).
         </p>
-        <a class="levering-link" href="#" id="orderBtn">Bestill levering</a>
       </section>
       <section id="studentrabatt" class="studentrabatt-section">
         <div class="container">
@@ -427,13 +430,13 @@
         <details class="pizza-tillegg expandable-box">
           <summary>➕ Ekstra tillegg til pizza</summary>
           <ul>
-            <li>Ekstra ost: 20,-</li>
-            <li>Ekstra kjøtt: 25,-</li>
-            <li>Ekstra grønnsaker: 15,-</li>
-            <li>Ekstra krydder: 15,-</li>
-            <li>Pizzasaus: 25,-</li>
-            <li>Rømme /m hvitløk: 30,-</li>
-            <li>Bernaisesaus: 30,-</li>
+            <li><strong>Ekstra ost:</strong> 20,-</li>
+            <li><strong>Ekstra kjøtt:</strong> 25,-</li>
+            <li><strong>Ekstra grønnsaker:</strong> 15,-</li>
+            <li><strong>Ekstra krydder:</strong> 15,-</li>
+            <li><strong>Pizzasaus:</strong> 25,-</li>
+            <li><strong>Rømme /m hvitløk:</strong> 30,-</li>
+            <li><strong>Bernaisesaus:</strong> 30,-</li>
           </ul>
         </details>
 
@@ -1038,19 +1041,14 @@
       </div> -->
     </section>
 
-    <footer class="footer-with-video">
-      <video autoplay muted loop playsinline class="footer-video">
-        <source src="video/matlaging.mp4" type="video/mp4" />
-        Din nettleser støtter ikke video.
-      </video>
-
+    <footer>
       <div class="footer-content">
         <p>Drammen Pizza og Grill | Org.nr. 914 812 801</p>
         <p>Følg oss på Instagram og Facebook</p>
         <p style="margin-top: 10px; font-size: 0.95rem">
-          Designet og utviklet av <strong>S&I Studios</strong> – Kontakt tlf:
+          Designet og utviklet av <strong>WebPlug</strong> – Kontakt tlf:
           <a href="tel:93939393" style="color: #fff; text-decoration: underline"
-            >+47 939 39 393</a
+            >+47 996 72 557</a
           >
         </p>
       </div>
@@ -1073,5 +1071,7 @@
       </div>
     </div>
     <script src="script.js"></script>
+
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </body>
 </html>

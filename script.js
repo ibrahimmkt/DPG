@@ -346,7 +346,49 @@ function googleTranslateElementInit() {
     'google_translate_element'
   );
 }
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: "no",
+            includedLanguages: "no,en,ar,tr,fa,uk,pl,ur,so,lt",
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          },
+          "google_translate_element"
+        );
+      }
 
+      // Etter at widgeten er lastet, legg til flagg-emoji
+      function addFlagsToDropdown() {
+        const flagMap = {
+          Norsk: "🇳🇴 Norsk",
+          English: "🇬🇧 English",
+          العربية: "🇸🇦 العربية",
+          Türkçe: "🇹🇷 Türkçe",
+          فارسی: "🇮🇷 فارسی",
+          Українська: "🇺🇦 Українська",
+          Polski: "🇵🇱 Polski",
+          اردو: "🇵🇰 اردو",
+          "Af-Soomaali": "🇸🇴 Af-Soomaali",
+          Lietuvių: "🇱🇹 Lietuvių",
+        };
+
+        const interval = setInterval(() => {
+          const select = document.querySelector(".goog-te-combo");
+          if (select) {
+            for (let i = 0; i < select.options.length; i++) {
+              const text = select.options[i].text;
+              if (flagMap[text]) {
+                select.options[i].text = flagMap[text];
+              }
+            }
+            clearInterval(interval);
+          }
+        }, 500);
+      }
+      
+
+
+      document.addEventListener("DOMContentLoaded", addFlagsToDropdown);
 // Tilpasset knapp-klikk for å endre språk
 function initLanguageSwitcher() {
   const langButtons = document.querySelectorAll('.custom-lang-switcher button');
