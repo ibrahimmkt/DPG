@@ -350,7 +350,7 @@ function googleTranslateElementInit() {
         new google.translate.TranslateElement(
           {
             pageLanguage: "no",
-            includedLanguages: "no,en,ar,tr,fa,uk,pl,ur,so,lt",
+            includedLanguages: "no,en,ar,tr,fa,uk,pl,ur,so,lt,hi",
             layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
           },
           "google_translate_element"
