@@ -1,3 +1,5 @@
+
+
 /* ==============================================
    1. RESET OG GRUNNLEGGENDE STILER
    ============================================== */
@@ -8,13 +10,34 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: "Outfit", sans-serif;
   background-color: #ffffff;
   color: #111;
   line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+* {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  will-change: transform, opacity;
+}
 /* ==============================================
    2. NAVIGASJON OG HEADER - FIKSET VERSJON
    ============================================== */
@@ -210,25 +233,10 @@ nav.show .hamburger {
 
   /* Mobil nav lenker */
   nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 18px;
-    padding: 18px 24px;
-    margin: 6px 0;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    text-align: center;
-    width: 100%;
-    
-    /* Animasjon for lenker */
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.3s ease;
-    
-    /* RESET desktop hover effekter som ikke fungerer på mobil */
-    box-shadow: none;
+ background: none !important; /* Fjern bakgrunn */
+    border: none !important;     /* Fjern kantlinje */
+    border-radius: 0 !important; /* Fjern avrunding */
+    padding: 18px 0;   
   }
 
   /* Vis lenker med forsinkelse når nav er åpen */
@@ -2579,122 +2587,65 @@ body.bedriftsavtale .footer {
    ============================================== */
 
 /* Wrapper for språkvelger med rød/gull skinneeffekt */
+/* Minimalistisk språkvelger */
 #language-wrapper {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
-  background: linear-gradient(135deg, #ffe5e0, #ffb3a7 70%, #ff6f61);
-  padding: 10px 22px;
-  border-radius: 40px;
-  box-shadow:
-    0 0 10px 3px rgba(255, 69, 58, 0.7),
-    0 4px 15px rgba(255, 87, 51, 0.8);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: 700;
-  color: #7a1200;
-  position: relative;
-  overflow: hidden;
+  gap: 6px;
+  background: #f5f5f5;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
   cursor: pointer;
   user-select: none;
-  transition: box-shadow 0.3s ease;
-}
-
-/* Animasjon for “shine” */
-@keyframes shine {
-  0% {
-    left: -150%;
-  }
-  50% {
-    left: 150%;
-  }
-  100% {
-    left: 150%;
-  }
-}
-
-#language-wrapper::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(120deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 60%, rgba(255,255,255,0));
-  transform: skewX(-25deg);
-  animation: shine 3s ease-in-out infinite;
-  pointer-events: none;
-  border-radius: 40px;
+  border: 1px solid #ddd;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 
 #language-wrapper:hover {
-  box-shadow:
-    0 0 18px 5px rgba(255, 69, 58, 0.9),
-    0 6px 20px rgba(255, 87, 51, 1);
+  background: #ebebeb;
+  border-color: #ccc;
 }
 
-/* Label styling */
+/* Label */
 #language-wrapper label {
   display: flex;
   align-items: center;
-  font-size: 17px;
-  gap: 8px;
-  user-select: none;
-  color: #7a1200;
-  text-shadow: 0 0 5px rgba(255, 102, 85, 0.9);
+  gap: 4px;
+  font-size: 14px;
+  color: #333;
+  text-shadow: none;
 }
 
-/* Globe ikon */
+/* Lite ikon */
 #language-wrapper label::before {
   content: "🌐";
-  font-size: 22px;
+  font-size: 14px;
   display: inline-block;
-  vertical-align: middle;
-  text-shadow: 0 0 6px rgba(255, 102, 85, 1);
 }
 
+/* Nedtrekksmeny */
 #google_translate_element select {
   border: none;
-  padding: 12px 20px;
-  border-radius: 30px;
-  font-size: 16px;
-  font-weight: 700;
-  background: linear-gradient(135deg, #ff8a80, #ff5252);
-  color: #400000;
+  padding: 3px 8px;
+  border-radius: 15px;
+  font-size: 13px;
+  background: #fff;
+  color: #333;
   cursor: pointer;
   outline: none;
-  transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
   appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image:
-    linear-gradient(45deg, transparent 50%, #400000 50%),
-    linear-gradient(135deg, #400000 50%, transparent 50%),
-    radial-gradient(#ff8a80 70%, transparent 72%);
-  background-position:
-    calc(100% - 25px) calc(1em + 3px),
-    calc(100% - 15px) calc(1em + 3px),
-    calc(100% - 40px) 0.8em;
-  background-size: 7px 7px, 7px 7px, 25px 25px;
-  background-repeat: no-repeat;
-  box-shadow:
-    0 0 10px rgba(255, 82, 82, 0.8);
-}
-
-#google_translate_element select option {
-  padding: 10px;
-  background-color: #fff0f0;
-  color: #400000;
-  font-weight: 600;
+  border: 1px solid #ccc;
 }
 
 #google_translate_element select:hover {
-  background: linear-gradient(135deg, #ff5252, #ff1744);
-  color: #2a0000;
-  box-shadow:
-    0 0 20px rgba(255, 82, 82, 1);
+  background: #f8f8f8;
 }
 
-#google_translate_element select:focus {
-  box-shadow: 0 0 15px rgba(255, 82, 82, 0.9);
-  outline: none;
+#google_translate_element select option {
+  padding: 5px;
+  font-size: 13px;
 }
