@@ -69,6 +69,7 @@ if (!document.querySelector('#nav-open-styles')) {
   style.textContent = navOpenStyles;
   document.head.appendChild(style);
 }
+
 /*live status åpningstider*/
 function updateOpenStatus() {
   const statusText = document.getElementById("open-status-text");
@@ -264,13 +265,158 @@ function closeMenu() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
+// OPPDATERT TOGGLEMENY FUNKSJON MED BEDRE MOBIL-STØTTE
 function toggleMeny(id) {
   const meny = document.getElementById(id);
   if (meny) {
-    meny.style.display = meny.style.display === "none" ? "flex" : "none";
+    const isCurrentlyHidden = meny.style.display === "none" || !meny.style.display;
+    
+    if (isCurrentlyHidden) {
+      meny.style.display = "flex";
+      console.log(`Showing menu: ${id}`); // Debug info
+      
+      // Oppdater ARIA attributt
+      const header = document.querySelector(`[aria-controls="${id}"]`);
+      if (header) {
+        header.setAttribute('aria-expanded', 'true');
+      }
+    } else {
+      meny.style.display = "none";
+      console.log(`Hiding menu: ${id}`); // Debug info
+      
+      // Oppdater ARIA attributt
+      const header = document.querySelector(`[aria-controls="${id}"]`);
+      if (header) {
+        header.setAttribute('aria-expanded', 'false');
+      }
+    }
   }
 }
 
+// HELT NY OG ENKEL FUNKSJON: Klikk på meny-overskrifter (UNIVERSELL KOMPATIBILITET)
+function initMenuHeaderClicks() {
+  // Vent til DOM er fullstendig lastet
+  setTimeout(() => {
+    // Finn alle meny-kategori headers
+    const pizzaHeader = document.querySelector('#pizza-kategori .menu-category-header h3');
+    const grillHeader = document.querySelector('#grillmat-kategori .menu-category-header h3');
+    const drikkeHeader = document.querySelector('#drikke-kategori .menu-category-header h3');
+
+    // Pizza meny
+    if (pizzaHeader) {
+      makeHeaderClickable(pizzaHeader, 'pizza-retter', 'Pizza meny');
+    }
+
+    // Grill meny  
+    if (grillHeader) {
+      makeHeaderClickable(grillHeader, 'grillmat-retter', 'Grill meny');
+    }
+
+    // Drikke meny
+    if (drikkeHeader) {
+      makeHeaderClickable(drikkeHeader, 'drikke-retter', 'Drikke meny');
+    }
+  }, 500);
+}
+
+// Hjelpefunksjon for å gjøre headers klikkbare
+function makeHeaderClickable(headerElement, menuId, menuName) {
+  // Sett CSS-styling
+  headerElement.style.cssText = `
+    cursor: pointer !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    -webkit-touch-callout: none !important;
+    transition: all 0.2s ease !important;
+  `;
+
+  // Legg til en visuell indikator
+  headerElement.title = `Klikk for å åpne/lukke ${menuName}`;
+
+  // Hovedfunksjon som håndterer klikk
+  function handleClick(event) {
+    try {
+      // Stopp alle andre events
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        event.stopImmediatePropagation();
+      }
+
+      console.log(`Attempting to toggle: ${menuId} for ${menuName}`);
+      
+      // Finn meny-elementet
+      const menuElement = document.getElementById(menuId);
+      
+      if (menuElement) {
+        // Enkel toggle-logikk
+        const isHidden = menuElement.style.display === 'none' || 
+                        getComputedStyle(menuElement).display === 'none' ||
+                        !menuElement.style.display;
+        
+        if (isHidden) {
+          menuElement.style.display = 'flex';
+          console.log(`Opened: ${menuName}`);
+          
+          // Scroll til meny etter kort delay
+          setTimeout(() => {
+            menuElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }, 200);
+          
+        } else {
+          menuElement.style.display = 'none';
+          console.log(`Closed: ${menuName}`);
+        }
+      } else {
+        console.error(`Menu element not found: ${menuId}`);
+      }
+      
+    } catch (error) {
+      console.error('Error in handleClick:', error);
+    }
+  }
+
+  // Fjern alle eksisterende event listeners (cleanup)
+  const newHeader = headerElement.cloneNode(true);
+  headerElement.parentNode.replaceChild(newHeader, headerElement);
+  
+  // Legg til event listeners på det nye elementet
+  newHeader.addEventListener('click', handleClick, true);
+  newHeader.addEventListener('touchend', handleClick, true);
+  
+  // Visuell feedback på touch/hover
+  newHeader.addEventListener('touchstart', function(e) {
+    this.style.opacity = '0.7';
+    this.style.transform = 'scale(0.98)';
+  }, { passive: true });
+  
+  newHeader.addEventListener('touchend', function(e) {
+    setTimeout(() => {
+      this.style.opacity = '1';
+      this.style.transform = 'scale(1)';
+    }, 100);
+  }, { passive: true });
+  
+  // Hover-effekt for desktop
+  newHeader.addEventListener('mouseenter', function() {
+    if (!('ontouchstart' in window)) {
+      this.style.opacity = '0.8';
+    }
+  });
+  
+  newHeader.addEventListener('mouseleave', function() {
+    if (!('ontouchstart' in window)) {
+      this.style.opacity = '1';
+    }
+  });
+
+  console.log(`Made ${menuName} header clickable`);
+}
 
 /* ==============================================
    MODAL POPUP FOR TELEFONNUMMER - ALLE SIDER
@@ -330,7 +476,6 @@ function initPhoneModal() {
   }
 }
 
-
 /* ==============================================
    GOOGLE TRANSLATE – SPRÅKVELGER
    ============================================== */
@@ -346,49 +491,49 @@ function googleTranslateElementInit() {
     'google_translate_element'
   );
 }
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement(
-          {
-            pageLanguage: "no",
-            includedLanguages: "no,en,ar,tr,fa,uk,pl,ur,so,lt,hi",
-            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-          },
-          "google_translate_element"
-        );
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    {
+      pageLanguage: "no",
+      includedLanguages: "no,en,ar,tr,fa,uk,pl,ur,so,lt,hi",
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    },
+    "google_translate_element"
+  );
+}
+
+// Etter at widgeten er lastet, legg til flagg-emoji
+function addFlagsToDropdown() {
+  const flagMap = {
+    Norsk: "🇳🇴 Norsk",
+    English: "🇬🇧 English",
+    العربية: "🇸🇦 العربية",
+    Türkçe: "🇹🇷 Türkçe",
+    فارسی: "🇮🇷 فارسی",
+    Українська: "🇺🇦 Українська",
+    Polski: "🇵🇱 Polski",
+    اردو: "🇵🇰 اردو",
+    "Af-Soomaali": "🇸🇴 Af-Soomaali",
+    Lietuvių: "🇱🇹 Lietuvių",
+  };
+
+  const interval = setInterval(() => {
+    const select = document.querySelector(".goog-te-combo");
+    if (select) {
+      for (let i = 0; i < select.options.length; i++) {
+        const text = select.options[i].text;
+        if (flagMap[text]) {
+          select.options[i].text = flagMap[text];
+        }
       }
+      clearInterval(interval);
+    }
+  }, 500);
+}
 
-      // Etter at widgeten er lastet, legg til flagg-emoji
-      function addFlagsToDropdown() {
-        const flagMap = {
-          Norsk: "🇳🇴 Norsk",
-          English: "🇬🇧 English",
-          العربية: "🇸🇦 العربية",
-          Türkçe: "🇹🇷 Türkçe",
-          فارسی: "🇮🇷 فارسی",
-          Українська: "🇺🇦 Українська",
-          Polski: "🇵🇱 Polski",
-          اردو: "🇵🇰 اردو",
-          "Af-Soomaali": "🇸🇴 Af-Soomaali",
-          Lietuvių: "🇱🇹 Lietuvių",
-        };
+document.addEventListener("DOMContentLoaded", addFlagsToDropdown);
 
-        const interval = setInterval(() => {
-          const select = document.querySelector(".goog-te-combo");
-          if (select) {
-            for (let i = 0; i < select.options.length; i++) {
-              const text = select.options[i].text;
-              if (flagMap[text]) {
-                select.options[i].text = flagMap[text];
-              }
-            }
-            clearInterval(interval);
-          }
-        }, 500);
-      }
-      
-
-
-      document.addEventListener("DOMContentLoaded", addFlagsToDropdown);
 // Tilpasset knapp-klikk for å endre språk
 function initLanguageSwitcher() {
   const langButtons = document.querySelectorAll('.custom-lang-switcher button');
@@ -404,7 +549,6 @@ function initLanguageSwitcher() {
   });
 }
 
-
 /* ==============================================
    INITIALISER ALT NÅR DOM ER LASTET
    ============================================== */
@@ -419,6 +563,18 @@ document.addEventListener("DOMContentLoaded", () => {
   
   // Initialiser telefon modal
   initPhoneModal();
+  
+  // NYTT: Initialiser klikk på meny-overskrifter med forsinkelse
+  setTimeout(() => {
+    initMenuHeaderClicks();
+    console.log("Menu header clicks initialized");
+  }, 1000);
+
+  // NYTT: Initialiser søkefunksjonalitet
+  setTimeout(() => {
+    initializeSearch();
+    console.log("Search functionality initialized");
+  }, 1500);
 
   // Legg til keyboard support for menyer
   document.addEventListener("keydown", (e) => {
@@ -439,5 +595,33 @@ document.addEventListener("DOMContentLoaded", () => {
       card.style.transform = "translateY(0)";
     }, index * 200);
   });
-});
 
+  // EKSTRA SIKKERHET: Legg til backup event listeners etter alt annet er lastet
+  setTimeout(() => {
+    // Backup for pizza meny
+    const pizzaH3 = document.querySelector('#pizza-kategori h3');
+    if (pizzaH3 && !pizzaH3.dataset.clickable) {
+      pizzaH3.addEventListener('click', () => toggleMeny('pizza-retter'));
+      pizzaH3.dataset.clickable = 'true';
+      pizzaH3.style.cursor = 'pointer';
+    }
+    
+    // Backup for grill meny
+    const grillH3 = document.querySelector('#grillmat-kategori h3');
+    if (grillH3 && !grillH3.dataset.clickable) {
+      grillH3.addEventListener('click', () => toggleMeny('grillmat-retter'));
+      grillH3.dataset.clickable = 'true';
+      grillH3.style.cursor = 'pointer';
+    }
+    
+    // Backup for drikke meny
+    const drikkeH3 = document.querySelector('#drikke-kategori h3');
+    if (drikkeH3 && !drikkeH3.dataset.clickable) {
+      drikkeH3.addEventListener('click', () => toggleMeny('drikke-retter'));
+      drikkeH3.dataset.clickable = 'true';
+      drikkeH3.style.cursor = 'pointer';
+    }
+    
+    console.log("Backup event listeners added");
+  }, 2000);
+});
