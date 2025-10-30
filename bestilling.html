@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="nb">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Drammen Pizza – Bestilling</title>
+    <style>
+      body {
+        font-family: system-ui, Arial;
+        margin: 0;
+        background: #fafafa;
+        color: #111;
+      }
+      .container {
+        max-width: 1000px;
+        margin: 24px auto;
+        padding: 0 16px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 16px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 20px;
+        padding: 16px;
+      }
+      .chips {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 8px;
+      }
+      .chip {
+        border: 1px solid #e5e7eb;
+        border-radius: 999px;
+        padding: 8px 12px;
+        background: #fff;
+        cursor: pointer;
+      }
+      .chip.active {
+        background: #111;
+        color: #fff;
+      }
+      .menu {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+      .item {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+      .item img {
+        width: 100%;
+        aspect-ratio: 16/9;
+        object-fit: cover;
+      }
+      .item .body {
+        padding: 10px;
+        display: flex;
+        gap: 8px;
+        flex-direction: column;
+      }
+      .btn {
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 10px 14px;
+        background: #111;
+        color: #fff;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn.block {
+        width: 100%;
+      }
+      .cart {
+        position: sticky;
+        top: 16px;
+        border: 1px solid #e5e7eb;
+        border-radius: 12px;
+        padding: 12px;
+      }
+      .row {
+        display: flex;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 8px 0;
+        border-bottom: 1px dashed #e5e7eb;
+      }
+      .row:last-child {
+        border-bottom: none;
+      }
+      .qty {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+      }
+      .qty button {
+        width: 26px;
+        height: 26px;
+        border-radius: 999px;
+        border: 1px solid #e5e7eb;
+        background: #fff;
+        cursor: pointer;
+      }
+      .sum {
+        display: flex;
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="header">
+          <div>
+            <strong>Drammen Pizza</strong>
+            <div style="color: #6b7280; font-size: 12px">
+              Nedre Storgate 1, Drammen • +47 999 99 999
+            </div>
+          </div>
+          <span
+            style="
+              background: #f3f4f6;
+              padding: 6px 10px;
+              border-radius: 999px;
+              font-size: 12px;
+            "
+            >Powered by Webplug</span
+          >
+        </div>
+        <div class="grid">
+          <div>
+            <div id="chips" class="chips"></div>
+            <div id="menu" class="menu"></div>
+          </div>
+          <aside>
+            <div class="cart">
+              <h3>
+                Handlekurv <span id="count" style="color: #6b7280"></span>
+              </h3>
+              <div id="lines"></div>
+              <div id="sum" style="margin-top: 8px"></div>
+              <div style="display: grid; gap: 8px; margin-top: 12px">
+                <input id="navn" placeholder="Navn" />
+                <input id="tlf" placeholder="Telefon" />
+                <select id="tid">
+                  <option value="ASAP">ASAP</option>
+                  <option value="30">Om 30 min</option>
+                  <option value="60">Om 1 time</option>
+                </select>
+                <button id="pay" class="btn block">Gå til betaling</button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // --- API-base (lokalt): bytt til https://api.dittdomene.no i prod
+      const API_BASE = "http://127.0.0.1:3001";
+
+      const CONFIG = {
+        valuta: "NOK",
+        kategorier: ["Pizza", "Tilbehør", "Drikke"],
+        varer: [
+          {
+            id: "pz-margherita",
+            navn: "Margherita",
+            pris: 139,
+            kategori: "Pizza",
+            bilde:
+              "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=1200&auto=format&fit=crop",
+          },
+          {
+            id: "pz-pepperoni",
+            navn: "Pepperoni",
+            pris: 169,
+            kategori: "Pizza",
+            bilde:
+              "https://images.unsplash.com/photo-1548366086-7fbcdde0c2d7?w=1200&auto=format&fit=crop",
+          },
+          {
+            id: "dip-garlic",
+            navn: "Hvitløksdipp",
+            pris: 25,
+            kategori: "Tilbehør",
+          },
+          { id: "cola05", navn: "Cola 0.5L", pris: 39, kategori: "Drikke" },
+        ],
+      };
+      const kr = (n) =>
+        new Intl.NumberFormat("nb-NO", {
+          style: "currency",
+          currency: "NOK",
+        }).format(n);
+      const $ = (s) => document.querySelector(s);
+
+      let kategori = CONFIG.kategorier[0];
+      let cart = [];
+
+      function chips() {
+        const el = $("#chips");
+        el.innerHTML = "";
+        CONFIG.kategorier.forEach((k) => {
+          const b = document.createElement("button");
+          b.className = "chip" + (k === kategori ? " active" : "");
+          b.textContent = k;
+          b.onclick = () => {
+            kategori = k;
+            renderMenu();
+            chips();
+          };
+          el.appendChild(b);
+        });
+      }
+
+      function renderMenu() {
+        const el = $("#menu");
+        el.innerHTML = "";
+        CONFIG.varer
+          .filter((v) => v.kategori === kategori)
+          .forEach((v) => {
+            const card = document.createElement("div");
+            card.className = "item";
+            if (v.bilde) {
+              const i = document.createElement("img");
+              i.src = v.bilde;
+              card.appendChild(i);
+            }
+            const body = document.createElement("div");
+            body.className = "body";
+            card.appendChild(body);
+            const top = document.createElement("div");
+            top.style.display = "flex";
+            top.style.justifyContent = "space-between";
+            top.innerHTML = `<div style="font-weight:600">${
+              v.navn
+            }</div><div>${kr(v.pris)}</div>`;
+            body.appendChild(top);
+            const btn = document.createElement("button");
+            btn.className = "btn";
+            btn.textContent = "Legg til";
+            btn.onclick = () => add(v);
+            body.appendChild(btn);
+            el.appendChild(card);
+          });
+      }
+
+      function add(item) {
+        const f = cart.find((x) => x.id === item.id);
+        if (f) f.antall += 1;
+        else
+          cart.push({
+            id: item.id,
+            navn: item.navn,
+            pris: item.pris,
+            antall: 1,
+          });
+        cartUI();
+      }
+      function qty(id, n) {
+        const l = cart.find((x) => x.id === id);
+        if (!l) return;
+        l.antall = Math.max(1, n);
+        cartUI();
+      }
+      function removeLine(id) {
+        cart = cart.filter((x) => x.id !== id);
+        cartUI();
+      }
+
+      function cartUI() {
+        $("#count").textContent = cart.length ? `(${cart.length})` : "";
+        const lines = $("#lines");
+        lines.innerHTML = "";
+        cart.forEach((l) => {
+          const row = document.createElement("div");
+          row.className = "row";
+          row.innerHTML = `<div><div style="font-weight:600">${
+            l.navn
+          }</div><div style="color:#6b7280;font-size:12px">${kr(
+            l.pris
+          )}</div></div>`;
+          const right = document.createElement("div");
+          right.style.textAlign = "right";
+          const q = document.createElement("div");
+          q.className = "qty";
+          const m = document.createElement("button");
+          m.textContent = "−";
+          m.onclick = () => qty(l.id, l.antall - 1);
+          const n = document.createElement("span");
+          n.textContent = l.antall;
+          const p = document.createElement("button");
+          p.textContent = "+";
+          p.onclick = () => qty(l.id, l.antall + 1);
+          const rm = document.createElement("button");
+          rm.textContent = "Fjern";
+          rm.style.marginLeft = "8px";
+          rm.onclick = () => removeLine(l.id);
+          q.append(m, n, p);
+          right.append(q, rm);
+          row.appendChild(right);
+          lines.appendChild(row);
+        });
+        const delsum = cart.reduce((s, l) => s + l.pris * l.antall, 0);
+        $("#sum").innerHTML = `<div class="sum"><span>Delsum</span><span>${kr(
+          delsum
+        )}</span></div>
+                             <div class="sum" style="border-top:1px solid #e5e7eb;margin-top:6px;padding-top:6px">
+                             <strong>Totalt</strong><strong>${kr(
+                               delsum
+                             )}</strong></div>`;
+      }
+
+      async function goPay() {
+        const navn = $("#navn").value.trim();
+        const telefon = $("#tlf").value.trim();
+        const tidspunkt = $("#tid").value;
+        if (!navn || !telefon) return alert("Fyll inn navn og telefon.");
+        if (!cart.length) return alert("Handlekurven er tom.");
+
+        const total = cart.reduce((s, l) => s + l.pris * l.antall, 0);
+        const ordre = {
+          restaurantId: "drammenpizza",
+          linjer: cart,
+          mellomSum: total,
+          leveringsgebyr: 0,
+          total,
+          valuta: "NOK",
+          kunde: { navn, telefon, leveringsmetode: "henting", tidspunkt },
+          createdAt: new Date().toISOString(),
+        };
+
+        try {
+          const r = await fetch(`${API_BASE}/api/orders/create`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(ordre),
+          });
+          if (!r.ok) throw new Error(await r.text());
+          const j = await r.json();
+          location.href = j.url; // redirect til Stripe Checkout
+        } catch (e) {
+          alert("Kunne ikke starte betaling: " + e.message);
+          console.error(e);
+        }
+      }
+
+      document.getElementById("pay").onclick = goPay;
+      chips();
+      renderMenu();
+      cartUI();
+    </script>
+  </body>
+</html>

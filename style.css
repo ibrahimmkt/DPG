@@ -287,7 +287,7 @@ nav.show .hamburger {
 
 .hero {
   position: relative;
-  background-image: url('bilder/pizza.png');
+  background-image: url('bilder/pexels-kunal-lakhotia-781256899-29173094\ \(1\).jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -460,6 +460,30 @@ nav.show .hamburger {
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   background-color: #e50000;
+}
+
+.menu-btn {
+ display: block;
+  width: 70%;               /* bestem selv hvor bred */
+  margin: 1rem auto;        /* midtstiller den */
+  background-color: #f80505;
+  color: white;
+  padding: 0.9rem 0;
+  border-radius: 100px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: pulse 2s infinite;
+  margin: 1rem auto;           /* luft over/under */
+}
+/* 🔹 Mobilvennlig justering */
+@media (max-width: 768px) {
+  .menu-btn {
+    width: 90%;       /* bredere på mobil */
+    font-size: 1rem;  /* litt mindre tekst */
+    padding: 0.8rem 0;
+  }
 }
 
 .bestill-knapper {

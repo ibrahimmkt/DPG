@@ -57,7 +57,10 @@
       <h2>Drammens Klassikere</h2>
       <div class="retter-list">
         <a class="rett-flex">
-          <img src="bilder/pizza.png" alt="Cheeseburger" />
+          <img
+            src="bilder/pexels-kunal-lakhotia-781256899-29173094 (1).jpg"
+            alt="Cheeseburger"
+          />
           <div class="rett-info">
             <h3>Kebab Pizza – En smakfull kombinasjon</h3>
             <p>
@@ -106,6 +109,7 @@
             </p>
           </div>
         </a>
+        <a class="menu-btn" href="meny.html" id="menuBtn">Se hele menyen</a>
 
         <!-- Flere retter kan legges til uten bestillingslink -->
       </div>
@@ -165,6 +169,48 @@
         <button id="modalCloseBtn" class="modal-close-button">Lukk</button>
       </div>
     </div>
+    <script>
+      // Hent overlay elementer
+      const overlay = document.getElementById("fullscreenOverlay");
+      const overlayImg = overlay.querySelector("img");
+      const closeBtn = overlay.querySelector(".close-btn");
+
+      // Hent alle galleri-bildelenker
+      const galleryLinks = document.querySelectorAll(".gallery a");
+
+      galleryLinks.forEach((link) => {
+        link.addEventListener("click", function (e) {
+          e.preventDefault(); // Hindrer ny side
+
+          const imgSrc = this.getAttribute("href");
+          overlayImg.src = imgSrc;
+          overlay.style.display = "flex";
+
+          // Lås scroll
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      function closeOverlay() {
+        overlay.style.display = "none";
+        overlayImg.src = "";
+        document.body.style.overflow = "";
+      }
+
+      closeBtn.addEventListener("click", closeOverlay);
+
+      overlay.addEventListener("click", (e) => {
+        if (e.target === overlay) {
+          closeOverlay();
+        }
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && overlay.style.display === "flex") {
+          closeOverlay();
+        }
+      });
+    </script>
 
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="script.js"></script>
