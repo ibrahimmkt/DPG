@@ -1,5 +1,3 @@
-
-
 /* ==============================================
    1. RESET OG GRUNNLEGGENDE STILER
    ============================================== */
@@ -10,9 +8,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 body {
   font-family: "Outfit", sans-serif;
   background-color: #ffffff;
@@ -159,10 +154,15 @@ nav a:hover {
     z-index: 900; /* Samme som header, UNDER nav */
   }
 
+  .header-logo {
+    width: 60px;
+  }
+
   /* Vis hamburger knapp på mobil */
   .hamburger {
- position: relative;
-  z-index: 2001; /* høy nok til å ligge over Google Translate-knapper */  }
+    position: relative;
+    z-index: 2001; /* høy nok til å ligge over Google Translate-knapper */  
+  }
 
   /* Skjul desktop nav og vis mobil nav */
   nav {
@@ -195,36 +195,53 @@ nav a:hover {
     /* Smooth animasjon */
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     
-  z-index: 2000; /* høyere enn widgeten */
+    z-index: 2000; /* høyere enn widgeten */
     overflow-y: auto;
   }
 
-  /* Vis nav når hamburger er aktiv */
-nav.show a {
-  position: relative;
-  z-index: 2003;
-}
-  /* Når menyen er åpen, skal X-knappen være foran bakgrunn, men bak lenker */
-nav.show .hamburger {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 2002; /* høyere enn nav bakgrunn, men lenker kan fortsatt klikkes */
-}
+  nav.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+  }
 
+  /* Når menyen er åpen, skal X-knappen være foran bakgrunn, men bak lenker */
+  nav.show .hamburger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2002; /* høyere enn nav bakgrunn, men lenker kan fortsatt klikkes */
+  }
 
   /* Mobil nav lenker */
   nav a {
- background: none !important; /* Fjern bakgrunn */
-    border: none !important;     /* Fjern kantlinje */
-    border-radius: 0 !important; /* Fjern avrunding */
-    padding: 18px 0;   
+  color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 18px 24px;
+    margin: 6px 0;
+    border-radius: 0; /* Fjern avrundede hjørner */
+    background: transparent; /* Fjern bakgrunnsfarge */
+    border: none; /* Fjern border */
+    text-align: center;
+    width: 100%;
+    
+    /* Animasjon for lenker */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.3s ease;
+    
+    /* RESET desktop hover effekter som ikke fungerer på mobil */
+    box-shadow: none;
   }
 
   /* Vis lenker med forsinkelse når nav er åpen */
   nav.show a {
     opacity: 1;
     transform: translateY(0);
+    position: relative;
+    z-index: 2003;
   }
 
   /* Forskjøvet animasjon for hver lenke */
@@ -237,47 +254,16 @@ nav.show .hamburger {
 
   /* Mobil hover effekt */
   nav a:hover {
-    background: rgba(255, 215, 0, 0.15);
-    border-color: rgba(255, 215, 0, 0.4);
-    color: #ff0000;
+    background: transparent; /* Hold bakgrunn transparent */
+    border: none; /* Ingen border */
+    color: #ffd700; /* Kun endre tekstfarge til gull */
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.2);
+    box-shadow: none; /* Ingen skygge */
   }
 
   /* Sørg for at body ikke scroller når nav er åpen */
   body.nav-open {
     overflow: hidden;
-  }
-}
-
-/* Ekstra små skjermer */
-@media screen and (max-width: 480px) {
-  header {
-    padding: 0.8rem 1rem;
-  }
-
-  nav {
-    padding: 80px 20px 20px;
-  }
-
-  nav a {
-    font-size: 16px;
-    padding: 16px 20px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  header {
-    padding: 0.5rem;
-  }
-
-  nav {
-    padding: 70px 15px 15px;
-  }
-
-  nav a {
-    font-size: 15px;
-    padding: 14px 18px;
   }
 }
 
@@ -338,7 +324,7 @@ nav.show .hamburger {
 }
 
 .hero-bedrift {
- position: relative;
+  position: relative;
   background-image: url('bilder/MixGrillTallerkenFIn.jpeg');
   background-size: cover;
   background-position: center;
@@ -399,7 +385,6 @@ nav.show .hamburger {
   margin-right: auto;
 }
 
-
 .hero-content p {
   font-size: 1.2rem;
   margin-top: 1rem;
@@ -419,7 +404,6 @@ nav.show .hamburger {
   font-family: 'Great Vibes', cursive;
   font-size: 3rem;
   color: #fff;
-
   padding-right: 8px;
 }
 
@@ -435,55 +419,112 @@ nav.show .hamburger {
   padding: 0.5rem;
 }
 
+/* Mobiltilpasning for hero-elementer */
+@media screen and (max-width: 768px) {
+  .hero,
+  .hero-meny,
+  .hero-om-Oss,
+  .hero-kontakt,
+  .hero-bedrift {
+    min-height: 60vh;
+    padding: 1rem;
+  }
+
+  .hero-content h2 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .tagline {
+    font-size: 1.6rem;
+  }
+
+  .velkommen-tekst {
+    font-size: 2rem;
+  }
+
+  .logo-animasjon {
+    width: 80px;
+  }
+
+  .hero-section {
+    padding: 2rem 1rem;
+    margin: 2rem 1rem;
+  }
+
+  .hero-section h1 {
+    font-size: 1.6rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .tagline {
+    font-size: 1.3rem;
+  }
+
+  .velkommen-tekst {
+    font-size: 1.5rem;
+  }
+
+  .logo-animasjon {
+    width: 60px;
+  }
+}
+
 /* ==============================================
    4. KNAPPER
    ============================================== */
 
 .order-btn,
 .category-order-btn {
-  display: inline-block;
-  background-color: #f80505;
-  color: white;
-  padding: 0.9rem 1.5rem;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 100px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: pulse 2s infinite;
-  margin-left: 1rem;
+    display: block; /* Endre fra inline-block til block */
+    margin: 0 auto; /* Sentrer horisontalt */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    width: fit-content; /* Gjør at bredden kun følger innholdet */
+    max-width: 300px;
+    text-align: center; /* Sikrer at teksten er sentrert */
+    background-color: #f80505;
+    border-radius: 100px;
+    box-shadow: 0 4px 12px rgba(248, 5, 5, 0.3);
+    text-decoration: none;
 }
+.order-btn p {
+    color: white;
+}
+  .category-order-btn {
+    background-color: #ffae00; /* Gul bakgrunn for "Se hele menyen" */
+    color: white;
+    border: 2px solid #ff9500; /* Legg til border for bokseffekt */
+    box-shadow: 0 4px 12px rgba(255, 174, 0, 0.4); /* Gul skygge */
+    font-weight: bold;
+  }
 
+    .category-order-btn:hover {
+    background-color: #ff9500;
+    border-color: #e68200;
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(255, 174, 0, 0.5);
+  }
 .order-btn:hover,
 .category-order-btn:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
   background-color: #e50000;
-}
-
-.menu-btn {
- display: block;
-  width: 70%;               /* bestem selv hvor bred */
-  margin: 1rem auto;        /* midtstiller den */
-  background-color: #f80505;
-  color: white;
-  padding: 0.9rem 0;
-  border-radius: 100px;
-  text-align: center;
-  font-weight: bold;
-  text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: pulse 2s infinite;
-  margin: 1rem auto;           /* luft over/under */
-}
-/* 🔹 Mobilvennlig justering */
-@media (max-width: 768px) {
-  .menu-btn {
-    width: 90%;       /* bredere på mobil */
-    font-size: 1rem;  /* litt mindre tekst */
-    padding: 0.8rem 0;
-  }
 }
 
 .bestill-knapper {
@@ -517,6 +558,42 @@ nav.show .hamburger {
 .bestill-btn.meny {
   background-color: #ffae00;
 }
+
+/* Mobiltilpasning for knapper */
+@media screen and (max-width: 768px) {
+  .order-btn,
+  .category-order-btn {
+    margin: 0 auto;         /* sentrer horisontalt */
+    margin-top: 1rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    width: fit-content;     /* gjør at bredden kun følger innholdet */
+    max-width: 300px;
+    text-align: center;     /* sikrer at teksten er sentrert */
+
+  }
+
+  .bestill-knapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .bestill-btn {
+    width: 90%;
+    max-width: 300px;
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .bestill-btn {
+    font-size: 1rem;
+    padding: 0.9rem;
+  }
+}
+
 /*Ringeknapp pop - up*/
 /* Modal bakgrunn */
 .modal {
@@ -651,7 +728,6 @@ nav.show .hamburger {
   }
 }
 
-
 /* Tilbake til toppen knapp */
 .back-to-top {
   position: fixed;
@@ -693,6 +769,21 @@ nav.show .hamburger {
   content: "🥙";
   font-size: 28px;
   line-height: 1;
+}
+
+/* Mobiltilpasning for back-to-top */
+@media screen and (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+  
+  .back-to-top::before {
+    font-size: 24px;
+  }
 }
 
 /* ==============================================
@@ -753,6 +844,7 @@ section.show {
   color: #c62828;
   margin-bottom: 2rem;
 }
+
 .om-oss-innhold {
   display: flex;
   flex-wrap: wrap;
@@ -761,7 +853,6 @@ section.show {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 
 .om-tekst {
   background: #fff7f7;
@@ -772,7 +863,6 @@ section.show {
   line-height: 1.8;
   font-size: 1.1rem;
 }
-
 
 .om-tekst strong {
   color: #c62828;
@@ -792,7 +882,6 @@ section.show {
   min-width: 250px;
 }
 
-
 .eier-bilde-container img {
   max-width: 80%;
   height: auto;
@@ -804,6 +893,68 @@ section.show {
   margin-top: 1rem;
   font-size: 1rem;
   color: #444;
+}
+
+/* Mobiltilpasning for seksjoner og innhold */
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 2rem 1rem;
+  }
+
+  .section h2 {
+    font-size: 1.8rem;
+  }
+
+  .om-oss-boks {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .om-oss-side {
+    padding: 2rem 1rem;
+  }
+
+  .om-oss-side h2 {
+    font-size: 2rem;
+  }
+
+  .om-oss-innhold {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .om-tekst {
+    padding: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .om-tekst em {
+    font-size: 1.1rem;
+  }
+
+  .eier-bilde-container img {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .section {
+    padding: 1.5rem 0.8rem;
+  }
+
+  .section h2 {
+    font-size: 1.5rem;
+  }
+
+  .om-oss-boks {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .om-tekst {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
 }
 
 /* Quote section */
@@ -859,6 +1010,31 @@ section.show {
   animation-delay: 3s;
 }
 
+/* Mobiltilpasning for quote section */
+@media screen and (max-width: 768px) {
+  .quote-section {
+    padding: 3rem 1rem;
+  }
+
+  .quote-text {
+    font-size: 1.4rem;
+  }
+
+  .quote-symbol {
+    font-size: 4rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .quote-text {
+    font-size: 1.2rem;
+  }
+
+  .quote-symbol {
+    font-size: 3rem;
+  }
+}
+
 /* ==============================================
    6. MENY, RABATT, LEVERING OG RETTER
    ============================================== */
@@ -909,23 +1085,24 @@ section.show {
   font-weight: 600;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
+
 .studentrabatt-section h2 {
   margin-bottom: 0.5rem;
   font-size: 1.8rem;
 }
+
 .studentrabatt-section p {
   margin: 0.2rem 0;
   font-size: 1.1rem;
 }
 
-   /* Ramme rundt hele menyseksjonen */
+/* Ramme rundt hele menyseksjonen */
 .meny-wrapper {
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem 1rem;
   box-sizing: border-box;
 }
-
 
 /* Kategori-knapper */
 .menu-category-header button {
@@ -942,6 +1119,7 @@ section.show {
 .menu-category-header button:hover {
   background-color: #a80000;
 }
+
 .menu-category {
   margin-bottom: 3rem;
 }
@@ -1013,6 +1191,7 @@ section.show {
   flex-direction: column;
   gap: 0.4rem;
 }
+
 /* Flex mellom tittel og pris */
 .rett-top {
   display: flex;
@@ -1023,7 +1202,7 @@ section.show {
 .rett-info h3 {
   font-size: 1.5rem;
   color: #cc0000;
-  margin: 0 ;
+  margin: 0;
   font-weight: 700;
 }
 
@@ -1046,10 +1225,57 @@ section.show {
   color: #000;
 }
 
-@media (max-width: 600px) {
+/* Mobiltilpasning for meny og retter */
+@media screen and (max-width: 768px) {
+  .levering-lite {
+    padding: 1rem;
+    font-size: 0.9rem;
+    margin: 1rem;
+  }
+
+  .studentrabatt-section {
+    padding: 1.2rem 1rem;
+    margin: 1rem;
+  }
+
+  .studentrabatt-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .studentrabatt-section p {
+    font-size: 1rem;
+  }
+
+  .meny-wrapper {
+    padding: 1rem 0.5rem;
+  }
+
+  .menu-category h3 {
+    font-size: 1.5rem;
+  }
+
+  .menu-category-header,
+  .menu-header {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .menu-category-header button {
+    width: 100%;
+    padding: 0.8rem;
+  }
+
   .rett-flex {
     flex-direction: column;
     align-items: flex-start;
+    text-align: center;
+  }
+
+  .rett-flex img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
   }
 
   .rett-info {
@@ -1062,9 +1288,27 @@ section.show {
     gap: 0.3rem;
   }
 
+  .rett-info h3 {
+    font-size: 1.3rem;
+  }
+
   .rett-info .pris {
     font-size: 1rem;
     color: #b23e3e;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .menu-category h3 {
+    font-size: 1.3rem;
+  }
+
+  .rett-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .rett-info p {
+    font-size: 0.9rem;
   }
 }
 
@@ -1106,13 +1350,13 @@ section.show {
   border-radius: 8px;
   color: #b23e3e;
 }
+
 .grill-tillegg.expandable-box {
   background: #f0f9ff; /* litt blålig tone for variasjon */
   border-color: #9bc1e3;
   border-radius: 8px;
   color: #2563a8;
 }
-
 
 /* Summary styling felles for begge */
 .expandable-box summary {
@@ -1155,8 +1399,6 @@ section.show {
   margin-bottom: 0.3rem;
 }
 
-
-
 /* Tilbudsbilde-seksjon */
 .ukens-tilbud {
   margin: 3rem 0;
@@ -1182,20 +1424,16 @@ section.show {
   border-color: #ff4d4d;
 }
 
-/* Kategori-knapp */
-.menu-category-header button {
-  background-color: #cc0000;
-  color: #fff;
-  border: none;
-  padding: 0.6rem 1.2rem;
-  font-size: 1rem;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+/* Mobiltilpasning for ukens tilbud */
+@media screen and (max-width: 768px) {
+  .ukens-tilbud {
+    margin: 2rem 1rem;
+  }
 
-.menu-category-header button:hover {
-  background-color: #a80000;
+  .ukens-tilbud img {
+    border-radius: 12px;
+    border-width: 2px;
+  }
 }
 
 /* ==============================================
@@ -1251,6 +1489,53 @@ section.show {
 
 .gallery a:hover img {
   transform: scale(1.05);
+}
+
+/* Mobiltilpasning for galleri */
+@media screen and (max-width: 768px) {
+  .galleri-fullwidth {
+    padding: 3rem 1rem;
+  }
+
+  .galleri-fullwidth h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .gallery a {
+    border-radius: 15px;
+  }
+
+  .gallery img {
+    border-radius: 15px;
+    max-height: 400px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .galleri-fullwidth h2 {
+    font-size: 1.8rem;
+  }
+
+  .gallery {
+    gap: 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .gallery a {
+    border-radius: 12px;
+  }
+
+  .gallery img {
+    border-radius: 12px;
+    max-height: 300px;
+  }
 }
 
 /* Fullscreen overlay for galleri */
@@ -1366,6 +1651,53 @@ section.show {
   margin-top: 10px;
   font-family: 'Bebas Neue';
   letter-spacing: 1px;
+}
+
+/* Mobiltilpasning for åpningstider */
+@media screen and (max-width: 768px) {
+  .opening-hours {
+    padding: 30px 15px;
+    margin: 20px 10px;
+    border-radius: 15px;
+  }
+
+  .opening-hours h2 {
+    font-size: 1.6rem;
+  }
+
+  .day-hours,
+  .hour-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    padding: 12px 15px;
+  }
+
+  #open-status-text {
+    font-size: 1.1rem;
+    padding: 8px 16px;
+  }
+
+  #open-status-countdown {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .opening-hours h2 {
+    font-size: 1.4rem;
+  }
+
+  .day-hours,
+  .hour-item {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+
+  #open-status-text {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
 }
 
 /* ==============================================
@@ -1523,6 +1855,105 @@ section.show {
   margin-bottom: 0.5rem;
 }
 
+/* Mobiltilpasning for kontakt */
+@media screen and (max-width: 768px) {
+  .kontakt-oss {
+    padding: 40px 15px;
+  }
+
+  .kontakt-oss h2 {
+    font-size: 1.8rem;
+  }
+
+  .kontakt-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    font-size: 1rem;
+  }
+
+  .kontakt-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1rem;
+  }
+
+  .kontakt-venstre,
+  .kontakt-høyre {
+    padding: 1.8rem;
+  }
+
+  .kontakt-venstre h2,
+  .kontakt-høyre h2 {
+    font-size: 1.6rem;
+  }
+
+  .map-section {
+    padding: 40px 15px;
+  }
+
+  .map-section h2 {
+    font-size: 1.8rem;
+  }
+
+  .map-container {
+    padding: 15px;
+  }
+
+  .map-container iframe {
+    height: 300px;
+  }
+
+  .map-wrapper {
+    height: 300px;
+  }
+
+  .adresse-info {
+    padding: 1rem;
+  }
+
+  .adresse-info h3 {
+    font-size: 1.1rem;
+  }
+
+  .adresse-info p {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .kontakt-oss h2 {
+    font-size: 1.5rem;
+  }
+
+  .kontakt-item {
+    font-size: 0.9rem;
+    padding: 12px 15px;
+  }
+
+  .kontakt-venstre,
+  .kontakt-høyre {
+    padding: 1.5rem;
+  }
+
+  .kontakt-venstre h2,
+  .kontakt-høyre h2 {
+    font-size: 1.4rem;
+  }
+
+  .map-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .map-container iframe {
+    height: 250px;
+  }
+
+  .map-wrapper {
+    height: 250px;
+  }
+}
+
 /* ==============================================
    10. SKJEMAER
    ============================================== */
@@ -1585,9 +2016,48 @@ section.show {
   background: #a80000;
 }
 
+/* Mobiltilpasning for skjemaer */
+@media screen and (max-width: 768px) {
+  .form-section {
+    margin: 2rem 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .form-section h2 {
+    font-size: 1.6rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+
+  .contact-form button {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .form-section {
+    padding: 1.5rem 1rem;
+  }
+
+  .form-section h2 {
+    font-size: 1.4rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    padding: 0.7rem;
+    font-size: 0.9rem;
+  }
+}
+
 
 /* ==============================================
-   11. POPUPS OG OVERLAYS
+   11. POPUPS OG OVERLAYS - FORBEDRET MOBILTILPASNING
    ============================================== */
 
 /* Delivery popup */
@@ -1639,7 +2109,7 @@ section.show {
 }
 
 /* ==============================================
-   12. FOOTER
+   12. FOOTER - FORBEDRET MOBILTILPASNING
    ============================================== */
 
 footer,
@@ -1821,10 +2291,20 @@ body.bedriftsavtale .footer {
 }
 
 /* ==============================================
-   14. RESPONSIVE DESIGN - TABLETS (768px og mindre)
+   14. RESPONSIVE DESIGN - TABLETS (768px og mindre) - FORBEDRET
    ============================================== */
 
 @media screen and (max-width: 768px) {
+  /* Popup forbedringer for tablet */
+  .delivery-popup {
+    bottom: 15px;
+    right: 15px;
+    left: 15px;
+    width: auto;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
   /* Header og navigasjon */
   header {
     flex-direction: row;
@@ -1998,6 +2478,7 @@ body.bedriftsavtale .footer {
   .category-order-btn {
     margin-left: 0;
     width: 100%;
+    margin-top: 1rem;
   }
 
   /* Galleri */
@@ -2136,13 +2617,91 @@ body.bedriftsavtale .footer {
   .quote-symbol {
     font-size: 7rem;
   }
+
+  /* Footer forbedringer tablet */
+  .footer-with-video {
+    height: 200px;
+  }
+
+  .footer-content {
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  /* Barnebursdag tablet */
+  .barnebursdag {
+    padding: 3rem 1rem;
+  }
+
+  .barnebursdag .content {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .barnebursdag .text h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .barnebursdag .text {
+    text-align: center;
+  }
+
+  .barnebursdag .image img {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  /* Språkvelger tablet */
+  #language-wrapper {
+    padding: 6px 12px;
+    font-size: 15px;
+  }
 }
 
 /* ==============================================
-   15. RESPONSIVE DESIGN - SMÅSKJERMER (480px og mindre)
+   15. RESPONSIVE DESIGN - SMÅSKJERMER (480px og mindre) - FORBEDRET
    ============================================== */
 
 @media screen and (max-width: 480px) {
+  /* Popup forbedringer småskjerm */
+  .delivery-popup {
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    width: auto;
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .delivery-popup .popup-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .delivery-popup .popup-content a {
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    margin-top: 12px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .close-popup {
+    top: 6px;
+    right: 10px;
+    font-size: 20px;
+    padding: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   /* Header */
   header {
     padding: 0.8rem 1rem;
@@ -2328,11 +2887,20 @@ body.bedriftsavtale .footer {
     font-size: 1.5rem;
   }
 
-  /* Footer */
+  /* Footer forbedringer småskjerm */
   footer,
   body.bedriftsavtale .footer {
     padding: 1.5rem 1rem;
     font-size: 0.9rem;
+  }
+
+  .footer-with-video {
+    height: 150px;
+  }
+
+  .footer-content {
+    font-size: 0.9rem;
+    padding: 10px;
   }
 
   /* Tilbake til toppen */
@@ -2350,15 +2918,94 @@ body.bedriftsavtale .footer {
 
   /* Quote section */
   .quote-text {
-    font-size: 2.8rem;
+    font-size: 1.8rem;
+    line-height: 1.2;
+  }
+
+  .quote-symbol {
+    font-size: 5rem;
+  }
+
+  /* Barnebursdag småskjerm */
+  .barnebursdag {
+    padding: 2rem 1rem;
+  }
+
+  .barnebursdag .text h2 {
+    font-size: 1.8rem;
+  }
+
+  .barnebursdag .text p {
+    font-size: 1rem;
+  }
+
+  .barnebursdag ul li {
+    font-size: 0.9rem;
+  }
+
+  .barnebursdag .bestill-btn {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .barnebursdag .image img {
+    max-width: 320px;
+    border-radius: 12px;
+  }
+
+  /* Språkvelger småskjerm */
+  #language-wrapper {
+    padding: 4px 8px;
+    font-size: 13px;
+    border-radius: 15px;
+  }
+
+  #language-wrapper label {
+    font-size: 13px;
+  }
+
+  #language-wrapper label::before {
+    font-size: 12px;
+  }
+
+  #google_translate_element select {
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 12px;
   }
 }
 
 /* ==============================================
-   16. RESPONSIVE DESIGN - EKSTRA SMÅSKJERM (320px og mindre)
+   16. RESPONSIVE DESIGN - EKSTRA SMÅSKJERM (320px og mindre) - FORBEDRET
    ============================================== */
 
 @media screen and (max-width: 320px) {
+  /* Popup forbedringer ekstra småskjerm */
+  .delivery-popup {
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .delivery-popup .popup-content p {
+    font-size: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .delivery-popup .popup-content a {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    margin-top: 10px;
+  }
+
+  .close-popup {
+    width: 24px;
+    height: 24px;
+    font-size: 16px;
+  }
+
   /* Header */
   header {
     padding: 0.5rem;
@@ -2446,10 +3093,79 @@ body.bedriftsavtale .footer {
   .map-wrapper {
     height: 200px;
   }
+
+  /* Footer ekstra småskjerm */
+  .footer-with-video {
+    height: 120px;
+  }
+
+  .footer-content {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+
+  /* Barnebursdag ekstra småskjerm */
+  .barnebursdag {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .barnebursdag .text h2 {
+    font-size: 1.5rem;
+  }
+
+  .barnebursdag .text p {
+    font-size: 0.9rem;
+  }
+
+  .barnebursdag ul li {
+    font-size: 0.8rem;
+  }
+
+  .barnebursdag .bestill-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .barnebursdag .image img {
+    max-width: 280px;
+    border-radius: 10px;
+  }
+
+  /* Quote section ekstra små */
+  .quote-text {
+    font-size: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .quote-symbol {
+    font-size: 4rem;
+  }
+
+  /* Språkvelger ekstra småskjerm */
+  #language-wrapper {
+    padding: 3px 6px;
+    font-size: 12px;
+    border-radius: 12px;
+  }
+
+  #language-wrapper label {
+    font-size: 12px;
+    gap: 2px;
+  }
+
+  #language-wrapper label::before {
+    font-size: 11px;
+  }
+
+  #google_translate_element select {
+    font-size: 11px;
+    padding: 1px 4px;
+    border-radius: 10px;
+  }
 }
 
 /* ==============================================
-   17. UTSKRIFT OPTIMALISERING
+   17. UTSKRIFT OPTIMALISERING - FORBEDRET
    ============================================== */
 
 @media print {
@@ -2465,7 +3181,9 @@ body.bedriftsavtale .footer {
   .bestill-btn,
   nav,
   .delivery-popup,
-  .back-to-top {
+  .back-to-top,
+  #language-wrapper,
+  #google_translate_element {
     display: none !important;
   }
 
@@ -2489,12 +3207,34 @@ body.bedriftsavtale .footer {
   .fullscreen-overlay {
     display: none !important;
   }
+
+  .footer-with-video {
+    background: #333 !important;
+  }
+
+  .footer-video {
+    display: none !important;
+  }
+
+  .barnebursdag .image img {
+    max-width: 300px !important;
+    page-break-inside: avoid;
+  }
+
+  .quote-text {
+    font-size: 1.5rem !important;
+  }
+
+  .quote-symbol {
+    font-size: 3rem !important;
+  }
 }
 
 /* ==============================================
-   18. BARNEBURSDAG
+   18. BARNEBURSDAG - FORBEDRET MOBILTILPASNING
    ============================================== */
-   .barnebursdag {
+
+.barnebursdag {
   padding: 4rem 2rem;
 }
 
@@ -2509,6 +3249,7 @@ body.bedriftsavtale .footer {
 
 .barnebursdag .text {
   flex: 1;
+  min-width: 300px;
 }
 
 .barnebursdag .text h2 {
@@ -2521,6 +3262,7 @@ body.bedriftsavtale .footer {
   font-size: 1.1rem;
   margin-bottom: 1rem;
   color: #333;
+  line-height: 1.6;
 }
 
 .barnebursdag ul {
@@ -2532,6 +3274,15 @@ body.bedriftsavtale .footer {
 .barnebursdag ul li {
   margin-bottom: 0.5rem;
   font-size: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.barnebursdag ul li::before {
+  content: "🎉";
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .barnebursdag .bestill-btn {
@@ -2542,16 +3293,22 @@ body.bedriftsavtale .footer {
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
 }
 
 .barnebursdag .bestill-btn:hover {
   background-color: #a71d1d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(214, 40, 40, 0.3);
 }
 
 .barnebursdag .image {
   flex: 1;
   text-align: center;
+  min-width: 300px;
 }
 
 .barnebursdag .image img {
@@ -2559,41 +3316,22 @@ body.bedriftsavtale .footer {
   max-width: 600px;
   border-radius: 18px;
   object-fit: cover;
-  border: 4px solid #ffffff; /* Rød ramme */
+  border: 4px solid #ffffff;
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
   transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.3s ease;
 }
 
 .barnebursdag .image img:hover {
-   transform: scale(1.03);
+  transform: scale(1.03);
   box-shadow: 0 12px 38px rgba(255, 0, 0, 0.35);
   border-color: #ff4d4d;
 }
 
-/* Mobiltilpasning for bildet */
-@media screen and (max-width: 768px) {
-  .image img {
-    width: 100%;      /* Bildet fyller containerens bredde */
-    height: auto;     /* Proporsjonalt høyde */
-    max-width: 400px; /* Maks bredde for større mobiler/tablets */
-    display: block;
-    margin: 0 auto;   /* Sentrerer bildet horisontalt */
-    border-radius: 8px; /* Litt avrunding hvis ønskelig */
-  }
-
-  .image {
-    padding: 0 1rem;  /* Litt luft på sidene på mobil */
-  }
-}
-
-
-
 /* ==============================================
-   18. Google translate Widget
+   19. GOOGLE TRANSLATE WIDGET - FORBEDRET MOBILTILPASNING
    ============================================== */
 
-/* Wrapper for språkvelger med rød/gull skinneeffekt */
-/* Minimalistisk språkvelger */
+/* Wrapper for språkvelger med responsiv design */
 #language-wrapper {
   display: inline-flex;
   align-items: center;
@@ -2608,7 +3346,9 @@ body.bedriftsavtale .footer {
   cursor: pointer;
   user-select: none;
   border: 1px solid #ddd;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 #language-wrapper:hover {
@@ -2616,7 +3356,7 @@ body.bedriftsavtale .footer {
   border-color: #ccc;
 }
 
-/* Label */
+/* Label med bedre mobiloptimalisering */
 #language-wrapper label {
   display: flex;
   align-items: center;
@@ -2624,16 +3364,23 @@ body.bedriftsavtale .footer {
   font-size: 14px;
   color: #333;
   text-shadow: none;
+  white-space: nowrap;
+  cursor: pointer;
 }
 
-/* Lite ikon */
+/* Responsivt ikon */
 #language-wrapper label::before {
   content: "🌐";
   font-size: 14px;
   display: inline-block;
+  line-height: 1;
 }
 
-/* Nedtrekksmeny */
+/* Nedtrekksmeny med bedre mobilsupport */
+#google_translate_element {
+  position: relative;
+}
+
 #google_translate_element select {
   border: none;
   padding: 3px 8px;
@@ -2645,176 +3392,888 @@ body.bedriftsavtale .footer {
   outline: none;
   appearance: none;
   border: 1px solid #ccc;
+  min-width: 80px;
+  transition: all 0.2s ease;
 }
 
 #google_translate_element select:hover {
   background: #f8f8f8;
+  border-color: #bbb;
+}
+
+#google_translate_element select:focus {
+  border-color: #007cba;
+  box-shadow: 0 0 0 2px rgba(0, 124, 186, 0.2);
 }
 
 #google_translate_element select option {
-  padding: 5px;
+  padding: 8px;
   font-size: 13px;
+  background: #fff;
+  color: #333;
+}
+
+/* Skjul Google Translate standard elementer */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+body {
+  top: 0px !important;
+}
+
+.goog-te-balloon-frame {
+  display: none !important;
+}
+
+/* Forbedret mobilresponsiv for språkvelger */
+@media screen and (max-width: 768px) {
+  #language-wrapper {
+    padding: 6px 12px;
+    font-size: 15px;
+    gap: 8px;
+  }
+  
+  #language-wrapper label {
+    font-size: 15px;
+  }
+  
+  #language-wrapper label::before {
+    font-size: 15px;
+  }
+  
+  #google_translate_element select {
+    font-size: 14px;
+    padding: 4px 10px;
+    min-width: 90px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #language-wrapper {
+    padding: 4px 8px;
+    font-size: 13px;
+    border-radius: 15px;
+    gap: 6px;
+  }
+
+  #language-wrapper label {
+    font-size: 13px;
+    gap: 3px;
+  }
+
+  #language-wrapper label::before {
+    font-size: 12px;
+  }
+
+  #google_translate_element select {
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 12px;
+    min-width: 70px;
+  }
+  
+  #google_translate_element select option {
+    padding: 6px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  #language-wrapper {
+    padding: 3px 6px;
+    font-size: 12px;
+    border-radius: 12px;
+    gap: 4px;
+  }
+
+  #language-wrapper label {
+    font-size: 12px;
+    gap: 2px;
+  }
+
+  #language-wrapper label::before {
+    font-size: 11px;
+  }
+
+  #google_translate_element select {
+    font-size: 11px;
+    padding: 1px 4px;
+    border-radius: 10px;
+    min-width: 60px;
+  }
+  
+  #google_translate_element select option {
+    padding: 4px;
+    font-size: 11px;
+  }
 }
 
 /* ==============================================
-   19. Søkefelt
+   20. TILLEGGSFORBEDRINGER FOR MOBIL
    ============================================== */
 
-/* Søkefelt styling */
-        .search-container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 0 20px;
-            position: relative;
-        }
+/* Forbedret berøringsområder for mobile enheter */
+@media (hover: none) and (pointer: coarse) {
+  /* Større berøringsområder for mobile */
+  .order-btn,
+  .foodora-btn,
+  .business-deal-btn,
+  .bestill-btn,
+  .category-order-btn {
+    min-height: 44px; /* Apple's anbefaling for berøringsområder */
+    padding: 12px 20px;
+  }
+  
+  .close-popup {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .back-to-top {
+    min-width: 50px;
+    min-height: 50px;
+  }
+  
+  /* Forbedrede menyelementer for berøring */
+  nav a {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Bedre avstand mellom klikkbare elementer */
+  .gallery a {
+    margin-bottom: 16px;
+  }
+  
+  .bestill-knapper .bestill-btn {
+    margin: 12px 0;
+  }
+}
 
-        .search-box {
-            display: flex;
-            align-items: center;
-            background: #fff;
-            border: 2px solid #b23e3e;
-            border-radius: 25px;
-            padding: 8px 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
+/* Forbedret scrolling for mobile */
+@media screen and (max-width: 768px) {
+  /* Smooth scrolling for hele siden */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Forbedret momentum scrolling for iOS */
+  body, .section, nav {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Mindre padding på små skjermer for bedre utnyttelse av plass */
+  .container {
+    padding: 0 8px;
+  }
+}
 
-        .search-box:focus-within {
-            box-shadow: 0 6px 20px rgba(178, 62, 62, 0.3);
-            transform: translateY(-2px);
-        }
+/* Forbedret lesbarhet på små skjermer */
+@media screen and (max-width: 480px) {
+  /* Bedre linjehøyde for lesbarhet */
+  p, li {
+    line-height: 1.6;
+  }
+  
+  /* Større tekst for bedre lesbarhet på små skjermer */
+  body {
+    font-size: 16px; /* Unngå zoom på iOS */
+  }
+  
+  /* Forbedret contrast for bedre lesbarhet */
+  .section p {
+    color: #222;
+  }
+}
 
-        .search-input {
-            flex: 1;
-            border: none;
-            outline: none;
-            font-size: 16px;
-            padding: 8px 0;
-            color: #333;
-            background: transparent;
-        }
+/* Forbedringer for landskap-orientering på mobil */
+@media screen and (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    height: 60vh; /* Høyere i landskap */
+  }
+  
+  .barnebursdag .content {
+    flex-direction: row; /* Tilbake til rad i landskap */
+  }
+  
+  .kontakt-container {
+    grid-template-columns: 1fr 1fr; /* To kolonner i landskap */
+    gap: 1rem;
+  }
+}
 
-        .search-input::placeholder {
-            color: #888;
-            font-style: italic;
-        }
+/* Ekstra forbedringer for meget små skjermer */
+@media screen and (max-width: 320px) {
+  /* Reduser margins for å spare plass */
+  .section {
+    margin: 1rem 0;
+  }
+  
+  /* Kompakter header */
+  header {
+    min-height: 60px;
+  }
+  
+  /* Mindre gap i flex containers */
+  .barnebursdag .content,
+  .bestill-knapper {
+    gap: 1rem;
+  }
+}
+/* ==============================================
+   ENDRINGER FOR MOBIL NAVIGASJON OG KNAPPER
+   ============================================== */
 
-        .search-icon {
-            color: #b23e3e;
-            font-size: 20px;
-            margin-right: 10px;
-        }
+/* 1. Fjern bokser fra navigasjonslenker på mobil */
+@media screen and (max-width: 768px) {
+  /* Mobil nav lenker - fjern bakgrunn og border */
+  nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 18px 24px;
+    margin: 6px 0;
+    border-radius: 0; /* Fjern avrundede hjørner */
+    background: transparent; /* Fjern bakgrunnsfarge */
+    border: none; /* Fjern border */
+    text-align: center;
+    width: 100%;
+    
+    /* Animasjon for lenker */
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.3s ease;
+    
+    /* RESET desktop hover effekter som ikke fungerer på mobil */
+    box-shadow: none;
+  }
 
-        .clear-search {
-            background: none;
-            border: none;
-            color: #b23e3e;
-            font-size: 18px;
-            cursor: pointer;
-            padding: 5px;
-            display: none;
-            margin-left: 10px;
-        }
+  /* Mobil hover effekt - kun endre tekstfarge */
+  nav a:hover {
+    background: transparent; /* Hold bakgrunn transparent */
+    border: none; /* Ingen border */
+    color: #ffd700; /* Kun endre tekstfarge til gull */
+    transform: translateY(-2px);
+    box-shadow: none; /* Ingen skygge */
+  }
+}
 
-        .clear-search:hover {
-            color: #8b2e2e;
-        }
+/* 2. Senter "Ring og bestill" knappen og gi "Se hele menyen" en boks */
+@media screen and (max-width: 768px) {
+  .order-btn,
+  .category-order-btn {
+    display: block; /* Endre fra inline-block til block */
+    margin: 0 auto; /* Sentrer horisontalt */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    width: fit-content; /* Gjør at bredden kun følger innholdet */
+    max-width: 300px;
+    text-align: center; /* Sikrer at teksten er sentrert */
+    background-color: #f80505;
+    border-radius: 100px;
+    box-shadow: 0 4px 12px rgba(248, 5, 5, 0.3);
+  }
 
-        /* Søkeresultater */
-        .search-results {
-            background: #fff;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            margin-top: 10px;
-            max-height: 400px;
-            overflow-y: auto;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
+  /* Spesifikk styling for "Se hele menyen" knapp - gi den en boks */
+  .category-order-btn {
+    background-color: #ffae00; /* Gul bakgrunn for "Se hele menyen" */
+    color: white;
+    border: 2px solid #ff9500; /* Legg til border for bokseffekt */
+    box-shadow: 0 4px 12px rgba(255, 174, 0, 0.4); /* Gul skygge */
+    font-weight: bold;
+  }
 
-        .search-result-item {
-            padding: 15px 20px;
-            border-bottom: 1px solid #eee;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
-        }
+  .category-order-btn:hover {
+    background-color: #ff9500;
+    border-color: #e68200;
+    transform: scale(1.02);
+    box-shadow: 0 6px 16px rgba(255, 174, 0, 0.5);
+  }
+}
 
-        .search-result-item:hover {
-            background-color: #f8f8f8;
-        }
+.order-btn p {
+    color: white;
+    text-decoration: none;
+}
 
-        .search-result-item:last-child {
-            border-bottom: none;
-        }
+.order-btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  width: fit-content;
+  max-width: 300px;
+  text-align: center;
+  background-color: #f80505;
+  border-radius: 100px;
+  box-shadow: 0 4px 12px rgba(248, 5, 5, 0.3);
+  text-decoration: none;
+  color: white; /* ✅ Rettet her */
+}
 
-        .result-title {
-            font-weight: bold;
-            color: #b23e3e;
-            margin-bottom: 5px;
-        }
+.order-btn:hover {
+  background-color: #e50000;
+  color: white; /* ✅ Sikrer hvit tekst også ved hover */
+}
 
-        .result-price {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 5px;
-        }
+/* ==========================
+   SØKEFUNKSJONALITET
+   ========================== */
+.meny-sok {
+  margin: 2rem auto 2.5rem;
+  max-width: 720px;
+}
 
-        .result-description {
-            color: #888;
-            font-size: 13px;
-            line-height: 1.4;
-        }
+/* Wrapper rundt input + knapper */
+.meny-sok-felt {
+  display: flex;
+  gap: .6rem;
+  align-items: center;
+  background: #fff;
+  border: 2px solid #cc0000; /* Bruk samme rødfarge som menyer/knapper */
+  border-radius: 1rem;
+  padding: .25rem .5rem;
+  box-shadow: 0 2px 12px rgba(204,0,0,.15);
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
 
-        .result-category {
-            background: #b23e3e;
-            color: white;
-            font-size: 11px;
-            padding: 2px 8px;
-            border-radius: 12px;
-            display: inline-block;
-            margin-top: 5px;
-        }
+.meny-sok-felt:focus-within {
+  border-color: #f80505; /* Lyst rødt som hover på knapper */
+  box-shadow: 0 4px 18px rgba(248,5,5,.3);
+}
 
-        .no-results {
-            padding: 30px;
-            text-align: center;
-            color: #888;
-            font-style: italic;
-        }
+/* Input-feltet */
+.meny-sok input[type="search"] {
+  flex: 1;
+  padding: .8rem 1rem;
+  border: none;
+  border-radius: .75rem;
+  font-size: 1rem;
+  background: transparent;
+  color: #111;
+}
 
-        .search-highlight {
-            background-color: #fff3cd;
-            padding: 1px 3px;
-            border-radius: 3px;
-            font-weight: bold;
-        }
+.meny-sok input[type="search"]::placeholder {
+  color: #999;
+  font-style: italic;
+}
 
-        /* Responsiv design */
-        @media (max-width: 768px) {
-            .search-container {
-                padding: 0 15px;
-            }
-            
-            .search-box {
-                padding: 10px 15px;
-            }
-            
-            .search-input {
-                font-size: 16px; /* Forhindrer zoom på iOS */
-            }
-        }
-      .demo-container {
-        max-width: 800px;
-        margin: 0 auto;
-        background: rgba(255, 255, 255, 0.95);
-        border-radius: 20px;
-        padding: 30px;
-      }
+/* Knapper (clear/search) */
+.meny-sok button {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: .75rem;
+  background: linear-gradient(135deg, #f80505, #cc0000); /* Samme gradient som bestill-knapper */
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease;
+}
 
-      .demo-title {
-        text-align: center;
-        color: #b23e3e;
-        margin-bottom: 30px;
-        font-size: 28px;
-        font-weight: 800;
-      }
+.meny-sok button:hover {
+  background: linear-gradient(135deg, #ff1a1a, #b30000);
+}
+
+.meny-sok button:active {
+  transform: scale(.95);
+}
+
+/* Hjelpetekst under */
+.sok-hjelp {
+  font-size: .9rem;
+  color: #666;
+  margin-top: .5rem;
+  text-align: center;
+}
+
+/* Statusmelding */
+.sok-status {
+  margin-top: .5rem;
+  font-size: .95rem;
+  font-weight: 600;
+  text-align: center;
+  color: #cc0000; /* matcher headings */
+}
+
+/* Highlight på søketreff */
+mark {
+  background: #ffd700; /* gull highlight for kontrast til rødt */
+  padding: 0 .2em;
+  border-radius: .25em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* Demp kategoritittel når den ikke har treff */
+.menu-category.no-results > .menu-category-header h3 {
+  opacity: .4;
+  filter: grayscale(.5);
+}
+
+
+/* ============================
+   Allergener – enkel og fin
+   ============================ */
+
+.allergener-wrapper {
+  margin: 3rem auto;
+  padding: 2rem 1.5rem;
+  max-width: 900px;
+  background: #fff8f8;
+  border: 2px solid #f5cccc;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+}
+
+.allergener-wrapper h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #cc0000;
+  border-bottom: 3px solid #ffd700; /* Rød + gull for å matche menyen */
+  display: inline-block;
+  padding-bottom: .3rem;
+}
+
+.allergener-blokk {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-left: 4px solid #cc0000;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+}
+
+.allergener-blokk h3 {
+  font-size: 1.2rem;
+  margin-bottom: .5rem;
+  color: #b30000;
+}
+
+.allergener-blokk p {
+  margin: .3rem 0;
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.allergener-blokk p strong {
+  color: #000;
+}
+/* Allergener – enkel stil (delt side) */
+.allergener-wrapper {
+  margin: 3rem auto;
+  padding: 2rem 1.5rem;
+  max-width: 900px;
+  background: #fff8f8;
+  border: 2px solid #f5cccc;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,.08);
+}
+.allergener-wrapper h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  color: #cc0000;
+  border-bottom: 3px solid #ffd700;
+  display: inline-block;
+  padding-bottom: .3rem;
+}
+.allergener-blokk {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border-left: 4px solid #cc0000;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.05);
+}
+.allergener-blokk h3 {
+  font-size: 1.2rem;
+  margin-bottom: .5rem;
+  color: #b30000;
+}
+.allergener-blokk p { margin:.3rem 0; line-height:1.5; color:#333; }
+
+/* små “chips” for tydelige allergennavn */
+.allergen-chip{
+  display:inline-block; margin:.15rem .25rem; padding:.15rem .5rem;
+  font-size:.9rem; border-radius:999px; background:#fff0f0; border:1px solid #f0b1b1; color:#b30000;
+}
+
+/* liten infoboks i menyen */
+.allergen-infobar{
+  background:#fff7e6;
+  border:1px solid #ffd38a;
+  color:#7a3a00;
+  padding:.7rem 1rem;
+  border-radius:8px;
+  font-size:.95rem;
+  max-width:720px;
+  margin: 0 auto 1rem;
+  text-align:center;
+}
+.allergen-infobar .allergen-link{
+  color:#cc0000; font-weight:700; text-decoration:underline;
+}
+.allergen-note{
+  margin-top:1rem; font-size:.9rem; color:#555; font-style:italic; text-align:center;
+}
+
+/* ===== Levering – banner ===== */
+.levering-banner{
+  position: relative;
+  margin: 0 auto;
+  margin-top: 10px;
+  max-width: 1200px;
+  background: rgba(255, 255, 255, .92);
+  color: #7a2c28;
+  border: 1px solid #ffd6d1;
+  border-left: 5px solid #cc0000;
+  border-radius: 10px;
+  padding: .7rem 1rem;
+  display: flex;
+  gap: .6rem;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+}
+.levering-banner .badge{
+  background:#cc0000; color:#fff; font-weight:700;
+  padding:.25rem .6rem; border-radius:999px; font-size:.9rem;
+}
+.levering-banner .levering-banner-link{
+  margin-left:auto; font-weight:700; color:#cc0000; text-decoration:underline;
+}
+@media (max-width:768px){
+  .levering-banner{ margin: 8px 12px 0; }
+  .levering-banner .levering-banner-link{ margin-left:0; }
+}
+
+
+/* Enkel leveringsinfo */
+.levering-info {
+  background: #cc0000;
+  color: #fff;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.levering-info strong {
+  font-weight: 700;
+}
+.levering-info p {
+  margin: 0;
+}
+
+
+/* ==========================================================
+   Leveringsinfo – kompakt, pen gradient, rund "pill"-stil
+   ========================================================== */
+.levering-band{
+  /* myk rød gradient + glass-effekt som funker over bilder og hvit bakgrunn */
+  background: linear-gradient(90deg, #b70f12, #e01a1a);
+  border-radius: 14px;
+  margin: 0.75rem auto 0.75rem;
+  padding: 0; /* padding ligger på .__inner for bedre responsivitet */
+  box-shadow: 0 6px 18px rgba(176, 0, 0, .18);
+}
+
+.levering-band__inner{
+  /* sentrert, lesbar og fleksibel layout */
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;        /* bryter pent på mobil */
+  gap: 10px;
+  font-weight: 600;
+  line-height: 1.35;
+  backdrop-filter: saturate(120%) blur(2px);
+}
+
+/* Første bit får litt mer tyngde */
+.levering-band__inner .lead{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+/* Liten emoji justert vertikalt */
+.levering-band__inner .emoji{
+  display: inline-block;
+  transform: translateY(1px);
+}
+
+/* Delere mellom punkter – små, runde og diskrete */
+.levering-band__inner .sep{
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.7);
+  flex: 0 0 6px;
+  margin: 0 2px;
+}
+
+/* Tekstelementer */
+.levering-band__inner span{
+  color: #fff;
+  opacity: .95;
+}
+
+/* Gjør nøkkelverdier tydelige */
+.levering-band__inner strong{
+  color: #fff;
+  font-weight: 900;
+}
+
+/* Liten parentes-tekst */
+.levering-band__inner small{
+  opacity: .85;
+  font-weight: 600;
+}
+
+/* Hover/tap gir subtil glød (desktop) */
+@media (hover:hover){
+  .levering-band:hover{
+    box-shadow: 0 8px 22px rgba(176, 0, 0, .24);
+  }
+}
+
+/* Mobiltilpasning: større tekst, fjern prikk-delere når det brytes */
+@media (max-width: 720px){
+  .levering-band__inner{
+    padding: 12px 14px;
+    font-size: .98rem;
+    gap: 8px 10px;
+  }
+  .levering-band__inner .sep{
+    display: none;
+  }
+}
+
+/* Ekstra liten skjerm */
+@media (max-width: 420px){
+  .levering-band__inner{
+    font-size: .95rem;
+    padding: 12px;
+  }
+}
+
+/* Mørk-modus – litt lysere gradient for bedre kontrast */
+@media (prefers-color-scheme: dark){
+  .levering-band{
+    background: linear-gradient(90deg, #a51214, #d21a1c);
+  }
+}
+
+/* ============================
+   TILBUD – layout og kort
+   ============================ */
+
+.tilbud-wrapper{
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+}
+
+.tilbud-grid{
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+/* Kort – base */
+.deal-card{
+  grid-column: span 6;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 18px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.10);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.deal-card:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(0,0,0,.15);
+}
+
+.deal-media{
+  margin: 0;
+  line-height: 0;
+  background: #000;
+}
+
+.deal-media img{
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  display: block;
+}
+
+.deal-card__body{
+  padding: 1.1rem 1.2rem 0.6rem;
+}
+
+.deal-card__body h3{
+  margin: 0 0 .5rem;
+  font-size: 1.5rem;
+  color: #cc0000;
+}
+
+.deal-card__body p{
+  margin: .3rem 0 .6rem;
+  color: #333;
+}
+
+.deal-time{
+  font-weight: 700;
+  color: #b23e3e;
+}
+
+.deal-points{
+  margin: .2rem 0 1.1rem;
+  padding-left: 1.1rem;
+  line-height: 1.5;
+  color: #222;
+}
+
+.deal-points li{
+  margin: .25rem 0;
+}
+
+/* CTA */
+.deal-card__cta{
+  padding: 0 1.2rem 1.2rem;
+  margin-top: auto;
+}
+
+.deal-btn{
+  display: inline-block;
+  background: linear-gradient(135deg, #ff4444, #cc0000);
+  color: #fff;
+  padding: .75rem 1.1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 6px 16px rgba(255, 68, 68, 0.35);
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+}
+
+.deal-btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(255, 68, 68, 0.45);
+  filter: brightness(1.05);
+}
+
+/* Tema-varianter */
+.deal-card.student{
+  background: linear-gradient(180deg, #fff, #fff7f7);
+  border-color: #ffd7d7;
+}
+
+.deal-card.lunch{
+  background: #fff;
+}
+
+/* Responsivt */
+@media (max-width: 980px){
+  .deal-media img{ height: 240px; }
+}
+
+@media (max-width: 820px){
+  .tilbud-grid{ grid-template-columns: 1fr; }
+  .deal-card{ grid-column: 1 / -1; }
+  .deal-media img{ height: 220px; }
+}
+
+/* Print-vennlig */
+@media print{
+  .deal-btn{ display: none !important; }
+  .deal-card{ box-shadow: none !important; }
+}
+
+/* Lunsjtilbud banner */
+.lunsj-banner {
+  max-width: 1000px;
+  margin: 2rem auto;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+.lunsj-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain; /* hele bildet vises */
+  background: #000;
+}
+
+.lunsj-info {
+  padding: 1.5rem;
+}
+
+.lunsj-info h2 {
+  color: #cc0000;
+  margin-bottom: .5rem;
+}
+
+.lunsj-info ul {
+  margin: .5rem 0 1rem;
+  padding-left: 1.2rem;
+  text-align: left;
+  display: inline-block;
+}
+
+.btn-tilbud {
+  display: inline-block;
+  background: linear-gradient(90deg, #cc0000, #e64545);
+  color: #fff;
+  padding: .75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: .2s;
+}
+.btn-tilbud:hover {
+  background: linear-gradient(90deg, #a50000, #cc3333);
+}
+
+/* Gjør lunsjtilbudet like stort som studentkortet */
+.deal-card.lunch {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+.deal-card.lunch img {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* hele bildet vises */
+  display: block;
+}
+

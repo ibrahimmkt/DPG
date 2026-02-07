@@ -138,11 +138,8 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drammen Pizza og Grill</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Allergener – Drammen Pizza & Grill</title>
     <link rel="icon" type="image/png" href="bilder/logo.png" />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap"
       rel="stylesheet"
@@ -154,14 +151,11 @@
       <label for="google_translate_element"> Choose language:</label>
       <div id="google_translate_element"></div>
     </div>
-    <section class="hero-kontakt">
+    <section class="hero-meny">
       <header>
         <div class="logo-container">
           <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
-
-          <h1>
-            <a href="index.html" class="logo">Drammen Pizza & Grill</a>
-          </h1>
+          <h1><a href="index.html" class="logo">Drammen Pizza & Grill</a></h1>
         </div>
         <button
           class="hamburger"
@@ -169,9 +163,7 @@
           aria-expanded="false"
           aria-controls="nav-menu"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
         </button>
         <nav id="nav-menu">
           <a href="index.html">Hjem</a>
@@ -187,79 +179,103 @@
       <div class="hero-content">
         <h2 class="velkommen-tekst">Velkommen til Drammen Pizza & Grill</h2>
         <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
-        <br />
-        <a class="order-btn" href="#" id="orderBtn">Ring og Bestill</a>
+        <a class="order-btn" href="meny.html">Til meny</a>
       </div>
     </section>
 
-    <main>
-      <section class="section">
-        <h1
-          style="
-            text-align: center;
-            font-size: 2.5rem;
-            color: #e60000;
-            margin-bottom: 3rem;
-          "
-        >
-          Kontakt Oss
-        </h1>
+    <main class="meny-wrapper">
+      <section class="allergener-wrapper">
+        <h2>ℹ️ Allergener og ingredienser</h2>
 
-        <div class="kontakt-container">
-          <!-- Venstre side: Åpningstider og kontaktinfo -->
-          <div class="kontakt-venstre">
-            <h2>🕒 Åpningstider</h2>
-            <div class="hours-list">
-              <div class="hour-item">
-                <span class="day-name">Mandag–Lørdag</span>
-                <span class="time-range">10:00–23:00</span>
-              </div>
-              <div class="hour-item">
-                <span class="day-name">Søndag</span>
-                <span class="time-range">11:00–23:00</span>
-              </div>
-              <span id="open-status-text"></span>
-              <span id="open-status-countdown"></span>
-            </div>
-            <br />
-            <div class="kontakt-info-boks">
-              <div class="kontakt-info-item">
-                <span class="kontakt-ikon">📍</span>
-                <span>Tordenskioldsgate 42 3044 Drammen</span>
-              </div>
-              <div class="kontakt-info-item">
-                <span class="kontakt-ikon">📞</span>
-                <span>Butikk: 32830500</span><br />
-                <span>📞 Nadeem(Eier) = 95050580</span>
-              </div>
-              <div class="kontakt-info-item">
-                <span class="kontakt-ikon">✉️</span>
-                <span>For kontakt: post@drammenpizza.no</span><br />
-                <span>✉️ For bestilling: bestilling@drammenpizza.no</span>
-              </div>
-            </div>
-          </div>
+        <div class="allergener-blokk">
+          <h3>🍕 Pizza</h3>
+          <p>
+            <strong>Pizzabunn:</strong> Hvetemel, sukker, salt, gjær, alba saus.
+          </p>
+          <p>
+            <strong>Pizzasaus:</strong> Tomater, salt, sitronsyre, krydder,
+            aroma, tomatpuré, sukker, eddik.
+          </p>
+          <p>
+            <strong>Rømmedressing:</strong> Melk, egg, sennep, hvitløk, krydder,
+            selleri.
+          </p>
+          <p>
+            <strong>Kjøttboller:</strong> Storfekjøtt (88%), vann, soyaolje.
+          </p>
+          <p>
+            <strong>Allergener:</strong>
+            <span class="allergen-chip">Gluten</span>
+            <span class="allergen-chip">Melk</span>
+            <span class="allergen-chip">Egg</span>
+            <span class="allergen-chip">Sennep</span>
+            <span class="allergen-chip">Selleri</span>
+            <span class="allergen-chip">Soya</span>
+          </p>
+        </div>
 
-          <!-- Høyre side: Kart -->
-          <div class="kontakt-høyre">
-            <h2>📍 Finn Oss</h2>
-            <div class="map-wrapper">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4013.050467519235!2d10.190000315255926!3d59.74350097974357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46413d6803b15cd1%3A0xYOURPLACEID!2sTordenskioldsgate+42%2C+3044+Drammen!5e0!3m2!1sno!2sno!4v0000000000000!5m2!1sno!2sno"
-                allowfullscreen=""
-              >
-              </iframe>
-            </div>
-          </div>
+        <div class="allergener-blokk">
+          <h3>🔥 Grillmat</h3>
+          <p>
+            <strong>Kebabkjøtt:</strong> Storfekjøtt, potetmel, soya, salt,
+            sennep, løk, hvitløk, krydder.
+          </p>
+          <p>
+            <strong>Hvit kebabsaus:</strong> Rapsolje, egg, rømme, sennep,
+            sitron, melk, myntesaus, krydder.
+          </p>
+          <p>
+            <strong>Mild saus:</strong> Rapsolje, sukker, tomatpuré, egg,
+            sennep, melk, eddik, ketchup, salt.
+          </p>
+          <p>
+            <strong>Sterk saus:</strong> Grønn chili, chili, purre, ketchup,
+            melk, eddik, sukker.
+          </p>
+          <p><strong>Pitabrød:</strong> Hvetemel, gjær, sukker, salt.</p>
+          <p>
+            <strong>Hamburgerkjøtt:</strong> Storfekjøtt (99%), salt, aroma.
+          </p>
+          <p>
+            <strong>Hamburgerdressing:</strong> Rapsolje, tomatpuré, egg,
+            sukker, eddik, salt, sennep, paprika, aroma.
+          </p>
+          <p>
+            <strong>Hamburgerbrød:</strong> Hvetemel, sukker, rapsolje, gjær,
+            salt, sesamfrø.
+          </p>
+          <p>
+            <strong>Ost:</strong> Pasteurisert skummetmelk, mikrobiell løpe,
+            potetmel.
+          </p>
+          <p><strong>Biffkjøtt:</strong> Biffkjøtt (100%), salt, aroma.</p>
+          <p>
+            <strong>Bernaisesaus:</strong> Vann, rapsolje, sukker, sennep,
+            eddik, krydder (soya, dextrose, urter, solsikkeolje),
+            skummetmelkpulver, mysepulver, salt.
+          </p>
+          <p>
+            <strong>Allergener:</strong>
+            <span class="allergen-chip">Gluten</span>
+            <span class="allergen-chip">Melk</span>
+            <span class="allergen-chip">Egg</span>
+            <span class="allergen-chip">Sennep</span>
+            <span class="allergen-chip">Soya</span>
+            <span class="allergen-chip">Sesam</span>
+            <span class="allergen-chip">Selleri</span>
+          </p>
+        </div>
+
+        <div class="allergen-note">
+          * Ta kontakt ved spesielle behov – vi hjelper gjerne med alternativer.
+          Spor av allergener kan forekomme.
         </div>
       </section>
     </main>
+
     <footer>
       <div class="footer-content">
-        <p>
-          Drammen Pizza og Grill <br />
-          Org.nr. 914 812 801
-        </p>
+        <p>Drammen Pizza og Grill<br />Org.nr. 914 812 801</p>
         <p>Følg oss på Instagram og Facebook</p>
         <p style="margin-top: 10px; font-size: 0.95rem">
           Designet og utviklet av
@@ -267,31 +283,13 @@
             href="https://webplug.no"
             target="_blank"
             style="color: #fff; text-decoration: underline"
+            ><strong>WebPlug</strong></a
           >
-            <strong>WebPlug</strong>
-          </a>
         </p>
       </div>
     </footer>
-    <button
-      class="back-to-top"
-      id="backToTop"
-      aria-label="Gå til toppen av siden"
-      title="Tilbake til toppen"
-    ></button>
-    <!-- Modal popup for telefonnummer -->
-    <div id="phoneModal" class="modal">
-      <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Ring Drammen Pizza & Grill</h2>
-        <p>Telefonnummer:</p>
-        <a href="tel:32830500" class="phone-number">328 30 500</a> <br />
-        <button id="modalCloseBtn" class="modal-close-button">Lukk</button>
-      </div>
-    </div>
+
     <script src="script.js"></script>
     <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    <!-- Modal Popup for telefonnummer -->
   </body>
 </html>

@@ -1,6 +1,141 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="no">
   <head>
+    <!-- WebSite (global) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://drammenpizza.no/#website",
+        "url": "https://drammenpizza.no/",
+        "name": "Drammen Pizza & Grill",
+        "publisher": { "@id": "https://drammenpizza.no/#restaurant" },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://drammenpizza.no/meny.html?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
+    <!-- Restaurant (global – kun én blokk) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "@id": "https://drammenpizza.no/#restaurant",
+        "name": "Drammen Pizza & Grill",
+        "url": "https://drammenpizza.no/",
+        "image": "https://drammenpizza.no/bilder/logo.png",
+        "logo": "https://drammenpizza.no/bilder/logo.png",
+        "telephone": "+47 32830500",
+        "priceRange": "NOK 100–250",
+        "servesCuisine": [
+          "Pizza",
+          "Kebab",
+          "Burger",
+          "Grill",
+          "Italiensk",
+          "Takeaway"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Tordenskioldsgate 42",
+          "postalCode": "3044",
+          "addressLocality": "Drammen",
+          "addressCountry": "NO"
+        },
+        "areaServed": { "@type": "City", "name": "Drammen" },
+        "hasDelivery": "True",
+        "hasTakeout": "True",
+        "acceptsReservations": "False",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday",
+              "Saturday"
+            ],
+            "opens": "10:00",
+            "closes": "23:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Sunday",
+            "opens": "11:00",
+            "closes": "23:00"
+          }
+        ],
+        "menu": "https://drammenpizza.no/meny.html",
+        "hasMenu": {
+          "@type": "Menu",
+          "name": "Hovedmeny",
+          "url": "https://drammenpizza.no/meny.html",
+          "hasMenuSection": [
+            {
+              "@type": "MenuSection",
+              "name": "Raskoversikt",
+              "hasMenuItem": [
+                {
+                  "@type": "MenuItem",
+                  "name": "Pizza (liten) – fra",
+                  "description": "Steinovnsbakt pizza.",
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "165",
+                    "priceCurrency": "NOK",
+                    "availability": "https://schema.org/InStock"
+                  }
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Kebab i pita – fra",
+                  "description": "Kebab i pita med salat og dressing.",
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "119",
+                    "priceCurrency": "NOK",
+                    "availability": "https://schema.org/InStock"
+                  }
+                },
+                {
+                  "@type": "MenuItem",
+                  "name": "Burger – fra",
+                  "description": "Saftig burger med tilbehør.",
+                  "offers": {
+                    "@type": "Offer",
+                    "price": "109",
+                    "priceCurrency": "NOK",
+                    "availability": "https://schema.org/InStock"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "potentialAction": {
+          "@type": "OrderAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "tel:+4732830500",
+            "actionPlatform": [
+              "https://schema.org/DesktopWebPlatform",
+              "https://schema.org/MobileWebPlatform",
+              "https://schema.org/Telephone"
+            ]
+          },
+          "deliveryMethod": [
+            "https://schema.org/DeliveryModeOwnFleet",
+            "https://schema.org/OnSitePickup"
+          ]
+        }
+      }
+    </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Drammen Pizza og Grill</title>
@@ -24,7 +159,7 @@
         <div class="logo-container">
           <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
           <h1>
-            <a href="main.html" class="logo">Drammen Pizza & Grill</a>
+            <a href="index.html" class="logo">Drammen Pizza & Grill</a>
           </h1>
         </div>
         <button
@@ -38,8 +173,10 @@
           <span></span>
         </button>
         <nav id="nav-menu">
-          <a href="main.html">Hjem</a>
+          <a href="index.html">Hjem</a>
           <a href="meny.html">Meny</a>
+          <a href="tilbud.html">Tilbud</a>
+          <a href="allergener.html">Allergener</a>
           <a href="kontakt.html">Kontakt</a>
           <a href="om-oss.html">Om Oss</a>
           <a href="bedriftsavtale.html">Firmaavtale</a>
@@ -47,10 +184,10 @@
         </nav>
       </header>
       <div class="hero-content">
-        <h2 class="velkommen-tekst">Velkommen til Drammen Pizza og Grill</h2>
+        <h2 class="velkommen-tekst">Velkommen til Drammen Pizza & Grill</h2>
         <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
         <br />
-        <!-- Fjernet bestillingslink -->
+        <a class="order-btn" href="#" id="orderBtn">Ring og Bestill</a>
       </div>
     </section>
     <section class="barnebursdag">
@@ -59,10 +196,9 @@
           <h2>Feir Barnebursdag hos oss!🎉</h2>
           <p>
             La oss gjøre barnets bursdag uforglemmelig! <br />Vi arrangerer
-            barnebursdag. La oss ordne alt, ring oss for mer informasjon!
+            barnebursdag. <br />La oss ordne alt, ring oss for mer informasjon!
             <br />
             <br />
-            <a class="order-btn" href="#" id="orderBtn">Bestill Barnebursdag</a>
           </p>
         </div>
 
@@ -81,13 +217,20 @@
 -->
     <footer>
       <div class="footer-content">
-        <p>Drammen Pizza og Grill | Org.nr. 914 812 801</p>
+        <p>
+          Drammen Pizza og Grill <br />
+          Org.nr. 914 812 801
+        </p>
         <p>Følg oss på Instagram og Facebook</p>
         <p style="margin-top: 10px; font-size: 0.95rem">
-          Designet og utviklet av <strong>WebPlug</strong> – Kontakt tlf:
-          <a href="tel:93939393" style="color: #fff; text-decoration: underline"
-            >+47 996 72 557</a
+          Designet og utviklet av
+          <a
+            href="https://webplug.no"
+            target="_blank"
+            style="color: #fff; text-decoration: underline"
           >
+            <strong>WebPlug</strong>
+          </a>
         </p>
       </div>
     </footer>
@@ -103,13 +246,11 @@
         <span class="close-btn">&times;</span>
         <h2>Ring Drammen Pizza & Grill</h2>
         <p>Telefonnummer:</p>
-        <a href="tel:32830500" class="phone-number">328 30 500</a>
-        <br />
+        <a href="tel:32830500" class="phone-number">328 30 500</a> <br />
         <button id="modalCloseBtn" class="modal-close-button">Lukk</button>
       </div>
     </div>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <script src="script.js"></script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   </body>
 </html>

@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drammen Pizza & Grill - Meny</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background: linear-gradient(135deg, #ff6b6b, #ff8e53, #ff6b9d);
+        min-height: 100vh;
+        color: #111;
+        line-height: 1.6;
+      }
+
+      /* Header */
+      header {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        color: white;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .header-logo {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 3px solid #ffd700;
+        object-fit: cover;
+      }
+
+      .logo {
+        text-decoration: none;
+        color: white;
+        font-size: 1.8rem;
+        font-weight: 700;
+        transition: color 0.3s ease;
+      }
+
+      .logo:hover {
+        color: #ffd700;
+      }
+
+      nav {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      nav a {
+        color: white;
+        text-decoration: none;
+        font-weight: 600;
+        padding: 0.5rem 1rem;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      nav a:hover {
+        background-color: #ffd700;
+        color: #333;
+        transform: translateY(-2px);
+      }
+
+      /* Main Content */
+      .main-container {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .page-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .page-title h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: white;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        margin-bottom: 1rem;
+      }
+
+      .page-title p {
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.9);
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        font-weight: 300;
+      }
+
+      /* Menu Selection */
+      .menu-selection {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .menu-card {
+        background: white;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        transition: all 0.4s ease;
+        cursor: pointer;
+        position: relative;
+        border: 3px solid transparent;
+      }
+
+      .menu-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        border-color: #ffd700;
+      }
+
+      .menu-card.active {
+        transform: scale(1.05);
+        border-color: #ff4444;
+        box-shadow: 0 20px 40px rgba(255, 68, 68, 0.4);
+      }
+
+      .card-header {
+        background: linear-gradient(135deg, #ff4444, #cc0000);
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .menu-card:hover .card-header::before {
+        left: 100%;
+      }
+
+      .card-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        display: block;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+      }
+
+      .card-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .card-description {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        font-weight: 300;
+      }
+
+      .card-preview {
+        padding: 1.5rem;
+      }
+
+      .preview-items {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .preview-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem;
+        background: #f8f9fa;
+        border-radius: 10px;
+        font-size: 0.95rem;
+      }
+
+      .preview-item-name {
+        font-weight: 600;
+        color: #333;
+      }
+
+      .preview-item-price {
+        font-weight: 700;
+        color: #ff4444;
+      }
+
+      .view-more {
+        text-align: center;
+        margin-top: 1rem;
+        padding: 1rem 0;
+        background: #f0f0f0;
+        color: #666;
+        font-weight: 600;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .menu-card:hover .view-more {
+        background: #ff4444;
+        color: white;
+      }
+
+      /* Full Menu Display */
+      .full-menu {
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        margin-bottom: 2rem;
+        display: none;
+        animation: slideIn 0.5s ease-out;
+      }
+
+      .full-menu.active {
+        display: block;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 3px solid #ff4444;
+      }
+
+      .menu-title {
+        font-size: 2.5rem;
+        color: #ff4444;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .close-btn {
+        background: #ff4444;
+        color: white;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 25px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .close-btn:hover {
+        background: #cc0000;
+        transform: scale(1.05);
+      }
+
+      .menu-items {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .menu-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #f8f9fa, #ffffff);
+        border-radius: 15px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border-left: 5px solid #ff4444;
+      }
+
+      .menu-item:hover {
+        transform: translateX(10px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      }
+
+      .item-info h4 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+
+      .item-info p {
+        color: #666;
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+
+      .item-price {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #ff4444;
+        text-align: right;
+      }
+
+      .order-section {
+        text-align: center;
+        margin-top: 2rem;
+        padding-top: 2rem;
+        border-top: 2px solid #f0f0f0;
+      }
+
+      .order-btn {
+        display: inline-block;
+        background: linear-gradient(135deg, #ff4444, #cc0000);
+        color: white;
+        padding: 1rem 3rem;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(255, 68, 68, 0.4);
+        cursor: pointer;
+      }
+
+      .order-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(255, 68, 68, 0.6);
+      }
+
+      /* Grill card styling */
+      .menu-card.grill .card-header {
+        background: linear-gradient(135deg, #ff9800, #f57c00);
+      }
+
+      .menu-card.grill.active {
+        border-color: #ff9800;
+        box-shadow: 0 20px 40px rgba(255, 152, 0, 0.4);
+      }
+
+      .menu-card.grill .menu-item {
+        border-left-color: #ff9800;
+      }
+
+      .menu-card.grill .item-price {
+        color: #ff9800;
+      }
+
+      .menu-card.grill .menu-title {
+        color: #ff9800;
+      }
+
+      .menu-card.grill .menu-header {
+        border-bottom-color: #ff9800;
+      }
+
+      .menu-card.grill .close-btn {
+        background: #ff9800;
+      }
+
+      .menu-card.grill .close-btn:hover {
+        background: #f57c00;
+      }
+
+      .menu-card.grill .order-btn {
+        background: linear-gradient(135deg, #ff9800, #f57c00);
+        box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+      }
+
+      .menu-card.grill .order-btn:hover {
+        box-shadow: 0 10px 25px rgba(255, 152, 0, 0.6);
+      }
+
+      .menu-card.grill:hover .view-more {
+        background: #ff9800;
+      }
+
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          gap: 1rem;
+          padding: 1rem;
+        }
+
+        nav {
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 1rem;
+        }
+
+        .page-title h1 {
+          font-size: 2.5rem;
+        }
+
+        .page-title p {
+          font-size: 1.1rem;
+          padding: 0 1rem;
+        }
+
+        .menu-selection {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .menu-header {
+          flex-direction: column;
+          gap: 1rem;
+          text-align: center;
+        }
+
+        .menu-title {
+          font-size: 2rem;
+        }
+
+        .menu-item {
+          flex-direction: column;
+          text-align: center;
+          gap: 1rem;
+        }
+
+        .item-price {
+          text-align: center;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .main-container {
+          padding: 1rem;
+        }
+
+        .card-title {
+          font-size: 1.5rem;
+        }
+
+        .card-description {
+          font-size: 1rem;
+        }
+
+        .full-menu {
+          padding: 1rem;
+        }
+
+        .order-btn {
+          padding: 0.8rem 2rem;
+          font-size: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo-container">
+        <div
+          class="header-logo"
+          style="
+            background: #ff4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+          "
+        >
+          🍕
+        </div>
+        <h1>
+          <a href="#" class="logo">Drammen Pizza & Grill</a>
+        </h1>
+      </div>
+      <nav>
+        <a href="main.html">Hjem</a>
+        <a href="meny.html">Meny</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="om-oss.html">Om Oss</a>
+      </nav>
+    </header>
+
+    <div class="main-container">
+      <div class="page-title">
+        <h1>Vår Deilige Meny</h1>
+        <p><strong>Smaken av ekte kvalitet – fra oss til deg</strong></p>
+      </div>
+
+      <div class="menu-selection" id="menuSelection">
+        <!-- Pizza Card -->
+        <div class="menu-card pizza" data-menu="pizza">
+          <div class="card-header">
+            <span class="card-icon">🍕</span>
+            <h2 class="card-title">Amerikansk Pizza</h2>
+            <p class="card-description">Fersk bunn, premium ingredienser</p>
+          </div>
+          <div class="card-preview">
+            <div class="preview-items">
+              <div class="preview-item">
+                <span class="preview-item-name">Skinkefest</span>
+                <span class="preview-item-price">165,- / 255,-</span>
+              </div>
+              <div class="preview-item">
+                <span class="preview-item-name">Mama Mia</span>
+                <span class="preview-item-price">165,- / 255,-</span>
+              </div>
+              <div class="preview-item">
+                <span class="preview-item-name">A la Pat</span>
+                <span class="preview-item-price">175,- / 265,-</span>
+              </div>
+            </div>
+            <div class="view-more">Klikk for å se hele pizzamenyen</div>
+          </div>
+        </div>
+
+        <!-- Grill Card -->
+        <div class="menu-card grill" data-menu="grill">
+          <div class="card-header">
+            <span class="card-icon">🍔</span>
+            <h2 class="card-title">Grillmat</h2>
+            <p class="card-description">Saftige burgere og grillretter</p>
+          </div>
+          <div class="card-preview">
+            <div class="preview-items">
+              <div class="preview-item">
+                <span class="preview-item-name">Kyllingburger</span>
+                <span class="preview-item-price">Kr 135,-</span>
+              </div>
+              <div class="preview-item">
+                <span class="preview-item-name">Biffsnadder</span>
+                <span class="preview-item-price">Kr 159,-</span>
+              </div>
+              <div class="preview-item">
+                <span class="preview-item-name">Kebabtallerken</span>
+                <span class="preview-item-price">Kr 149,-</span>
+              </div>
+            </div>
+            <div class="view-more">Klikk for å se hele grillmenyen</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full Pizza Menu -->
+      <div class="full-menu pizza" id="pizzaMenu">
+        <div class="menu-header">
+          <h3 class="menu-title">🍕 Amerikansk Pizza</h3>
+          <button class="close-btn" onclick="closeMenu()">Lukk meny</button>
+        </div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="item-info">
+              <h4>1. Skinkefest</h4>
+              <p>
+                Deilig pizza med saftig skinke og friske sjampinjonger på kremet
+                tomatsaus
+              </p>
+            </div>
+            <div class="item-price">Liten: 165,- / Stor: 255,-</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <h4>2. Mama Mia</h4>
+              <p>
+                Klassisk kombinasjon av krydret pepperoni og søt ananas på
+                italiensk bunn
+              </p>
+            </div>
+            <div class="item-price">Liten: 165,- / Stor: 255,-</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <h4>3. A la Pat</h4>
+              <p>
+                Vår signaturpizza med pepperoni, skinke, løk, ananas og
+                champignon - en smaksfull opplevelse
+              </p>
+            </div>
+            <div class="item-price">Liten: 175,- / Stor: 265,-</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <h4>4. Quattro Stagioni</h4>
+              <p>
+                Fire årstider på én pizza - skinke, sjampinjong, oliven og
+                artisjokk
+              </p>
+            </div>
+            <div class="item-price">Liten: 180,- / Stor: 270,-</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <h4>5. Meat Lovers</h4>
+              <p>For kjøttelskere - pepperoni, skinke, kjøttdeig og bacon</p>
+            </div>
+            <div class="item-price">Liten: 190,- / Stor: 280,-</div>
+          </div>
+        </div>
+        <div class="order-section">
+          <a href="#" class="order-btn">🍕 Bestill Pizza Nå</a>
+        </div>
+      </div>
+
+      <!-- Full Grill Menu -->
+      <div class="full-menu grill" id="grillMenu">
+        <div class="menu-header">
+          <h3 class="menu-title">🍔 Grillmat</h3>
+          <button class="close-btn" onclick="closeMenu()">Lukk meny</button>
+        </div>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="item-info">
+              <h4>1. Kyllingburger</h4>
+              <p>
+                Saftig kyllingfilet med crispy salat, tomat og vår spesielle
+                dressing i fersk burgerbrød
+              </p>
+            </div>
+            <div class="item-price">Kr 135,-</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <h4>2. Biffsnadder</h4>
+              <p>
+                Mørt strimlet biff stekt med løk og fargerik paprika, servert
+                med ris eller pommes
+              </p>
+            </div>
+            <div class="item-price">Kr 159,-</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <h4>3. Kebabtallerken</h4>
+              <p>
+                Saftig kebabkjøtt servert med gyldne pommes frites og frisk
+                salat med dressing
+              </p>
+            </div>
+            <div class="item-price">Kr 149,-</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <h4>4. Cheeseburger Deluxe</h4>
+              <p>
+                Dobbel kjøttpatty med ost, bacon, salat, tomat og løk i
+                sesam-burgerbrød
+              </p>
+            </div>
+            <div class="item-price">Kr 155,-</div>
+          </div>
+          <div class="menu-item">
+            <div class="item-info">
+              <h4>5. Grillmix Tallerken</h4>
+              <p>
+                Kombinasjon av kylling, biff og kebab med pommes, salat og brød
+              </p>
+            </div>
+            <div class="item-price">Kr 189,-</div>
+          </div>
+        </div>
+        <div class="order-section">
+          <a href="#" class="order-btn">🍔 Bestill Grillmat Nå</a>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const menuCards = document.querySelectorAll(".menu-card");
+      const fullMenus = document.querySelectorAll(".full-menu");
+      const menuSelection = document.getElementById("menuSelection");
+
+      menuCards.forEach((card) => {
+        card.addEventListener("click", () => {
+          const menuType = card.dataset.menu;
+          showMenu(menuType);
+        });
+      });
+
+      function showMenu(menuType) {
+        // Skjul menu selection
+        menuSelection.style.display = "none";
+
+        // Skjul alle menyer først
+        fullMenus.forEach((menu) => {
+          menu.classList.remove("active");
+        });
+
+        // Vis valgt meny
+        const selectedMenu = document.getElementById(menuType + "Menu");
+        if (selectedMenu) {
+          selectedMenu.classList.add("active");
+        }
+      }
+
+      function closeMenu() {
+        // Skjul alle full menyer
+        fullMenus.forEach((menu) => {
+          menu.classList.remove("active");
+        });
+
+        // Vis menu selection igjen
+        menuSelection.style.display = "grid";
+
+        // Scroll til toppen
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // Legg til keyboard support
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeMenu();
+        }
+      });
+
+      // Smooth scroll effekt
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".menu-card");
+        cards.forEach((card, index) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(50px)";
+
+          setTimeout(() => {
+            card.style.transition = "all 0.6s ease";
+            card.style.opacity = "1";
+            card.style.transform = "translateY(0)";
+          }, index * 200);
+        });
+      });
+    </script>
+  </body>
+</html>
