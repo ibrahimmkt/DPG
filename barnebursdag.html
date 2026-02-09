@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="no">
-  <head>
-    <!-- WebSite (global) -->
-    <script type="application/ld+json">
+
+<head>
+  <!-- WebSite (global) -->
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
@@ -18,8 +19,8 @@
       }
     </script>
 
-    <!-- Restaurant (global – kun én blokk) -->
-    <script type="application/ld+json">
+  <!-- Restaurant (global – kun én blokk) -->
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Restaurant",
@@ -136,121 +137,115 @@
       }
     </script>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drammen Pizza og Grill</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" type="image/png" href="bilder/logo.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drammen Pizza og Grill</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/png" href="bilder/logo.png" />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="language-wrapper">
-      <label for="google_translate_element"> Choose language:</label>
-      <div id="google_translate_element"></div>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="language-wrapper">
+    <label for="google_translate_element"> Choose language:</label>
+    <div id="google_translate_element"></div>
+  </div>
+  <section class="hero">
+    <header>
+      <div class="logo-container">
+        <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
+        <h1>
+          <a href="index.html" class="logo">Drammen Pizza & Grill</a>
+        </h1>
+      </div>
+      <button class="hamburger" aria-label="Meny" aria-expanded="false" aria-controls="nav-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="nav-menu">
+        <a href="index.html">Hjem</a>
+        <a href="meny.html">Meny</a>
+        <a href="tilbud.html">Tilbud</a>
+        <a href="allergener.html">Allergener</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="om-oss.html">Om Oss</a>
+        <a href="bedriftsavtale.html">Firmaavtale</a>
+        <a href="barnebursdag.html">Barnebursdag</a>
+      </nav>
+    </header>
+    <div class="hero-content">
+      <h2 class="velkommen-tekst">Velkommen til Drammen Pizza & Grill</h2>
+      <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
+      <br />
+      <a class="order-btn" href="#" id="orderBtn">Bestill nå</a>
     </div>
-    <section class="hero">
-      <header>
-        <div class="logo-container">
-          <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
-          <h1>
-            <a href="index.html" class="logo">Drammen Pizza & Grill</a>
-          </h1>
-        </div>
-        <button
-          class="hamburger"
-          aria-label="Meny"
-          aria-expanded="false"
-          aria-controls="nav-menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <nav id="nav-menu">
-          <a href="index.html">Hjem</a>
-          <a href="meny.html">Meny</a>
-          <a href="tilbud.html">Tilbud</a>
-          <a href="allergener.html">Allergener</a>
-          <a href="kontakt.html">Kontakt</a>
-          <a href="om-oss.html">Om Oss</a>
-          <a href="bedriftsavtale.html">Firmaavtale</a>
-          <a href="barnebursdag.html">Barnebursdag</a>
-        </nav>
-      </header>
-      <div class="hero-content">
-        <h2 class="velkommen-tekst">Velkommen til Drammen Pizza & Grill</h2>
-        <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
-        <br />
-        <a class="order-btn" href="#" id="orderBtn">Ring og Bestill</a>
+  </section>
+  <section class="barnebursdag">
+    <div class="content">
+      <div class="text">
+        <h2>Feir Barnebursdag hos oss!🎉</h2>
+        <p>
+          La oss gjøre barnets bursdag uforglemmelig! <br />Vi arrangerer
+          barnebursdag. <br />La oss ordne alt, ring oss for mer informasjon!
+          <br />
+          <br />
+        </p>
       </div>
-    </section>
-    <section class="barnebursdag">
-      <div class="content">
-        <div class="text">
-          <h2>Feir Barnebursdag hos oss!🎉</h2>
-          <p>
-            La oss gjøre barnets bursdag uforglemmelig! <br />Vi arrangerer
-            barnebursdag. <br />La oss ordne alt, ring oss for mer informasjon!
-            <br />
-            <br />
-          </p>
-        </div>
 
-        <div class="image">
-          <img
-            src="bilder/kebabtallerken.png"
-            alt="Barnebursdag hos Drammen Pizza & Grill"
-          />
-        </div>
+      <div class="image">
+        <img src="bilder/kebabtallerken.png" alt="Barnebursdag hos Drammen Pizza & Grill" />
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- <div class="delivery-popup" id="deliveryPopup" style="display: none">
+  <!-- <div class="delivery-popup" id="deliveryPopup" style="display: none">
        Skjult popup som viste Foodbooking, fjernet innhold
     </div>
 -->
-    <footer>
-      <div class="footer-content">
-        <p>
-          Drammen Pizza og Grill <br />
-          Org.nr. 914 812 801
-        </p>
-        <p>Følg oss på Instagram og Facebook</p>
-        <p style="margin-top: 10px; font-size: 0.95rem">
-          Designet og utviklet av
-          <a
-            href="https://webplug.no"
-            target="_blank"
-            style="color: #fff; text-decoration: underline"
-          >
-            <strong>WebPlug</strong>
-          </a>
-        </p>
-      </div>
-    </footer>
-    <button
-      class="back-to-top"
-      id="backToTop"
-      aria-label="Gå til toppen av siden"
-      title="Tilbake til toppen"
-    ></button>
-    <!-- Modal popup for telefonnummer -->
-    <div id="phoneModal" class="modal">
-      <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Ring Drammen Pizza & Grill</h2>
-        <p>Telefonnummer:</p>
-        <a href="tel:32830500" class="phone-number">328 30 500</a> <br />
-        <button id="modalCloseBtn" class="modal-close-button">Lukk</button>
+  <footer>
+    <div class="footer-content">
+      <p>
+        Drammen Pizza og Grill <br />
+        Org.nr. 914 812 801
+      </p>
+      <p>Følg oss på Instagram og Facebook</p>
+      <p style="margin-top: 10px; font-size: 0.95rem">
+        Designet og utviklet av
+        <a href="https://webplug.no" target="_blank" style="color: #fff; text-decoration: underline">
+          <strong>WebPlug</strong>
+        </a>
+      </p>
+    </div>
+  </footer>
+  <button class="back-to-top" id="backToTop" aria-label="Gå til toppen av siden" title="Tilbake til toppen"></button>
+  <!-- Order Modal (Bestill nå popup med to valg) -->
+  <div id="orderModal" aria-hidden="true">
+    <div class="order-modal-content">
+      <button class="order-modal-close" aria-label="Lukk">&times;</button>
+      <h2>Velg bestillingsmåte</h2>
+      <p>Hvordan vil du bestille?</p>
+      <div class="order-modal-buttons">
+        <a href="tel:+4732830500" class="order-modal-btn order-modal-btn-ring">📞 Ring og bestill</a>
+        <a href="https://wpbooking.no/drammen-pizza-grill" target="_blank" rel="noopener"
+          class="order-modal-btn order-modal-btn-wpbooking">🍕 Bestill med WPBooking</a>
       </div>
     </div>
-    <script src="script.js"></script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  </body>
+  </div>
+
+  <!-- WPBooking Sticky Banner -->
+  <div id="wpbookingBanner">
+    <button class="banner-close" aria-label="Lukk banner">&times;</button>
+    <h3 class="banner-title">Nyhet: Enklere bestilling! 🍕</h3>
+    <p class="banner-text">Nå kan du reservere maten direkte på nett. Velg mellom levering eller betaling ved henting –
+      raskt, trygt og enkelt!</p>
+    <a href="https://wpbooking.no/drammen-pizza-grill" target="_blank" rel="noopener" class="banner-cta">Bestill her</a>
+  </div>
+  <script src="script.js"></script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
 </html>

@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="no">
-  <head>
-    <!-- WebSite (global) -->
-    <script type="application/ld+json">
+
+<head>
+  <!-- WebSite (global) -->
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
@@ -18,8 +19,8 @@
       }
     </script>
 
-    <!-- Restaurant (global – kun én blokk) -->
-    <script type="application/ld+json">
+  <!-- Restaurant (global – kun én blokk) -->
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Restaurant",
@@ -136,959 +137,924 @@
       }
     </script>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drammen Pizza og Grill</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" type="image/png" href="bilder/logo.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drammen Pizza og Grill</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/png" href="bilder/logo.png" />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="language-wrapper">
-      <label for="google_translate_element"> Choose language:</label>
-      <div id="google_translate_element"></div>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="language-wrapper">
+    <label for="google_translate_element"> Choose language:</label>
+    <div id="google_translate_element"></div>
+  </div>
+
+  <section class="hero-meny">
+    <header>
+      <div class="logo-container">
+        <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
+        <h1>
+          <a href="index.html" class="logo">Drammen Pizza & Grill</a>
+        </h1>
+      </div>
+
+      <button class="hamburger" aria-label="Meny" aria-expanded="false" aria-controls="nav-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav id="nav-menu">
+        <a href="index.html">Hjem</a>
+        <a href="meny.html">Meny</a>
+        <a href="tilbud.html">Tilbud</a>
+        <a href="allergener.html">Allergener</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="om-oss.html">Om Oss</a>
+        <a href="bedriftsavtale.html">Firmaavtale</a>
+        <a href="barnebursdag.html">Barnebursdag</a>
+      </nav>
+    </header>
+
+    <div class="hero-content">
+      <h2 class="velkommen-tekst">Velkommen til Drammen Pizza og Grill</h2>
+      <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
+      <br />
+      <a class="order-btn" href="#" id="orderBtn">Bestill nå</a>
+    </div>
+    <!-- Enkel leveringsinfo -->
+    <!-- Leveringsinfo – kompakt og pen -->
+    <section class="levering-band">
+      <div class="levering-band__inner">
+        <span class="lead"><span class="emoji">🚚</span> Levering i Drammen</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span>0–5 km <strong>80,-</strong></span>
+        <span class="sep" aria-hidden="true"></span>
+        <span>Over 5 km: egne priser</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span>Min. ordre <strong>165,-</strong>
+          <small>(ekskl. kjøretillegg)</small></span>
+        <span class="sep" aria-hidden="true"></span>
+        <span>Betaling: <strong>Kort</strong>, <strong>Vipps</strong>,
+          <strong>kontant</strong></span>
+      </div>
+    </section>
+  </section>
+
+  <section class="meny-wrapper">
+    <!-- Meny-søk -->
+    <div id="meny-sok" class="meny-sok">
+      <label for="menuSearch" class="sr-only">Søk i menyen</label>
+      <div class="meny-sok-felt">
+        <input id="menuSearch" type="search" inputmode="search"
+          placeholder="Søk etter rett, ingrediens eller kategori …" autocomplete="off" aria-describedby="searchHelp"
+          aria-label="Søk i menyen" />
+        <button id="menuSearchClear" type="button" aria-label="Tøm søk">
+          ✕
+        </button>
+      </div>
+      <div id="searchHelp" class="sok-hjelp">
+        Eksempel: “kylling”, “kebab”, “ananas”, “burger”
+      </div>
+      <div id="searchStatus" class="sok-status" aria-live="polite"></div>
     </div>
 
-    <section class="hero-meny">
-      <header>
-        <div class="logo-container">
-          <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
-          <h1>
-            <a href="index.html" class="logo">Drammen Pizza & Grill</a>
-          </h1>
-        </div>
-
-        <button
-          class="hamburger"
-          aria-label="Meny"
-          aria-expanded="false"
-          aria-controls="nav-menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
+    <!-- Pizzameny -->
+    <div class="menu-category" id="pizza-kategori">
+      <div class="menu-category-header">
+        <h3>🍕 Pizza meny</h3>
+        <button onclick="toggleMeny('pizza-retter')">
+          Vis Meny/ Skjul Meny
         </button>
-
-        <nav id="nav-menu">
-          <a href="index.html">Hjem</a>
-          <a href="meny.html">Meny</a>
-          <a href="tilbud.html">Tilbud</a>
-          <a href="allergener.html">Allergener</a>
-          <a href="kontakt.html">Kontakt</a>
-          <a href="om-oss.html">Om Oss</a>
-          <a href="bedriftsavtale.html">Firmaavtale</a>
-          <a href="barnebursdag.html">Barnebursdag</a>
-        </nav>
-      </header>
-
-      <div class="hero-content">
-        <h2 class="velkommen-tekst">Velkommen til Drammen Pizza og Grill</h2>
-        <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
-        <br />
-        <a class="order-btn" href="#" id="orderBtn">Ring og Bestill</a>
-      </div>
-      <!-- Enkel leveringsinfo -->
-      <!-- Leveringsinfo – kompakt og pen -->
-      <section class="levering-band">
-        <div class="levering-band__inner">
-          <span class="lead"
-            ><span class="emoji">🚚</span> Levering i Drammen</span
-          >
-          <span class="sep" aria-hidden="true"></span>
-          <span>0–5 km <strong>80,-</strong></span>
-          <span class="sep" aria-hidden="true"></span>
-          <span>Over 5 km: egne priser</span>
-          <span class="sep" aria-hidden="true"></span>
-          <span
-            >Min. ordre <strong>165,-</strong>
-            <small>(ekskl. kjøretillegg)</small></span
-          >
-          <span class="sep" aria-hidden="true"></span>
-          <span
-            >Betaling: <strong>Kort</strong>, <strong>Vipps</strong>,
-            <strong>kontant</strong></span
-          >
-        </div>
-      </section>
-    </section>
-
-    <section class="meny-wrapper">
-      <!-- Meny-søk -->
-      <div id="meny-sok" class="meny-sok">
-        <label for="menuSearch" class="sr-only">Søk i menyen</label>
-        <div class="meny-sok-felt">
-          <input
-            id="menuSearch"
-            type="search"
-            inputmode="search"
-            placeholder="Søk etter rett, ingrediens eller kategori …"
-            autocomplete="off"
-            aria-describedby="searchHelp"
-            aria-label="Søk i menyen"
-          />
-          <button id="menuSearchClear" type="button" aria-label="Tøm søk">
-            ✕
-          </button>
-        </div>
-        <div id="searchHelp" class="sok-hjelp">
-          Eksempel: “kylling”, “kebab”, “ananas”, “burger”
-        </div>
-        <div id="searchStatus" class="sok-status" aria-live="polite"></div>
       </div>
 
-      <!-- Pizzameny -->
-      <div class="menu-category" id="pizza-kategori">
-        <div class="menu-category-header">
-          <h3>🍕 Pizza meny</h3>
-          <button onclick="toggleMeny('pizza-retter')">
-            Vis Meny/ Skjul Meny
-          </button>
+      <div class="retter-list" id="pizza-retter" style="display: none">
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>1. Skinkefest</h3>
+              <div class="pris">
+                <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
+              </div>
+            </div>
+            <p>Skinke, champignon</p>
+          </div>
         </div>
 
-        <div class="retter-list" id="pizza-retter" style="display: none">
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>1. Skinkefest</h3>
-                <div class="pris">
-                  <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>2. Mama mia</h3>
+              <div class="pris">
+                <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
               </div>
-              <p>Skinke, champignon</p>
             </div>
+            <p>Pepperoni, ananas</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>2. Mama mia</h3>
-                <div class="pris">
-                  <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>3. A la pat</h3>
+              <div class="pris">
+                <span>Liten: 175,-</span> / <span>Stor: 265,-</span>
               </div>
-              <p>Pepperoni, ananas</p>
             </div>
+            <p>Pepperoni, skinke, løk, ananas, champignon</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>3. A la pat</h3>
-                <div class="pris">
-                  <span>Liten: 175,-</span> / <span>Stor: 265,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>4. Fuglekrek</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 255,-</span>
               </div>
-              <p>Pepperoni, skinke, løk, ananas, champignon</p>
             </div>
+            <p>Kylling, bernaise, mais, paprika</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>4. Fuglekrek</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 255,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>5. Chicken Tandori Pizza</h3>
+              <div class="pris">
+                <span>Liten: 165,-</span> / <span>Stor: 250,-</span>
               </div>
-              <p>Kylling, bernaise, mais, paprika</p>
             </div>
+            <p>Kylling, paprika, løk, champignon, jalapenos</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>5. Chicken Tandori Pizza</h3>
-                <div class="pris">
-                  <span>Liten: 165,-</span> / <span>Stor: 250,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>6. Flo's hage</h3>
+              <div class="pris">
+                <span>Liten: 160,-</span> / <span>Stor: 250,-</span>
               </div>
-              <p>Kylling, paprika, løk, champignon, jalapenos</p>
             </div>
+            <p>Tomat, løk, champignon, mais, paprika, ananas</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>6. Flo's hage</h3>
-                <div class="pris">
-                  <span>Liten: 160,-</span> / <span>Stor: 250,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>7. Godset favoritt</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
               </div>
-              <p>Tomat, løk, champignon, mais, paprika, ananas</p>
             </div>
+            <p>Biff, skinke, løk, fersk finhakket tomat</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>7. Godset favoritt</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>8. Helt på tur</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
               </div>
-              <p>Biff, skinke, løk, fersk finhakket tomat</p>
             </div>
+            <p>Biff, bacon, oliven, løk</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>8. Helt på tur</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>9. Kebab pizza (hot)</h3>
+              <div class="pris">
+                <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
               </div>
-              <p>Biff, bacon, oliven, løk</p>
             </div>
+            <p>Kebabkjøtt, spice dressing, jalapenos, mais</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>9. Kebab pizza (hot)</h3>
-                <div class="pris">
-                  <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>10. Hissigproppen</h3>
+              <div class="pris">
+                <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
               </div>
-              <p>Kebabkjøtt, spice dressing, jalapenos, mais</p>
             </div>
+            <p>Marinert biff, løk, med sterk saus i beger</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>10. Hissigproppen</h3>
-                <div class="pris">
-                  <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>11. Halal</h3>
+              <div class="pris">
+                <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
               </div>
-              <p>Marinert biff, løk, med sterk saus i beger</p>
             </div>
+            <p>Kylling eller biff med paprika, løk, champignon</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>11. Halal</h3>
-                <div class="pris">
-                  <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>12. Tacopizza</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 270,-</span>
               </div>
-              <p>Kylling eller biff med paprika, løk, champignon</p>
             </div>
+            <p>Tortillachips, jalapenos, tacokjøtt, mais, paprika</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>12. Tacopizza</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 270,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>13. Kaos</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
               </div>
-              <p>Tortillachips, jalapenos, tacokjøtt, mais, paprika</p>
             </div>
+            <p>Bacon, pepperoni, løk, ananas, paprika</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>13. Kaos</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>14. Ruslebiff</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
               </div>
-              <p>Bacon, pepperoni, løk, ananas, paprika</p>
             </div>
+            <p>Biff, bacon, løk, paprika</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>14. Ruslebiff</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>15. Drammen spesial</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 279,-</span>
               </div>
-              <p>Biff, bacon, løk, paprika</p>
             </div>
+            <p>Valgfri garnityr</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>15. Drammen spesial</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 279,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>16. Den gode smak</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
               </div>
-              <p>Valgfri garnityr</p>
             </div>
+            <p>Pepperoni, biff, løk, ananas</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>16. Den gode smak</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>17. Bolla</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
               </div>
-              <p>Pepperoni, biff, løk, ananas</p>
             </div>
+            <p>Skinke, kjøttboller, champignon, paprika</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>17. Bolla</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>18. Mr. Kresen</h3>
+              <div class="pris">
+                <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
               </div>
-              <p>Skinke, kjøttboller, champignon, paprika</p>
             </div>
+            <p>Kjøttboller, løk</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>18. Mr. Kresen</h3>
-                <div class="pris">
-                  <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>19. Favoritten</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
               </div>
-              <p>Kjøttboller, løk</p>
             </div>
+            <p>Skinke, bacon, pepperoni, løk</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>19. Favoritten</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>20. Bernaise lover</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
               </div>
-              <p>Skinke, bacon, pepperoni, løk</p>
             </div>
+            <p>Marinert biff, løk, champignon, bernaise</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>20. Bernaise lover</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>21. Amerikaneren</h3>
+              <div class="pris">
+                <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
               </div>
-              <p>Marinert biff, løk, champignon, bernaise</p>
             </div>
+            <p>Kjøttboller, løk, paprika, champignon</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>21. Amerikaneren</h3>
-                <div class="pris">
-                  <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>22. Kjøttdeigpizza</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
               </div>
-              <p>Kjøttboller, løk, paprika, champignon</p>
             </div>
+            <p>Kjøttdeig, løk, tomat, mais</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>22. Kjøttdeigpizza</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>23. Kyllingpizza</h3>
+              <div class="pris">
+                <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
               </div>
-              <p>Kjøttdeig, løk, tomat, mais</p>
             </div>
+            <p>Kyllingkebab, mais og kebabdressing på toppen</p>
           </div>
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>23. Kyllingpizza</h3>
-                <div class="pris">
-                  <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
-                </div>
-              </div>
-              <p>Kyllingkebab, mais og kebabdressing på toppen</p>
-            </div>
-          </div>
-
-          <div
-            style="
+        <div style="
               margin: 2rem 0;
               font-weight: 700;
               font-size: 1.1rem;
               color: #b23e3e;
-            "
-          >
-            Nyhet! Pizza med asiatisk smak!
-          </div>
+            ">
+          Nyhet! Pizza med asiatisk smak!
+        </div>
 
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>24. Curry pizza</h3>
-                <div class="pris">
-                  <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
-                </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>24. Curry pizza</h3>
+              <div class="pris">
+                <span>Liten: 165,-</span> / <span>Stor: 255,-</span>
               </div>
-              <p>
-                Kylling eller biff, paprika, løk, champignon marinert i
-                currymasala og yoghurt
-              </p>
             </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>25. Achari pizza (hot)</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 259,-</span>
-                </div>
-              </div>
-              <p>
-                Sterk marinert kylling eller biff, paprika, løk, champignon og
-                achar
-              </p>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>26. Mix pizza</h3>
-                <div class="pris">
-                  <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
-                </div>
-              </div>
-              <p>Kylling, biff, paprika, løk, champignon</p>
-            </div>
+            <p>
+              Kylling eller biff, paprika, løk, champignon marinert i
+              currymasala og yoghurt
+            </p>
           </div>
         </div>
 
-        <!-- Tillegg for pizza (BEHOLDES) -->
-        <details class="pizza-tillegg expandable-box">
-          <summary>➕ Ekstra tillegg til pizza</summary>
-          <ul>
-            <li><strong>Ekstra ost:</strong> 20,-</li>
-            <li><strong>Ekstra kjøtt:</strong> 25,-</li>
-            <li><strong>Ekstra grønnsaker:</strong> 15,-</li>
-            <li><strong>Ekstra krydder:</strong> 15,-</li>
-            <li><strong>Pizzasaus:</strong> 25,-</li>
-            <li><strong>Rømme /m hvitløk:</strong> 30,-</li>
-            <li><strong>Bernaisesaus:</strong> 30,-</li>
-          </ul>
-        </details>
-        <!-- (Allergener-detaljer for pizza er fjernet) -->
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>25. Achari pizza (hot)</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 259,-</span>
+              </div>
+            </div>
+            <p>
+              Sterk marinert kylling eller biff, paprika, løk, champignon og
+              achar
+            </p>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>26. Mix pizza</h3>
+              <div class="pris">
+                <span>Liten: 170,-</span> / <span>Stor: 265,-</span>
+              </div>
+            </div>
+            <p>Kylling, biff, paprika, løk, champignon</p>
+          </div>
+        </div>
       </div>
 
-      <!-- Grillmeny -->
-      <div class="menu-category" id="grillmat-kategori">
-        <div class="menu-category-header">
-          <h3>🔥 Grill meny</h3>
-          <button onclick="toggleMeny('grillmat-retter')">
-            Vis Meny/ Skjul Meny
-          </button>
-        </div>
+      <!-- Tillegg for pizza (BEHOLDES) -->
+      <details class="pizza-tillegg expandable-box">
+        <summary>➕ Ekstra tillegg til pizza</summary>
+        <ul>
+          <li><strong>Ekstra ost:</strong> 20,-</li>
+          <li><strong>Ekstra kjøtt:</strong> 25,-</li>
+          <li><strong>Ekstra grønnsaker:</strong> 15,-</li>
+          <li><strong>Ekstra krydder:</strong> 15,-</li>
+          <li><strong>Pizzasaus:</strong> 25,-</li>
+          <li><strong>Rømme /m hvitløk:</strong> 30,-</li>
+          <li><strong>Bernaisesaus:</strong> 30,-</li>
+        </ul>
+      </details>
+      <!-- (Allergener-detaljer for pizza er fjernet) -->
+    </div>
 
-        <div class="retter-list" id="grillmat-retter" style="display: none">
-          <!-- Kebabmeny -->
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Kebab</h3>
-                <div class="pris">
-                  <span>Liten: 119,-</span> / <span>Medium: 139,-</span> /
-                  <span>Stor: 159,-</span> / <span>XStor: 179,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Kyllingkebab</h3>
-                <div class="pris">
-                  <span>Liten: 129,-</span> / <span>Medium: 149,-</span> /
-                  <span>Stor: 169,-</span> / <span>XStor: 189,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Kebabmiddag</h3>
-                <div class="pris">
-                  <span>Liten: 179,-</span> / <span>Medium: 199,-</span> /
-                  <span>Stor: 219,-</span> / <span>XStor: 229,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Kyllingkebabmiddag</h3>
-                <div class="pris">
-                  <span>Liten: 189,-</span> / <span>Medium: 209,-</span> /
-                  <span>Stor: 229,-</span> / <span>XStor: 249,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Hamburgermeny -->
-          <div
-            style="
-              margin: 2rem 0;
-              font-weight: 700;
-              font-size: 1.1rem;
-              color: #b23e3e;
-            "
-          >
-            Hamburgermeny
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Hamburger</h3>
-                <div class="pris">
-                  <span>100g: 109,-</span> / <span>130g: 119,-</span> /
-                  <span>160g: 129,-</span> / <span>190g: 139,-</span> /
-                  <span>D.B2x130g: 189,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Cheeseburger</h3>
-                <div class="pris">
-                  <span>100g: 119,-</span> / <span>130g: 129,-</span> /
-                  <span>160g: 139,-</span> / <span>190g: 149,-</span> /
-                  <span>D.B2x130g: 199,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Hawaiiburger</h3>
-                <div class="pris">
-                  <span>100g: 119,-</span> / <span>130g: 129,-</span> /
-                  <span>160g: 139,-</span> / <span>190g: 149,-</span> /
-                  <span>D.B2x130g: 199,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Hawaiiburger /m ost</h3>
-                <div class="pris">
-                  <span>100g: 129,-</span> / <span>130g: 139,-</span> /
-                  <span>160g: 149,-</span> / <span>190g: 159,-</span> /
-                  <span>D.B2x130g: 209,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Hamburgermiddag</h3>
-                <div class="pris">
-                  <span>100g: 145,-</span> / <span>130g: 165,-</span> /
-                  <span>160g: 175,-</span> / <span>190g: 185,-</span> /
-                  <span>D.B2x130g: 225,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Cheeseburgermiddag</h3>
-                <div class="pris">
-                  <span>100g: 155,-</span> / <span>130g: 165,-</span> /
-                  <span>160g: 175,-</span> / <span>190g: 185,-</span> /
-                  <span>D.B2x130g: 235,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Hawaiiburgermiddag</h3>
-                <div class="pris">
-                  <span>100g: 155,-</span> / <span>130g: 165,-</span> /
-                  <span>160g: 175,-</span> / <span>190g: 185,-</span> /
-                  <span>D.B2x130g: 235,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Hawaii/cheesb.middag</h3>
-                <div class="pris">
-                  <span>100g: 165,-</span> / <span>130g: 175,-</span> /
-                  <span>160g: 185,-</span> / <span>190g: 195,-</span> /
-                  <span>D.B2x130g: 245,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Grillklassikeren (K'NB) NYHET</h3>
-                <div class="pris">
-                  <span>130g: 220,-</span> / <span>190g: 240,-</span> /
-                  <span>D.B2x130g: 260,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Burger Tallerken -->
-          <div
-            style="
-              margin: 2rem 0;
-              font-weight: 700;
-              font-size: 1.1rem;
-              color: #b23e3e;
-            "
-          >
-            Burger Tallerken
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Fiskeburger</h3>
-                <div class="pris">
-                  <span>Burger: 130,-</span> / <span>Tallerken: 170,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Fiskefavoritten</h3>
-                <div class="pris"><span>Tallerken: 249,-</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Kylling Burger</h3>
-                <div class="pris">
-                  <span>Burger: 125,-</span> / <span>Tallerken: 165,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Kyllingfavoritten (Kyllingburger K'NB) NYHET</h3>
-                <div class="pris"><span>Tallerken: 230,-</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Smashburger NYHET</h3>
-                <div class="pris">
-                  <span>Burger: 155,-</span> / <span>Tallerken: 210,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Smash klassikeren (Smashburger K'NB)</h3>
-                <div class="pris"><span>Tallerken: 299,-</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Løvstekburger NYHET</h3>
-                <div class="pris">
-                  <span>Burger: 125,-</span> / <span>Tallerken: 170,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Nuggets -->
-          <div
-            style="
-              margin: 2rem 0;
-              font-weight: 700;
-              font-size: 1.1rem;
-              color: #b23e3e;
-            "
-          >
-            Nuggets
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Kylling nuggets</h3>
-                <div class="pris">
-                  <span>6 stk: 140,-</span> / <span>9 stk: 155,-</span> /
-                  <span>12 stk: 180,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mix grill -->
-          <div
-            style="
-              margin: 2rem 0;
-              font-weight: 700;
-              font-size: 1.1rem;
-              color: #b23e3e;
-            "
-          >
-            Mix grill tallerken
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Mix Grill Tallerken</h3>
-                <div class="pris"><span>Tallerken: 249,-</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Andre retter -->
-          <div
-            style="
-              margin: 2rem 0;
-              font-weight: 700;
-              font-size: 1.1rem;
-              color: #b23e3e;
-            "
-          >
-            Andre retter
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Biffsnadder i pitabrød</h3>
-                <div class="pris"><span>175,-</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Biffsnaddermiddag</h3>
-                <div class="pris"><span>229,-</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Salat i pitabrød</h3>
-                <div class="pris"><span>75,-</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Falafel i pitabrød NYHET</h3>
-                <div class="pris"><span>130,-</span></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Drammenspesial -->
-          <div
-            style="
-              margin: 2rem 0;
-              font-weight: 700;
-              font-size: 1.1rem;
-              color: #b23e3e;
-            "
-          >
-            Drammenspesial
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Rullekebab (Shawarma) m/kebab</h3>
-                <div class="pris">
-                  <span>Liten: 135,-</span> / <span>Stor: 155,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Rullekebab (Shawarma) m/kylling</h3>
-                <div class="pris">
-                  <span>Liten: 145,-</span> / <span>Stor: 165,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Rullekebab (Shawarma) m/Falafel NYHET</h3>
-                <div class="pris">
-                  <span>Liten: 140,-</span> / <span>Stor: 160,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Småretter -->
-          <div
-            style="
-              margin: 2rem 0;
-              font-weight: 700;
-              font-size: 1.1rem;
-              color: #b23e3e;
-            "
-          >
-            Småretter
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Masala frites NYHET</h3>
-                <div class="pris">
-                  <span>Liten: 55,-</span> / <span>Stor: 65,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Pommes frites</h3>
-                <div class="pris">
-                  <span>Liten: 55,-</span> / <span>Stor: 65,-</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Pommes frites i pitabrød</h3>
-                <div class="pris"><span>75,-</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Pommes frites tallerken</h3>
-                <div class="pris"><span>99,-</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div style="margin-top: 1rem; font-style: italic">
-            Alle middagsretter serveres med pommes frites, salat, dressing og
-            mais.
-          </div>
-        </div>
-        <!-- (Allergener-detaljer for grillmat er fjernet) -->
+    <!-- Grillmeny -->
+    <div class="menu-category" id="grillmat-kategori">
+      <div class="menu-category-header">
+        <h3>🔥 Grill meny</h3>
+        <button onclick="toggleMeny('grillmat-retter')">
+          Vis Meny/ Skjul Meny
+        </button>
       </div>
 
-      <!-- Drikke -->
-      <div class="menu-category" id="drikke-kategori">
-        <div class="menu-category-header">
-          <h3>🥤 Drikke</h3>
-          <button onclick="toggleMeny('drikke-retter')">
-            Vis Meny/ Skjul Meny
-          </button>
-        </div>
-
-        <div class="retter-list" id="drikke-retter" style="display: none">
-          <div class="rett-flex no-image">
-            <div class="rett-info">
-              <div class="rett-top">
-                <h3>Brus</h3>
-                <div class="pris">
-                  <span>0.5l: 40,-</span> / <span>1.5l: 65,-</span>
-                </div>
+      <div class="retter-list" id="grillmat-retter" style="display: none">
+        <!-- Kebabmeny -->
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Kebab</h3>
+              <div class="pris">
+                <span>Liten: 119,-</span> / <span>Medium: 139,-</span> /
+                <span>Stor: 159,-</span> / <span>XStor: 179,-</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!--   <section id="studentrabatt" class="studentrabatt-section">
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Kyllingkebab</h3>
+              <div class="pris">
+                <span>Liten: 129,-</span> / <span>Medium: 149,-</span> /
+                <span>Stor: 169,-</span> / <span>XStor: 189,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Kebabmiddag</h3>
+              <div class="pris">
+                <span>Liten: 179,-</span> / <span>Medium: 199,-</span> /
+                <span>Stor: 219,-</span> / <span>XStor: 229,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Kyllingkebabmiddag</h3>
+              <div class="pris">
+                <span>Liten: 189,-</span> / <span>Medium: 209,-</span> /
+                <span>Stor: 229,-</span> / <span>XStor: 249,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hamburgermeny -->
+        <div style="
+              margin: 2rem 0;
+              font-weight: 700;
+              font-size: 1.1rem;
+              color: #b23e3e;
+            ">
+          Hamburgermeny
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Hamburger</h3>
+              <div class="pris">
+                <span>100g: 109,-</span> / <span>130g: 119,-</span> /
+                <span>160g: 129,-</span> / <span>190g: 139,-</span> /
+                <span>D.B2x130g: 189,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Cheeseburger</h3>
+              <div class="pris">
+                <span>100g: 119,-</span> / <span>130g: 129,-</span> /
+                <span>160g: 139,-</span> / <span>190g: 149,-</span> /
+                <span>D.B2x130g: 199,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Hawaiiburger</h3>
+              <div class="pris">
+                <span>100g: 119,-</span> / <span>130g: 129,-</span> /
+                <span>160g: 139,-</span> / <span>190g: 149,-</span> /
+                <span>D.B2x130g: 199,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Hawaiiburger /m ost</h3>
+              <div class="pris">
+                <span>100g: 129,-</span> / <span>130g: 139,-</span> /
+                <span>160g: 149,-</span> / <span>190g: 159,-</span> /
+                <span>D.B2x130g: 209,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Hamburgermiddag</h3>
+              <div class="pris">
+                <span>100g: 145,-</span> / <span>130g: 165,-</span> /
+                <span>160g: 175,-</span> / <span>190g: 185,-</span> /
+                <span>D.B2x130g: 225,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Cheeseburgermiddag</h3>
+              <div class="pris">
+                <span>100g: 155,-</span> / <span>130g: 165,-</span> /
+                <span>160g: 175,-</span> / <span>190g: 185,-</span> /
+                <span>D.B2x130g: 235,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Hawaiiburgermiddag</h3>
+              <div class="pris">
+                <span>100g: 155,-</span> / <span>130g: 165,-</span> /
+                <span>160g: 175,-</span> / <span>190g: 185,-</span> /
+                <span>D.B2x130g: 235,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Hawaii/cheesb.middag</h3>
+              <div class="pris">
+                <span>100g: 165,-</span> / <span>130g: 175,-</span> /
+                <span>160g: 185,-</span> / <span>190g: 195,-</span> /
+                <span>D.B2x130g: 245,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Grillklassikeren (K'NB) NYHET</h3>
+              <div class="pris">
+                <span>130g: 220,-</span> / <span>190g: 240,-</span> /
+                <span>D.B2x130g: 260,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Burger Tallerken -->
+        <div style="
+              margin: 2rem 0;
+              font-weight: 700;
+              font-size: 1.1rem;
+              color: #b23e3e;
+            ">
+          Burger Tallerken
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Fiskeburger</h3>
+              <div class="pris">
+                <span>Burger: 130,-</span> / <span>Tallerken: 170,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Fiskefavoritten</h3>
+              <div class="pris"><span>Tallerken: 249,-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Kylling Burger</h3>
+              <div class="pris">
+                <span>Burger: 125,-</span> / <span>Tallerken: 165,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Kyllingfavoritten (Kyllingburger K'NB) NYHET</h3>
+              <div class="pris"><span>Tallerken: 230,-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Smashburger NYHET</h3>
+              <div class="pris">
+                <span>Burger: 155,-</span> / <span>Tallerken: 210,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Smash klassikeren (Smashburger K'NB)</h3>
+              <div class="pris"><span>Tallerken: 299,-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Løvstekburger NYHET</h3>
+              <div class="pris">
+                <span>Burger: 125,-</span> / <span>Tallerken: 170,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Nuggets -->
+        <div style="
+              margin: 2rem 0;
+              font-weight: 700;
+              font-size: 1.1rem;
+              color: #b23e3e;
+            ">
+          Nuggets
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Kylling nuggets</h3>
+              <div class="pris">
+                <span>6 stk: 140,-</span> / <span>9 stk: 155,-</span> /
+                <span>12 stk: 180,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mix grill -->
+        <div style="
+              margin: 2rem 0;
+              font-weight: 700;
+              font-size: 1.1rem;
+              color: #b23e3e;
+            ">
+          Mix grill tallerken
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Mix Grill Tallerken</h3>
+              <div class="pris"><span>Tallerken: 249,-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Andre retter -->
+        <div style="
+              margin: 2rem 0;
+              font-weight: 700;
+              font-size: 1.1rem;
+              color: #b23e3e;
+            ">
+          Andre retter
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Biffsnadder i pitabrød</h3>
+              <div class="pris"><span>175,-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Biffsnaddermiddag</h3>
+              <div class="pris"><span>229,-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Salat i pitabrød</h3>
+              <div class="pris"><span>75,-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Falafel i pitabrød NYHET</h3>
+              <div class="pris"><span>130,-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Drammenspesial -->
+        <div style="
+              margin: 2rem 0;
+              font-weight: 700;
+              font-size: 1.1rem;
+              color: #b23e3e;
+            ">
+          Drammenspesial
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Rullekebab (Shawarma) m/kebab</h3>
+              <div class="pris">
+                <span>Liten: 135,-</span> / <span>Stor: 155,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Rullekebab (Shawarma) m/kylling</h3>
+              <div class="pris">
+                <span>Liten: 145,-</span> / <span>Stor: 165,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Rullekebab (Shawarma) m/Falafel NYHET</h3>
+              <div class="pris">
+                <span>Liten: 140,-</span> / <span>Stor: 160,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Småretter -->
+        <div style="
+              margin: 2rem 0;
+              font-weight: 700;
+              font-size: 1.1rem;
+              color: #b23e3e;
+            ">
+          Småretter
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Masala frites NYHET</h3>
+              <div class="pris">
+                <span>Liten: 55,-</span> / <span>Stor: 65,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Pommes frites</h3>
+              <div class="pris">
+                <span>Liten: 55,-</span> / <span>Stor: 65,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Pommes frites i pitabrød</h3>
+              <div class="pris"><span>75,-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Pommes frites tallerken</h3>
+              <div class="pris"><span>99,-</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 1rem; font-style: italic">
+          Alle middagsretter serveres med pommes frites, salat, dressing og
+          mais.
+        </div>
+      </div>
+      <!-- (Allergener-detaljer for grillmat er fjernet) -->
+    </div>
+
+    <!-- Drikke -->
+    <div class="menu-category" id="drikke-kategori">
+      <div class="menu-category-header">
+        <h3>🥤 Drikke</h3>
+        <button onclick="toggleMeny('drikke-retter')">
+          Vis Meny/ Skjul Meny
+        </button>
+      </div>
+
+      <div class="retter-list" id="drikke-retter" style="display: none">
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Brus</h3>
+              <div class="pris">
+                <span>0.5l: 40,-</span> / <span>1.5l: 65,-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--   <section id="studentrabatt" class="studentrabatt-section">
           <div class="container">
             <h2>Studentrabatt</h2>
             <p>
@@ -1098,49 +1064,52 @@
             <p><b>Rabatt gjelder både ved henting og levering</b></p>
           </div>
         </section> -->
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <footer>
-      <div class="footer-content">
-        <p>
-          Drammen Pizza og Grill <br />
-          Org.nr. 914 812 801
-        </p>
-        <p>Følg oss på Instagram og Facebook</p>
-        <p style="margin-top: 10px; font-size: 0.95rem">
-          Designet og utviklet av
-          <a
-            href="https://webplug.no"
-            target="_blank"
-            style="color: #fff; text-decoration: underline"
-          >
-            <strong>WebPlug</strong>
-          </a>
-        </p>
-      </div>
-    </footer>
+  <footer>
+    <div class="footer-content">
+      <p>
+        Drammen Pizza og Grill <br />
+        Org.nr. 914 812 801
+      </p>
+      <p>Følg oss på Instagram og Facebook</p>
+      <p style="margin-top: 10px; font-size: 0.95rem">
+        Designet og utviklet av
+        <a href="https://webplug.no" target="_blank" style="color: #fff; text-decoration: underline">
+          <strong>WebPlug</strong>
+        </a>
+      </p>
+    </div>
+  </footer>
 
-    <button
-      class="back-to-top"
-      id="backToTop"
-      aria-label="Gå til toppen av siden"
-      title="Tilbake til toppen"
-    ></button>
+  <button class="back-to-top" id="backToTop" aria-label="Gå til toppen av siden" title="Tilbake til toppen"></button>
 
-    <!-- Modal popup for telefonnummer -->
-    <div id="phoneModal" class="modal">
-      <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Ring Drammen Pizza & Grill</h2>
-        <p>Telefonnummer:</p>
-        <a href="tel:32830500" class="phone-number">328 30 500</a>
-        <br />
-        <button id="modalCloseBtn" class="modal-close-button">Lukk</button>
+  <!-- Order Modal (Bestill nå popup med to valg) -->
+  <div id="orderModal" aria-hidden="true">
+    <div class="order-modal-content">
+      <button class="order-modal-close" aria-label="Lukk">&times;</button>
+      <h2>Velg bestillingsmåte</h2>
+      <p>Hvordan vil du bestille?</p>
+      <div class="order-modal-buttons">
+        <a href="tel:+4732830500" class="order-modal-btn order-modal-btn-ring">📞 Ring og bestill</a>
+        <a href="https://wpbooking.no/drammen-pizza-grill" target="_blank" rel="noopener"
+          class="order-modal-btn order-modal-btn-wpbooking">🍕 Bestill med WPBooking</a>
       </div>
     </div>
+  </div>
 
-    <script src="script.js"></script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-  </body>
+  <!-- WPBooking Sticky Banner -->
+  <div id="wpbookingBanner">
+    <button class="banner-close" aria-label="Lukk banner">&times;</button>
+    <h3 class="banner-title">Nyhet: Enklere bestilling! 🍕</h3>
+    <p class="banner-text">Nå kan du reservere maten direkte på nett. Velg mellom levering eller betaling ved henting –
+      raskt, trygt og enkelt!</p>
+    <a href="https://wpbooking.no/drammen-pizza-grill" target="_blank" rel="noopener" class="banner-cta">Bestill her</a>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+
 </html>

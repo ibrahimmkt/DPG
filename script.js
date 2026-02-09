@@ -279,63 +279,95 @@ function makeHeaderClickable(headerElement, menuId, menuName) {
   newHeader.addEventListener('click', handleClick, true);
   newHeader.addEventListener('touchend', handleClick, true);
 
-  newHeader.addEventListener('touchstart', function() {
+  newHeader.addEventListener('touchstart', function () {
     this.style.opacity = '0.7';
     this.style.transform = 'scale(0.98)';
   }, { passive: true });
 
-  newHeader.addEventListener('touchend', function() {
+  newHeader.addEventListener('touchend', function () {
     setTimeout(() => {
       this.style.opacity = '1';
       this.style.transform = 'scale(1)';
     }, 100);
   }, { passive: true });
 
-  newHeader.addEventListener('mouseenter', function() {
+  newHeader.addEventListener('mouseenter', function () {
     if (!('ontouchstart' in window)) this.style.opacity = '0.8';
   });
-  newHeader.addEventListener('mouseleave', function() {
+  newHeader.addEventListener('mouseleave', function () {
     if (!('ontouchstart' in window)) this.style.opacity = '1';
   });
 }
 
 /* ================================
-   MODAL: RING OG BESTILL
+   MODAL: BESTILL NÅ (to valg)
    ================================ */
-function initPhoneModal() {
-  const orderBtn = document.getElementById("orderBtn");
-  const modal = document.getElementById("phoneModal");
-  if (!orderBtn || !modal) return;
+function initOrderModal() {
+  // Hent alle order-knapper med id="orderBtn"
+  const orderBtns = document.querySelectorAll('.order-btn[id="orderBtn"]');
+  const modal = document.getElementById("orderModal");
+  if (!modal || orderBtns.length === 0) return;
 
-  const closeBtn = modal.querySelector(".close-btn");
-  const modalCloseButton = document.getElementById("modalCloseBtn") ||
-                           modal.querySelector(".modal-close-btn") ||
-                           modal.querySelector(".modal-close-button");
+  const closeBtn = modal.querySelector(".order-modal-close");
 
-  orderBtn.addEventListener("click", function (e) {
-    e.preventDefault();
-    modal.style.display = "block";
-    modal.setAttribute("aria-hidden", "false");
-    modal.focus();
-  });
-
-  if (closeBtn) closeBtn.addEventListener("click", closeModal);
-  if (modalCloseButton) modalCloseButton.addEventListener("click", closeModal);
-
-  window.addEventListener("click", function (e) {
-    if (e.target === modal) closeModal();
-  });
-
-  window.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && modal.style.display === "block") closeModal();
+  // Åpne modal ved klikk på alle "Bestill nå" knapper
+  orderBtns.forEach(btn => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      modal.style.display = "block";
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    });
   });
 
   function closeModal() {
     modal.style.display = "none";
     modal.setAttribute("aria-hidden", "true");
-    orderBtn.focus();
+    document.body.style.overflow = "";
+  }
+
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+
+  // Lukk ved klikk utenfor modal-content
+  window.addEventListener("click", function (e) {
+    if (e.target === modal) closeModal();
+  });
+
+  // Lukk med Escape
+  window.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && modal.style.display === "block") closeModal();
+  });
+}
+
+/* ================================
+   WPBOOKING STICKY BANNER
+   ================================ */
+function initWPBookingBanner() {
+  const banner = document.getElementById("wpbookingBanner");
+  if (!banner) return;
+
+  // Skjul banneret initialt
+  banner.style.display = "none";
+
+  // Sjekk om banneret er lukket før
+  if (localStorage.getItem("wpbookingBannerClosed") === "true") {
+    return; // Hold skjult hvis bruker har lukket det tidligere
+  }
+
+  // Vis banneret etter en kort delay (for bedre brukeropplevelse)
+  setTimeout(function () {
+    banner.style.display = "block";
+  }, 1500);
+
+  const closeBtn = banner.querySelector(".banner-close");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function () {
+      banner.style.display = "none";
+      localStorage.setItem("wpbookingBannerClosed", "true");
+    });
   }
 }
+
 
 /* ================================
    GOOGLE TRANSLATE
@@ -397,9 +429,9 @@ function initLanguageSwitcher() {
    MENY-SØK (treff + flytende nav)
    ================================ */
 function setupMenuSearch() {
-  const input    = document.getElementById('menuSearch');
+  const input = document.getElementById('menuSearch');
   const clearBtn = document.getElementById('menuSearchClear');
-  const status   = document.getElementById('searchStatus');
+  const status = document.getElementById('searchStatus');
   if (!input || !status) return;
 
   if (!document.getElementById('menu-search-floating-style')) {
@@ -432,8 +464,8 @@ function setupMenuSearch() {
     `;
     document.body.appendChild(floatNav);
   }
-  const prevBtn   = document.getElementById('menuFloatPrev');
-  const nextBtn   = document.getElementById('menuFloatNext');
+  const prevBtn = document.getElementById('menuFloatPrev');
+  const nextBtn = document.getElementById('menuFloatNext');
   const counterEl = document.getElementById('menuFloatCounter');
 
   const retterLists = Array.from(document.querySelectorAll('.retter-list'));
@@ -452,19 +484,19 @@ function setupMenuSearch() {
     '.expandable-box, .levering-lite, #studentrabatt, .ukens-tilbud'
   ));
 
-  const normalize = (s) => (s||'').toLowerCase().normalize('NFD')
-    .replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
+  const normalize = (s) => (s || '').toLowerCase().normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '').replace(/\s+/g, ' ').trim();
   const escapeReg = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const stripMarks = (root) => {
     root.querySelectorAll('mark').forEach(m => {
-      const p=m.parentNode; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize();
+      const p = m.parentNode; p.replaceChild(document.createTextNode(m.textContent), m); p.normalize();
     });
   };
   const highlightText = (rowEl, qRaw) => {
     if (!qRaw) return;
     const re = new RegExp(escapeReg(qRaw), 'i');
-    [rowEl.querySelector('.rett-top h3'), rowEl.querySelector('.rett-info p')].forEach(n=>{
-      if (!n) return; stripMarks(n); n.innerHTML = n.textContent.replace(re, m=>`<mark>${m}</mark>`);
+    [rowEl.querySelector('.rett-top h3'), rowEl.querySelector('.rett-info p')].forEach(n => {
+      if (!n) return; stripMarks(n); n.innerHTML = n.textContent.replace(re, m => `<mark>${m}</mark>`);
     });
   };
   const setAriaExpandedForList = (listEl, expanded) => {
@@ -474,89 +506,89 @@ function setupMenuSearch() {
       document.querySelector(`[aria-controls="${id}"]`);
     if (headerBtn) headerBtn.setAttribute('aria-expanded', String(!!expanded));
   };
-  const openList = (l)=>{ l.style.display='flex'; setAriaExpandedForList(l,true); };
-  const closeList= (l)=>{ l.style.display='none'; setAriaExpandedForList(l,false); };
+  const openList = (l) => { l.style.display = 'flex'; setAriaExpandedForList(l, true); };
+  const closeList = (l) => { l.style.display = 'none'; setAriaExpandedForList(l, false); };
 
-  const index = allDishRows.map(row=>{
-    const t=row.querySelector('.rett-top h3')?.textContent||'';
-    const d=row.querySelector('.rett-info p')?.textContent||'';
-    const p=row.querySelector('.pris')?.textContent||'';
-    return {row, listEl: row.closest('.retter-list'), text: normalize(`${t} ${d} ${p}`)};
+  const index = allDishRows.map(row => {
+    const t = row.querySelector('.rett-top h3')?.textContent || '';
+    const d = row.querySelector('.rett-info p')?.textContent || '';
+    const p = row.querySelector('.pris')?.textContent || '';
+    return { row, listEl: row.closest('.retter-list'), text: normalize(`${t} ${d} ${p}`) };
   });
 
   let hitsList = [];
   let hitIndex = -1;
   let currentRow = null;
 
-  const setNavUI = ()=>{
+  const setNavUI = () => {
     const n = hitsList.length;
-    counterEl.textContent = n ? `${hitIndex+1}/${n}` : '0/0';
-    prevBtn.disabled = n<=1 || hitIndex<=0;
-    nextBtn.disabled = n<=1 || hitIndex>=n-1;
+    counterEl.textContent = n ? `${hitIndex + 1}/${n}` : '0/0';
+    prevBtn.disabled = n <= 1 || hitIndex <= 0;
+    nextBtn.disabled = n <= 1 || hitIndex >= n - 1;
     floatNav.style.display = n ? 'flex' : 'none';
   };
 
-  const focusHit = (i,{smooth=true}={})=>{
-    if (!hitsList.length) { floatNav.style.display='none'; return; }
-    i = Math.max(0, Math.min(i, hitsList.length-1));
+  const focusHit = (i, { smooth = true } = {}) => {
+    if (!hitsList.length) { floatNav.style.display = 'none'; return; }
+    i = Math.max(0, Math.min(i, hitsList.length - 1));
     if (currentRow) currentRow.classList.remove('current-hit');
     currentRow = hitsList[i];
     currentRow.classList.add('current-hit');
-    currentRow.scrollIntoView({behavior: smooth?'smooth':'auto', block:'center'});
+    currentRow.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'center' });
     hitIndex = i;
     setNavUI();
   };
 
-  const restoreAll = ()=>{
+  const restoreAll = () => {
     if (currentRow) currentRow.classList.remove('current-hit');
-    currentRow=null; hitsList=[]; hitIndex=-1;
-    allDishRows.forEach(r=>{ stripMarks(r); r.style.display = r.dataset.originalDisplay || ''; r.classList.remove('current-hit'); });
-    retterLists.forEach(l=>{ const o=l.dataset.originalDisplay||''; l.style.display=o; setAriaExpandedForList(l,o!=='none'); });
-    document.querySelectorAll('.menu-category').forEach(c=>{ c.style.display=''; c.classList.remove('no-results'); });
-    extraSections.forEach(e=> e.style.display='');
-    status.textContent='';
+    currentRow = null; hitsList = []; hitIndex = -1;
+    allDishRows.forEach(r => { stripMarks(r); r.style.display = r.dataset.originalDisplay || ''; r.classList.remove('current-hit'); });
+    retterLists.forEach(l => { const o = l.dataset.originalDisplay || ''; l.style.display = o; setAriaExpandedForList(l, o !== 'none'); });
+    document.querySelectorAll('.menu-category').forEach(c => { c.style.display = ''; c.classList.remove('no-results'); });
+    extraSections.forEach(e => e.style.display = '');
+    status.textContent = '';
     setNavUI();
   };
 
-  const runSearch = (raw)=>{
+  const runSearch = (raw) => {
     const q = normalize(raw);
     if (!q) { restoreAll(); return; }
 
-    index.forEach(({row})=>{ stripMarks(row); row.style.display='none'; row.classList.remove('current-hit'); });
+    index.forEach(({ row }) => { stripMarks(row); row.style.display = 'none'; row.classList.remove('current-hit'); });
     retterLists.forEach(closeList);
-    document.querySelectorAll('.menu-category').forEach(c=>{ c.style.display='none'; c.classList.add('no-results'); });
-    extraSections.forEach(e=> e.style.display='none');
+    document.querySelectorAll('.menu-category').forEach(c => { c.style.display = 'none'; c.classList.add('no-results'); });
+    extraSections.forEach(e => e.style.display = 'none');
 
     hitsList = [];
-    index.forEach(item=>{
+    index.forEach(item => {
       if (item.text.includes(q)) {
-        item.row.style.display='';
+        item.row.style.display = '';
         highlightText(item.row, raw);
         openList(item.listEl);
         const cat = item.listEl.closest('.menu-category');
-        if (cat) { cat.style.display=''; cat.classList.remove('no-results'); }
+        if (cat) { cat.style.display = ''; cat.classList.remove('no-results'); }
         hitsList.push(item.row);
       }
     });
 
     status.textContent = hitsList.length ? `${hitsList.length} treff for “${raw}”.` : `Ingen treff for “${raw}”.`;
-    if (hitsList.length) focusHit(0,{smooth:false}); else setNavUI();
+    if (hitsList.length) focusHit(0, { smooth: false }); else setNavUI();
   };
 
   let timer;
-  const debounce=(fn,ms=100)=>(...args)=>{ clearTimeout(timer); timer=setTimeout(()=>fn.apply(null,args),ms); };
+  const debounce = (fn, ms = 100) => (...args) => { clearTimeout(timer); timer = setTimeout(() => fn.apply(null, args), ms); };
 
-  input.addEventListener('input', debounce(e=> runSearch(e.target.value)));
-  input.addEventListener('keydown', (e)=>{
-    if (e.key==='Escape'){ input.value=''; restoreAll(); input.blur(); }
-    if (e.key==='Enter'){ if (hitsList.length) focusHit(Math.min(hitIndex+1, hitsList.length-1)); }
-    if (e.altKey && e.key==='ArrowDown'){ e.preventDefault(); if (hitsList.length) focusHit(Math.min(hitIndex+1, hitsList.length-1)); }
-    if (e.altKey && e.key==='ArrowUp'){ e.preventDefault(); if (hitsList.length) focusHit(Math.max(hitIndex-1, 0)); }
+  input.addEventListener('input', debounce(e => runSearch(e.target.value)));
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { input.value = ''; restoreAll(); input.blur(); }
+    if (e.key === 'Enter') { if (hitsList.length) focusHit(Math.min(hitIndex + 1, hitsList.length - 1)); }
+    if (e.altKey && e.key === 'ArrowDown') { e.preventDefault(); if (hitsList.length) focusHit(Math.min(hitIndex + 1, hitsList.length - 1)); }
+    if (e.altKey && e.key === 'ArrowUp') { e.preventDefault(); if (hitsList.length) focusHit(Math.max(hitIndex - 1, 0)); }
   });
-  if (clearBtn) clearBtn.addEventListener('click', ()=>{ input.value=''; input.focus(); restoreAll(); });
+  if (clearBtn) clearBtn.addEventListener('click', () => { input.value = ''; input.focus(); restoreAll(); });
 
-  prevBtn.addEventListener('click', ()=>{ if (hitsList.length) focusHit(hitIndex-1); });
-  nextBtn.addEventListener('click', ()=>{ if (hitsList.length) focusHit(hitIndex+1); });
+  prevBtn.addEventListener('click', () => { if (hitsList.length) focusHit(hitIndex - 1); });
+  nextBtn.addEventListener('click', () => { if (hitsList.length) focusHit(hitIndex + 1); });
 
   restoreAll();
 }
@@ -569,7 +601,8 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(updateOpenStatus, 1000);
 
   initBackToTop();
-  initPhoneModal();
+  initOrderModal();
+  initWPBookingBanner();
   initMenuHeaderClicks();
 
   document.addEventListener("keydown", (e) => {

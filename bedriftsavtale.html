@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="no">
-  <head>
-    <!-- WebSite (global) -->
-    <script type="application/ld+json">
+
+<head>
+  <!-- WebSite (global) -->
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
@@ -18,8 +19,8 @@
       }
     </script>
 
-    <!-- Restaurant (global – kun én blokk) -->
-    <script type="application/ld+json">
+  <!-- Restaurant (global – kun én blokk) -->
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Restaurant",
@@ -136,162 +137,130 @@
       }
     </script>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Drammen Pizza og Grill</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="icon" type="image/png" href="bilder/logo.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Drammen Pizza og Grill</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="icon" type="image/png" href="bilder/logo.png" />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="language-wrapper">
-      <label for="google_translate_element"> Choose language:</label>
-      <div id="google_translate_element"></div>
-    </div>
-    <section class="hero-bedrift">
-      <header>
-        <div class="logo-container">
-          <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-          <h1>
-            <a href="index.html" class="logo">Drammen Pizza & Grill</a>
-          </h1>
-        </div>
-        <button
-          class="hamburger"
-          aria-label="Meny"
-          aria-expanded="false"
-          aria-controls="nav-menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <nav id="nav-menu">
-          <a href="index.html">Hjem</a>
-          <a href="meny.html">Meny</a>
-          <a href="tilbud.html">Tilbud</a>
-          <a href="allergener.html">Allergener</a>
-          <a href="kontakt.html">Kontakt</a>
-          <a href="om-oss.html">Om Oss</a>
-          <a href="bedriftsavtale.html">Firmaavtale</a>
-          <a href="barnebursdag.html">Barnebursdag</a>
-        </nav>
-      </header>
-      <div class="hero-content">
-        <h2 class="velkommen-tekst">Velkommen til Drammen Pizza & Grill</h2>
-        <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
+<body>
+  <div id="language-wrapper">
+    <label for="google_translate_element"> Choose language:</label>
+    <div id="google_translate_element"></div>
+  </div>
+  <section class="hero-bedrift">
+    <header>
+      <div class="logo-container">
+        <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
 
-        <!-- Legg til disse to under -->
-        <br />
-        <a class="order-btn" href="#" id="orderBtn">Ring og Bestill</a>
+        <h1>
+          <a href="index.html" class="logo">Drammen Pizza & Grill</a>
+        </h1>
       </div>
-    </section>
+      <button class="hamburger" aria-label="Meny" aria-expanded="false" aria-controls="nav-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav id="nav-menu">
+        <a href="index.html">Hjem</a>
+        <a href="meny.html">Meny</a>
+        <a href="tilbud.html">Tilbud</a>
+        <a href="allergener.html">Allergener</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="om-oss.html">Om Oss</a>
+        <a href="bedriftsavtale.html">Firmaavtale</a>
+        <a href="barnebursdag.html">Barnebursdag</a>
+      </nav>
+    </header>
+    <div class="hero-content">
+      <h2 class="velkommen-tekst">Velkommen til Drammen Pizza & Grill</h2>
+      <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
 
-    <section class="hero-section">
-      <h1>🤝 Firmaavtale med Drammen pizza og grill</h1>
+      <!-- Legg til disse to under -->
+      <br />
+      <a class="order-btn" href="#" id="orderBtn">Bestill nå</a>
+    </div>
+  </section>
+
+  <section class="hero-section">
+    <h1>🤝 Firmaavtale med Drammen pizza og grill</h1>
+    <p>
+      Vi kan tilby en firmaavtale med egen firmakonto, hvor vi gir 5-10%
+      rabatt, avhengig av hvor mye dere bestiller. Ved større bestillinger gir
+      vi deg rabatt avhengig av hvor stor bestillingen er. <br />Gi oss gjerne
+      beskjed god tid i forveien.
+    </p>
+  </section>
+
+  <main class="form-section">
+    <h2>Interessert? Fyll ut skjemaet!</h2>
+    <form class="contact-form" id="contactForm" onsubmit="sendEmail(event)">
+      <label for="firma">Firmanavn</label>
+      <input type="text" id="firma" name="firma" placeholder="F.eks. AS Eksempel" required />
+
+      <label for="kontaktperson">Kontaktperson</label>
+      <input type="text" id="kontaktperson" name="kontaktperson" placeholder="Fullt navn" required />
+
+      <label for="telefon">Telefonnummer</label>
+      <input type="tel" id="telefon" name="telefon" placeholder="123 45 678" required />
+
+      <label for="epost">E-postadresse</label>
+      <input type="email" id="epost" name="epost" placeholder="epost@firma.no" required />
+
+      <label for="melding">Hva kan vi hjelpe dere med?</label>
+      <textarea id="melding" name="melding" rows="5" placeholder="Fortell oss om dine behov eller ønsker"></textarea>
+
+      <button type="submit">Send inn henvendelse</button>
+    </form>
+  </main>
+
+  <footer>
+    <div class="footer-content">
       <p>
-        Vi kan tilby en firmaavtale med egen firmakonto, hvor vi gir 5-10%
-        rabatt, avhengig av hvor mye dere bestiller. Ved større bestillinger gir
-        vi deg rabatt avhengig av hvor stor bestillingen er. <br />Gi oss gjerne
-        beskjed god tid i forveien.
+        Drammen Pizza og Grill <br />
+        Org.nr. 914 812 801
       </p>
-    </section>
-
-    <main class="form-section">
-      <h2>Interessert? Fyll ut skjemaet!</h2>
-      <form class="contact-form" id="contactForm" onsubmit="sendEmail(event)">
-        <label for="firma">Firmanavn</label>
-        <input
-          type="text"
-          id="firma"
-          name="firma"
-          placeholder="F.eks. AS Eksempel"
-          required
-        />
-
-        <label for="kontaktperson">Kontaktperson</label>
-        <input
-          type="text"
-          id="kontaktperson"
-          name="kontaktperson"
-          placeholder="Fullt navn"
-          required
-        />
-
-        <label for="telefon">Telefonnummer</label>
-        <input
-          type="tel"
-          id="telefon"
-          name="telefon"
-          placeholder="123 45 678"
-          required
-        />
-
-        <label for="epost">E-postadresse</label>
-        <input
-          type="email"
-          id="epost"
-          name="epost"
-          placeholder="epost@firma.no"
-          required
-        />
-
-        <label for="melding">Hva kan vi hjelpe dere med?</label>
-        <textarea
-          id="melding"
-          name="melding"
-          rows="5"
-          placeholder="Fortell oss om dine behov eller ønsker"
-        ></textarea>
-
-        <button type="submit">Send inn henvendelse</button>
-      </form>
-    </main>
-
-    <footer>
-      <div class="footer-content">
-        <p>
-          Drammen Pizza og Grill <br />
-          Org.nr. 914 812 801
-        </p>
-        <p>Følg oss på Instagram og Facebook</p>
-        <p style="margin-top: 10px; font-size: 0.95rem">
-          Designet og utviklet av
-          <a
-            href="https://webplug.no"
-            target="_blank"
-            style="color: #fff; text-decoration: underline"
-          >
-            <strong>WebPlug</strong>
-          </a>
-        </p>
-      </div>
-    </footer>
-    <button
-      class="back-to-top"
-      id="backToTop"
-      aria-label="Gå til toppen av siden"
-      title="Tilbake til toppen"
-    ></button>
-    <!-- Modal popup for telefonnummer -->
-    <div id="phoneModal" class="modal">
-      <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <h2>Ring Drammen Pizza & Grill</h2>
-        <p>Telefonnummer:</p>
-        <a href="tel:32830500" class="phone-number">328 30 500</a> <br />
-        <button id="modalCloseBtn" class="modal-close-button">Lukk</button>
+      <p>Følg oss på Instagram og Facebook</p>
+      <p style="margin-top: 10px; font-size: 0.95rem">
+        Designet og utviklet av
+        <a href="https://webplug.no" target="_blank" style="color: #fff; text-decoration: underline">
+          <strong>WebPlug</strong>
+        </a>
+      </p>
+    </div>
+  </footer>
+  <button class="back-to-top" id="backToTop" aria-label="Gå til toppen av siden" title="Tilbake til toppen"></button>
+  <!-- Order Modal (Bestill nå popup med to valg) -->
+  <div id="orderModal" aria-hidden="true">
+    <div class="order-modal-content">
+      <button class="order-modal-close" aria-label="Lukk">&times;</button>
+      <h2>Velg bestillingsmåte</h2>
+      <p>Hvordan vil du bestille?</p>
+      <div class="order-modal-buttons">
+        <a href="tel:+4732830500" class="order-modal-btn order-modal-btn-ring">📞 Ring og bestill</a>
+        <a href="https://wpbooking.no/drammen-pizza-grill" target="_blank" rel="noopener"
+          class="order-modal-btn order-modal-btn-wpbooking">🍕 Bestill med WPBooking</a>
       </div>
     </div>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  </div>
 
-    <script src="script.js"></script>
-  </body>
+  <!-- WPBooking Sticky Banner -->
+  <div id="wpbookingBanner">
+    <button class="banner-close" aria-label="Lukk banner">&times;</button>
+    <h3 class="banner-title">Nyhet: Enklere bestilling! 🍕</h3>
+    <p class="banner-text">Nå kan du reservere maten direkte på nett. Velg mellom levering eller betaling ved henting –
+      raskt, trygt og enkelt!</p>
+    <a href="https://wpbooking.no/drammen-pizza-grill" target="_blank" rel="noopener" class="banner-cta">Bestill her</a>
+  </div>
+  <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <script src="script.js"></script>
+</body>
+
 </html>
