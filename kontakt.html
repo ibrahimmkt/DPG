@@ -182,7 +182,10 @@
       <h2 class="velkommen-tekst">Velkommen til Drammen Pizza & Grill</h2>
       <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
       <br />
-      <a class="order-btn" href="#" id="orderBtn">Bestill nå</a>
+      <div class="hero-buttons">
+        <a class="hero-btn hero-btn-ring" href="tel:+4732830500">📞 Ring og bestill</a>
+        <a class="hero-btn hero-btn-meny" href="meny.html">📖 Se hele menyen</a>
+      </div>
     </div>
   </section>
 
@@ -262,27 +265,9 @@
   </footer>
   <button class="back-to-top" id="backToTop" aria-label="Gå til toppen av siden" title="Tilbake til toppen"></button>
   <!-- Order Modal (Bestill nå popup med to valg) -->
-  <div id="orderModal" aria-hidden="true">
-    <div class="order-modal-content">
-      <button class="order-modal-close" aria-label="Lukk">&times;</button>
-      <h2>Velg bestillingsmåte</h2>
-      <p>Hvordan vil du bestille?</p>
-      <div class="order-modal-buttons">
-        <a href="tel:+4732830500" class="order-modal-btn order-modal-btn-ring">📞 Ring og bestill</a>
-        <a href="https://wpbooking.no/drammen-pizza-grill" target="_blank" rel="noopener"
-          class="order-modal-btn order-modal-btn-wpbooking">🍕 Bestill med WPBooking</a>
-      </div>
-    </div>
-  </div>
+  <!-- Order Modal Fjernet -->
 
-  <!-- WPBooking Sticky Banner -->
-  <div id="wpbookingBanner">
-    <button class="banner-close" aria-label="Lukk banner">&times;</button>
-    <h3 class="banner-title">Nyhet: Enklere bestilling! 🍕</h3>
-    <p class="banner-text">Nå kan du reservere maten direkte på nett. Velg mellom levering eller betaling ved henting –
-      raskt, trygt og enkelt!</p>
-    <a href="https://wpbooking.no/drammen-pizza-grill" target="_blank" rel="noopener" class="banner-cta">Bestill her</a>
-  </div>
+  <!-- WPBooking Sticky Banner (Fjernet) -->
   <script src="script.js"></script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 

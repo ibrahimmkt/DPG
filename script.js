@@ -299,74 +299,9 @@ function makeHeaderClickable(headerElement, menuId, menuName) {
   });
 }
 
-/* ================================
-   MODAL: BESTILL NÅ (to valg)
-   ================================ */
-function initOrderModal() {
-  // Hent alle order-knapper med id="orderBtn"
-  const orderBtns = document.querySelectorAll('.order-btn[id="orderBtn"]');
-  const modal = document.getElementById("orderModal");
-  if (!modal || orderBtns.length === 0) return;
+/* MODAL: BESTILL NÅ (Fjernet) */
 
-  const closeBtn = modal.querySelector(".order-modal-close");
-
-  // Åpne modal ved klikk på alle "Bestill nå" knapper
-  orderBtns.forEach(btn => {
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      modal.style.display = "block";
-      modal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden";
-    });
-  });
-
-  function closeModal() {
-    modal.style.display = "none";
-    modal.setAttribute("aria-hidden", "true");
-    document.body.style.overflow = "";
-  }
-
-  if (closeBtn) closeBtn.addEventListener("click", closeModal);
-
-  // Lukk ved klikk utenfor modal-content
-  window.addEventListener("click", function (e) {
-    if (e.target === modal) closeModal();
-  });
-
-  // Lukk med Escape
-  window.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && modal.style.display === "block") closeModal();
-  });
-}
-
-/* ================================
-   WPBOOKING STICKY BANNER
-   ================================ */
-function initWPBookingBanner() {
-  const banner = document.getElementById("wpbookingBanner");
-  if (!banner) return;
-
-  // Skjul banneret initialt
-  banner.style.display = "none";
-
-  // Sjekk om banneret er lukket før
-  if (localStorage.getItem("wpbookingBannerClosed") === "true") {
-    return; // Hold skjult hvis bruker har lukket det tidligere
-  }
-
-  // Vis banneret etter en kort delay (for bedre brukeropplevelse)
-  setTimeout(function () {
-    banner.style.display = "block";
-  }, 1500);
-
-  const closeBtn = banner.querySelector(".banner-close");
-  if (closeBtn) {
-    closeBtn.addEventListener("click", function () {
-      banner.style.display = "none";
-      localStorage.setItem("wpbookingBannerClosed", "true");
-    });
-  }
-}
+/* WPBOOKING STICKY BANNER (Fjernet) */
 
 
 /* ================================
@@ -594,15 +529,39 @@ function setupMenuSearch() {
 }
 
 /* ================================
-   DOM READY – init alt
+   MENU STICKY NAVIGATION (JUMP LINKS)
    ================================ */
+function showCategory(categoryId) {
+  const stickyNav = document.getElementById('menuStickyNav');
+  const targetCat = document.getElementById(categoryId);
+
+  if (!targetCat) return;
+
+  // Sett aktiv sticky nav (highlight)
+  if (stickyNav) {
+    document.querySelectorAll('.menu-nav-item').forEach(item => item.classList.remove('active'));
+    const activeNavItem = document.querySelector(`.menu-nav-item[data-cat="${categoryId}"]`);
+    if (activeNavItem) activeNavItem.classList.add('active');
+  }
+
+  // Scroll til toppen av kategorien med riktig offset for sticky nav
+  requestAnimationFrame(() => {
+    const navRect = stickyNav ? stickyNav.getBoundingClientRect() : { height: 0 };
+    const catTop = targetCat.getBoundingClientRect().top + window.pageYOffset;
+    const scrollTarget = catTop - (navRect.height + 20);
+
+    window.scrollTo({
+      top: Math.max(0, scrollTarget),
+      behavior: 'smooth'
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   updateOpenStatus();
   setInterval(updateOpenStatus, 1000);
 
   initBackToTop();
-  initOrderModal();
-  initWPBookingBanner();
   initMenuHeaderClicks();
 
   document.addEventListener("keydown", (e) => {

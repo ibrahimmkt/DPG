@@ -185,55 +185,46 @@
       <h2 class="velkommen-tekst">Velkommen til Drammen Pizza og Grill</h2>
       <p class="tagline">Du ringer - Vi bringer - innen 60 minutter</p>
       <br />
-      <a class="order-btn" href="#" id="orderBtn">Bestill nå</a>
-    </div>
-    <!-- Enkel leveringsinfo -->
-    <!-- Leveringsinfo – kompakt og pen -->
-    <section class="levering-band">
-      <div class="levering-band__inner">
-        <span class="lead"><span class="emoji">🚚</span> Levering i Drammen</span>
-        <span class="sep" aria-hidden="true"></span>
-        <span>0–5 km <strong>80,-</strong></span>
-        <span class="sep" aria-hidden="true"></span>
-        <span>Over 5 km: egne priser</span>
-        <span class="sep" aria-hidden="true"></span>
-        <span>Min. ordre <strong>165,-</strong>
-          <small>(ekskl. kjøretillegg)</small></span>
-        <span class="sep" aria-hidden="true"></span>
-        <span>Betaling: <strong>Kort</strong>, <strong>Vipps</strong>,
-          <strong>kontant</strong></span>
+      <div class="hero-buttons">
+        <a class="hero-btn hero-btn-ring" href="tel:+4732830500">📞 Ring og bestill</a>
+        <a class="hero-btn hero-btn-meny" href="meny.html">📖 Se hele menyen</a>
       </div>
-    </section>
+    </div>
+    </div>
   </section>
 
   <section class="meny-wrapper">
-    <!-- Meny-søk -->
-    <div id="meny-sok" class="meny-sok">
-      <label for="menuSearch" class="sr-only">Søk i menyen</label>
-      <div class="meny-sok-felt">
-        <input id="menuSearch" type="search" inputmode="search"
-          placeholder="Søk etter rett, ingrediens eller kategori …" autocomplete="off" aria-describedby="searchHelp"
-          aria-label="Søk i menyen" />
-        <button id="menuSearchClear" type="button" aria-label="Tøm søk">
-          ✕
-        </button>
+    <!-- Sticky Sub-nav (Hurtigvalg) -->
+
+    <!-- Sticky Sub-nav (Hurtigvalg) -->
+    <div class="menu-nav-sticky" id="menuStickyNav">
+      <div class="menu-nav-item active" onclick="showCategory('pizza-kategori')" data-cat="pizza-kategori">🍕 Pizza
       </div>
-      <div id="searchHelp" class="sok-hjelp">
-        Eksempel: “kylling”, “kebab”, “ananas”, “burger”
-      </div>
-      <div id="searchStatus" class="sok-status" aria-live="polite"></div>
+      <div class="menu-nav-item" onclick="showCategory('grillmat-kategori')" data-cat="grillmat-kategori">🔥 Grill &
+        Kebab</div>
+      <div class="menu-nav-item" onclick="showCategory('burger-kategori')" data-cat="burger-kategori">🍔 Burgere</div>
+      <div class="menu-nav-item" onclick="showCategory('drikke-kategori')" data-cat="drikke-kategori">🥤 Drikke</div>
     </div>
+
+    <!-- Deal Ribbon (Lite & Kult) -->
+    <section class="deal-ribbon-section">
+      <a href="tilbud.html" class="deal-ribbon">
+        <div class="deal-ribbon-content">
+          <span class="ribbon-badge">LUNSJ-DEAL 🔥</span>
+          <span class="ribbon-text"><strong>2 store pizza</strong> til kun <strong>485,-</strong> <small>(Hverdager
+              10-13)</small></span>
+          <span class="ribbon-arrow">→</span>
+        </div>
+      </a>
+    </section>
 
     <!-- Pizzameny -->
     <div class="menu-category" id="pizza-kategori">
       <div class="menu-category-header">
         <h3>🍕 Pizza meny</h3>
-        <button onclick="toggleMeny('pizza-retter')">
-          Vis Meny/ Skjul Meny
-        </button>
       </div>
 
-      <div class="retter-list" id="pizza-retter" style="display: none">
+      <div class="retter-list" id="pizza-retter">
         <div class="rett-flex no-image">
           <div class="rett-info">
             <div class="rett-top">
@@ -582,12 +573,9 @@
     <div class="menu-category" id="grillmat-kategori">
       <div class="menu-category-header">
         <h3>🔥 Grill meny</h3>
-        <button onclick="toggleMeny('grillmat-retter')">
-          Vis Meny/ Skjul Meny
-        </button>
       </div>
 
-      <div class="retter-list" id="grillmat-retter" style="display: none">
+      <div class="retter-list" id="grillmat-retter">
         <!-- Kebabmeny -->
         <div class="rett-flex no-image">
           <div class="rett-info">
@@ -638,14 +626,10 @@
         </div>
 
         <!-- Hamburgermeny -->
-        <div style="
-              margin: 2rem 0;
-              font-weight: 700;
-              font-size: 1.1rem;
-              color: #b23e3e;
-            ">
-          Hamburgermeny
+        <div id="burger-kategori" class="menu-category-header">
+          <h3>🍔 Burgere</h3>
         </div>
+
 
         <div class="rett-flex no-image">
           <div class="rett-info">
@@ -1036,12 +1020,9 @@
     <div class="menu-category" id="drikke-kategori">
       <div class="menu-category-header">
         <h3>🥤 Drikke</h3>
-        <button onclick="toggleMeny('drikke-retter')">
-          Vis Meny/ Skjul Meny
-        </button>
       </div>
 
-      <div class="retter-list" id="drikke-retter" style="display: none">
+      <div class="retter-list" id="drikke-retter">
         <div class="rett-flex no-image">
           <div class="rett-info">
             <div class="rett-top">
@@ -1067,6 +1048,27 @@
     </div>
   </section>
 
+  <!-- Leveringsinformasjon -->
+  <section class="levering-band" style="margin: 3rem 1rem;">
+    <div class="levering-band__inner">
+      <span class="lead"><span class="emoji">🚚</span> Gratis levering*</span>
+      <span class="sep"></span>
+      <span>Vi leverer i hele Drammen alle dager</span>
+      <span class="sep"></span>
+      <strong>10:00 – 23:00</strong>
+      <span class="sep"></span>
+      <small>(Man–Lør)</small>
+      <span class="sep"></span>
+      <strong>11:00 – 23:00</strong>
+      <span class="sep"></span>
+      <small>(Søn)</small>
+      <span class="sep"></span>
+      <a href="tel:32830500" style="color: #fff; text-decoration: underline; font-weight: 800; margin-left: auto;">Ring
+        328
+        30 500</a>
+    </div>
+  </section>
+
   <footer>
     <div class="footer-content">
       <p>
@@ -1086,27 +1088,9 @@
   <button class="back-to-top" id="backToTop" aria-label="Gå til toppen av siden" title="Tilbake til toppen"></button>
 
   <!-- Order Modal (Bestill nå popup med to valg) -->
-  <div id="orderModal" aria-hidden="true">
-    <div class="order-modal-content">
-      <button class="order-modal-close" aria-label="Lukk">&times;</button>
-      <h2>Velg bestillingsmåte</h2>
-      <p>Hvordan vil du bestille?</p>
-      <div class="order-modal-buttons">
-        <a href="tel:+4732830500" class="order-modal-btn order-modal-btn-ring">📞 Ring og bestill</a>
-        <a href="https://wpbooking.no/drammen-pizza-grill" target="_blank" rel="noopener"
-          class="order-modal-btn order-modal-btn-wpbooking">🍕 Bestill med WPBooking</a>
-      </div>
-    </div>
-  </div>
+  <!-- Order Modal Fjernet -->
 
-  <!-- WPBooking Sticky Banner -->
-  <div id="wpbookingBanner">
-    <button class="banner-close" aria-label="Lukk banner">&times;</button>
-    <h3 class="banner-title">Nyhet: Enklere bestilling! 🍕</h3>
-    <p class="banner-text">Nå kan du reservere maten direkte på nett. Velg mellom levering eller betaling ved henting –
-      raskt, trygt og enkelt!</p>
-    <a href="https://wpbooking.no/drammen-pizza-grill" target="_blank" rel="noopener" class="banner-cta">Bestill her</a>
-  </div>
+  <!-- WPBooking Sticky Banner (Fjernet) -->
 
   <script src="script.js"></script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
