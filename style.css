@@ -4470,7 +4470,7 @@ mark {
   border-color: #ffd7d7;
 }
 
-.deal-card.lunch {
+.deal-card.pizza-deal {
   background: #fff;
 }
 
@@ -4888,6 +4888,7 @@ body.nav-open .levering-band-meny {
     }
   }
 }
+
 /* Base Category Display (Always visible) */
 .menu-category {
   display: block !important;
@@ -4909,7 +4910,7 @@ body.nav-open .levering-band-meny {
    MOBILOPTIMALISERING - FIKS FOR WHITE SPACE & STICKY NAV
    ======================================================== */
 @media screen and (max-width: 768px) {
-  
+
   /* 1. Tvinger hovedcontaineren til å stable alt tett */
   .meny-wrapper {
     display: flex !important;
@@ -4947,15 +4948,15 @@ body.nav-open .levering-band-meny {
     position: sticky !important;
     top: 15px !important;
     z-index: 2010 !important;
-    
+
     /* Sentrering av selve boksen */
     width: 94% !important;
     max-width: 500px !important;
     margin: 0 auto 2rem auto !important;
     left: 0 !important;
     right: 0 !important;
-    
-  
+
+
   }
 
   /* Skjuler scrollbaren i Chrome/Safari, men beholder funksjonen */
