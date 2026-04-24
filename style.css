@@ -128,12 +128,15 @@ nav a:hover {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Hero innhold z-index fikset */
+/* Hero innhold sentrert */
 .hero-content {
   position: relative;
-  z-index: 1;
-  margin-top: auto;
+  z-index: 10;
   text-align: center;
+  max-width: 900px;
+  padding: 0 1rem;
+  margin: auto;
+  /* Sentrerer vertikalt og horisontalt i flex-containeren */
 }
 
 /* ==============================================
@@ -305,91 +308,98 @@ nav a:hover {
    3. HERO SEKSJON
    ============================================== */
 
-.hero {
+.hero,
+.hero-meny,
+.hero-om-Oss,
+.hero-kontakt,
+.hero-bedrift,
+.hero-tilbud,
+.hero-allergener {
   position: relative;
-  background-image: url('bilder/pexels-kunal-lakhotia-781256899-29173094\ \(1\).jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white;
-  min-height: 80vh;
-  padding: 1rem 2rem;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  color: white;
+  padding: 1rem 2rem;
 }
 
-.hero-meny {
-  position: relative;
-  background-image: url('bilder/MixGrillTallerkenFIn.jpeg');
+/* Pseudo-element for bakgrunnsbilde slik at vi kan animere det uten å påvirke innholdet */
+.hero::after,
+.hero-meny::after,
+.hero-om-Oss::after,
+.hero-kontakt::after,
+.hero-bedrift::after,
+.hero-tilbud::after,
+.hero-allergener::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
-  color: white;
-  min-height: 80vh;
-  padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
+  z-index: -2;
+  animation: bgZoom 20s ease-in-out infinite alternate;
 }
 
-.hero-om-Oss {
-  position: relative;
+.hero::after {
+  background-image: url('bilder/KyllingpizzaDPG.png');
+}
+
+.hero-meny::after {
+  background-image: url('bilder/KebabDPG.png');
+}
+
+.hero-om-Oss::after {
   background-image: url('bilder/Innafor\ lokalet\ 1.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white;
-  min-height: 80vh;
-  padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
 }
 
-.hero-kontakt {
-  position: relative;
+.hero-kontakt::after {
   background-image: url('bilder/InnaforLokaletOpp.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white;
-  min-height: 80vh;
-  padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
 }
 
-.hero-bedrift {
-  position: relative;
-  background-image: url('bilder/MixGrillTallerkenFIn.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white;
-  min-height: 80vh;
-  padding: 1rem 2rem;
-  display: flex;
-  flex-direction: column;
+.hero-bedrift::after {
+  background-image: url('bilder/mixgrillVenstre.png');
 }
 
-.hero::before {
+.hero-tilbud::after {
+  background-image: url('bilder/mixGrillCloseup.png');
+}
+
+.hero-allergener::after {
+  background-image: url('bilder/kyllingkebab.png');
+}
+
+.hero::before,
+.hero-meny::before,
+.hero-om-Oss::before,
+.hero-kontakt::before,
+.hero-bedrift::before,
+.hero-tilbud::before,
+.hero-allergener::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 0;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.6) 100%);
+  z-index: -1;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 10;
-  margin-top: auto;
-  text-align: center;
-}
+
+
+
+/* Hero content styles moved to generic or specific blocks */
 
 .hero-content h2 {
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  color: rgb(255, 0, 0);
-  text-shadow: 2px 2px #f0bfbf;
+  color: #fff;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
 }
 
 .hero-section {
@@ -425,20 +435,21 @@ nav a:hover {
   color: #fff;
 }
 
-.tagline {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: #ffd700;
-  text-shadow: 2px 2px #000;
-  display: block;
-  animation: rideIn 1.2s ease-out forwards;
-}
-
 .velkommen-tekst {
   font-family: 'Great Vibes', cursive;
-  font-size: 3rem;
+  font-size: 3.5rem;
   color: #fff;
-  padding-right: 8px;
+  margin-bottom: 1rem;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tagline {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffd700;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  display: block;
+  letter-spacing: 1px;
 }
 
 .logo-animasjon {
@@ -534,17 +545,18 @@ nav a:hover {
 
 .hero-btn {
   display: inline-block;
-  padding: 1rem 2rem;
-  font-size: 1.2rem;
-  font-weight: 800;
+  padding: 1.1rem 2.2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
   text-decoration: none;
   border-radius: 50px;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  min-width: 220px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  min-width: 240px;
   text-align: center;
   border: none;
   cursor: pointer;
+  backdrop-filter: blur(5px);
 }
 
 .hero-btn-ring {
@@ -4171,107 +4183,120 @@ mark {
 /* ==========================================================
    Leveringsinfo – kompakt, pen gradient, rund "pill"-stil
    ========================================================== */
-.levering-band {
-  /* myk rød gradient + glass-effekt som funker over bilder og hvit bakgrunn */
-  background: linear-gradient(90deg, #b70f12, #e01a1a);
-  border-radius: 14px;
-  margin: 0.75rem auto 0.75rem;
-  padding: 0;
-  /* padding ligger på .__inner for bedre responsivitet */
-  box-shadow: 0 6px 18px rgba(176, 0, 0, .18);
+/* ========================================================
+   PREMIUM DELIVERY INFO SECTION
+   ======================================================== */
+.delivery-info-section {
+  max-width: 1100px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
 }
 
-.levering-band__inner {
-  /* sentrert, lesbar og fleksibel layout */
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 10px 16px;
-  color: #fff;
+.delivery-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.delivery-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f0f0f0;
+}
+
+.delivery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.delivery-card-icon {
+  font-size: 2.2rem;
+  background: #fff5f5;
+  width: 70px;
+  height: 70px;
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  /* bryter pent på mobil */
-  gap: 10px;
-  font-weight: 600;
-  line-height: 1.35;
-  backdrop-filter: saturate(120%) blur(2px);
+  justify-content: center;
+  border-radius: 15px;
+  flex-shrink: 0;
+  box-shadow: inset 0 0 15px rgba(230, 0, 0, 0.05);
 }
 
-/* Første bit får litt mer tyngde */
-.levering-band__inner .lead {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+.delivery-card-content h4 {
+  color: #1a1a1a;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
   font-weight: 800;
-  letter-spacing: .2px;
 }
 
-/* Liten emoji justert vertikalt */
-.levering-band__inner .emoji {
+.delivery-card-content p {
+  color: #666;
+  margin: 0 0 1rem 0;
+  font-size: 1rem;
+}
+
+.delivery-tag {
   display: inline-block;
-  transform: translateY(1px);
-}
-
-/* Delere mellom punkter – små, runde og diskrete */
-.levering-band__inner .sep {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .7);
-  flex: 0 0 6px;
-  margin: 0 2px;
-}
-
-/* Tekstelementer */
-.levering-band__inner span {
+  background: #e60000;
   color: #fff;
-  opacity: .95;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
-/* Gjør nøkkelverdier tydelige */
-.levering-band__inner strong {
+.opening-times {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.opening-times span {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.delivery-call-btn {
+  display: inline-block;
+  background: #1a1a1a;
   color: #fff;
-  font-weight: 900;
+  padding: 10px 20px;
+  border-radius: 12px;
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
 }
 
-/* Liten parentes-tekst */
-.levering-band__inner small {
-  opacity: .85;
-  font-weight: 600;
+.delivery-call-btn:hover {
+  background: #e60000;
+  transform: scale(1.05);
 }
 
-/* Hover/tap gir subtil glød (desktop) */
-@media (hover:hover) {
-  .levering-band:hover {
-    box-shadow: 0 8px 22px rgba(176, 0, 0, .24);
+/* Mobile Adjustments */
+@media screen and (max-width: 768px) {
+  .delivery-info-section {
+    margin: 3rem auto;
   }
-}
-
-/* Mobiltilpasning: større tekst, fjern prikk-delere når det brytes */
-@media (max-width: 720px) {
-  .levering-band__inner {
-    padding: 12px 14px;
-    font-size: .98rem;
-    gap: 8px 10px;
+  
+  .delivery-card {
+    padding: 1.5rem;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 1rem;
   }
-
-  .levering-band__inner .sep {
-    display: none;
-  }
-}
-
-/* Ekstra liten skjerm */
-@media (max-width: 420px) {
-  .levering-band__inner {
-    font-size: .95rem;
-    padding: 12px;
-  }
-}
-
-/* Mørk-modus – litt lysere gradient for bedre kontrast */
-@media (prefers-color-scheme: dark) {
-  .levering-band {
-    background: linear-gradient(90deg, #a51214, #d21a1c);
+  
+  .delivery-card-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem;
   }
 }
 
@@ -4715,13 +4740,21 @@ body.nav-open .levering-band-meny {
   z-index: 2010;
   margin: 0 auto 2.5rem auto;
   width: 94%;
-  max-width: 500px;
+  max-width: 850px;
   border-radius: 100px;
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
-  padding: 6px;
+  padding: 6px 12px;
   justify-content: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   border: 1px solid #f0f0f0;
+  gap: 8px;
+}
+
+.menu-nav-sticky::-webkit-scrollbar {
+  display: none;
 }
 
 .menu-nav-item {
@@ -4733,6 +4766,7 @@ body.nav-open .levering-band-meny {
   color: #555;
   transition: all 0.2s ease;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .menu-nav-item:hover {
@@ -4770,58 +4804,80 @@ body.nav-open .levering-band-meny {
   }
 }
 
+/* Skjuler scroll-hint på PC som standard */
+.scroll-hint-mobile {
+  display: none !important;
+}
+
 /* ========================================================
-   MOBILOPTIMALISERING - FIKS FOR WHITE SPACE & STICKY NAV
+   MOBILOPTIMALISERING - KONSOLIDERT
    ======================================================== */
 @media screen and (max-width: 768px) {
 
-  /* Fjerner eventuelle gigantiske minimumshøyder eller marginer */
-  .meny-wrapper {
-    min-height: auto !important;
-    padding-top: 1rem !important;
+  .scroll-hint-mobile {
+    display: block !important;
+    text-align: center;
+    font-size: 0.7rem;
+    color: #e60000;
+    font-weight: 800;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    animation: fadeInOut 2s infinite ease-in-out;
   }
 
-  .meny-sok {
-    margin-bottom: 1rem !important;
+  .pulse-arrow {
+    display: inline-block;
+    animation: pulseX 1.5s infinite;
   }
 
-  /* Sentrerer hurtigmenyen skikkelig på mobil */
+  @keyframes fadeInOut {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  @keyframes pulseX {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+  }
+
+  /* Sentrallager for mobiloptimale stiler */
   .menu-nav-sticky {
     display: flex !important;
     position: sticky !important;
     top: 10px !important;
-    width: 92% !important;
-    /* Justert litt ned for bedre marginer */
-    max-width: 500px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    margin-bottom: 2rem !important;
+    z-index: 2010 !important;
+    width: 94% !important;
+    max-width: 850px !important;
+    margin: 0 auto 1.2rem auto !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-    justify-content: center !important;
-    padding: 6px !important;
-    gap: 0.5rem !important;
-    scrollbar-width: none;
-    z-index: 2010 !important;
-    left: 0 !important;
-    right: 0 !important;
+    -webkit-overflow-scrolling: touch !important;
+    justify-content: flex-start !important;
+    padding: 6px 10px !important;
+    gap: 6px !important;
+    scrollbar-width: none !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    border-radius: 100px !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid #f0f0f0 !important;
+    
+    /* Indikator for scrolling */
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
   }
 
-  /* Skjuler den stygge scrollbaren i Chrome/Safari, men beholder funksjonen */
   .menu-nav-sticky::-webkit-scrollbar {
-    display: none;
+    display: none !important;
   }
 
-  /* Sørger for at knappene ikke krymper og holder teksten på én linje */
   .menu-nav-item {
     flex: 0 0 auto !important;
     white-space: nowrap !important;
-    padding: 0.6rem 1rem !important;
-    font-size: 0.95rem !important;
+    padding: 0.5rem 0.8rem !important;
+    font-size: 0.85rem !important;
   }
 
-  /* Tvinger meny-listene til å stable seg riktig vertikalt uten gaps */
   .retter-list {
     display: flex !important;
     flex-direction: column !important;
@@ -4834,62 +4890,7 @@ body.nav-open .levering-band-meny {
   }
 }
 
-@media screen and (max-width: 768px) {
-
-  /* 1. Tvinger hovedcontaineren til å stable alt tett */
-  .meny-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 1rem !important;
-    min-height: 0 !important;
-    padding-bottom: 2rem !important;
-  }
-
-  /* 2. Kutter alt av unødvendig plass under søkefeltet */
-  .meny-sok {
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
-    height: auto !important;
-  }
-
-  /* 3. Fikser hurtigmenyen og deaktiverer 'sticky' midlertidig for å unngå krasj */
-  .menu-nav-sticky {
-    position: relative !important;
-    top: 0 !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    margin: 1rem 0 !important;
-    height: auto !important;
-    min-height: 0 !important;
-  }
-
-  /* 4. Drar selve menykategoriene (Pizza, Grill etc.) helt opp */
-  .menu-category {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-
-  /* 5. Skjuler eventuelle pseudo-elementer som dytter innhold ned (ofte brukt for anchor links) */
-  .menu-category::before {
-    display: none !important;
-    content: none !important;
-  }
-
-  @media screen and (max-width: 768px) {
-    .menu-nav-sticky {
-      position: sticky !important;
-
-    }
-
-    /* Skjuler scrollbaren, beholder sveipingen */
-    .menu-nav-sticky::-webkit-scrollbar {
-      display: none;
-    }
-  }
-}
-
-/* Base Category Display (Always visible) */
+/* Base Category Display Reset */
 .menu-category {
   display: block !important;
   margin-bottom: 4rem;
@@ -4901,74 +4902,56 @@ body.nav-open .levering-band-meny {
   animation: none !important;
 }
 
+/* Premium Info Box for Tilbud */
+.tilbud-info-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  border: 1px solid #f0f0f0;
+}
+
+.tilbud-info-icon {
+  font-size: 2rem;
+  background: #fff8e1;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  flex-shrink: 0;
+}
+
+.tilbud-info-text strong {
+  display: block;
+  font-size: 1.05rem;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+  font-weight: 800;
+}
+
+.tilbud-info-text p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+@media screen and (max-width: 768px) {
+  .tilbud-info-box {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+}
+
 .menu-category::before {
   display: none !important;
   content: none !important;
-}
-
-/* ========================================================
-   MOBILOPTIMALISERING - FIKS FOR WHITE SPACE & STICKY NAV
-   ======================================================== */
-@media screen and (max-width: 768px) {
-
-  /* 1. Tvinger hovedcontaineren til å stable alt tett */
-  .meny-wrapper {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 1rem !important;
-    min-height: auto !important;
-    padding-top: 1rem !important;
-    padding-bottom: 2rem !important;
-  }
-
-  /* 2. Kutter unødvendig plass under søkefeltet */
-  .meny-sok {
-    margin-bottom: 1rem !important;
-    padding-bottom: 0 !important;
-    height: auto !important;
-  }
-
-  /* 3. Drar selve menykategoriene opp */
-  .menu-category {
-    margin-top: 0 !important;
-    margin-bottom: 2rem !important;
-    padding-top: 0 !important;
-    display: block !important;
-  }
-
-  /* 4. Meny-lister stabler riktig vertikalt */
-  .retter-list {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 1rem !important;
-  }
-
-  /* 5. MENU PILL NAV - STICKY & SENTRERT */
-  .menu-nav-sticky {
-    position: sticky !important;
-    top: 15px !important;
-    z-index: 2010 !important;
-
-    /* Sentrering av selve boksen */
-    width: 94% !important;
-    max-width: 500px !important;
-    margin: 0 auto 2rem auto !important;
-    left: 0 !important;
-    right: 0 !important;
-
-
-  }
-
-  /* Skjuler scrollbaren i Chrome/Safari, men beholder funksjonen */
-  .menu-nav-sticky::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Sørger for at knappene ikke krymper */
-  .menu-nav-item {
-    flex: 0 0 auto !important;
-    white-space: nowrap !important;
-    padding: 0.5rem 0.8rem !important;
-    font-size: 0.85rem !important;
-  }
 }

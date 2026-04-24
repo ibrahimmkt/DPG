@@ -230,14 +230,34 @@ function toggleMeny(id) {
 
 function initMenuHeaderClicks() {
   setTimeout(() => {
-    const pizzaHeader = document.querySelector('#pizza-kategori .menu-category-header h3');
-    const grillHeader = document.querySelector('#grillmat-kategori .menu-category-header h3');
-    const drikkeHeader = document.querySelector('#drikke-kategori .menu-category-header h3');
+    const categories = [
+      { headerId: 'pizza-kategori', listId: 'pizza-retter', name: 'Pizza meny' },
+      { headerId: 'rullekebab-kategori', listId: 'rullekebab-retter', name: 'Rullekebab meny' },
+      { headerId: 'kebab-kategori', listId: 'kebab-retter', name: 'Kebab meny' },
+      { headerId: 'burger-kategori', listId: 'burger-retter', name: 'Burgere' },
+      { headerId: 'grillmat-kategori', listId: 'grill-snadder-retter', name: 'Grill & Snadder' },
+      { headerId: 'smaretter-kategori', listId: 'smaretter-retter', name: 'Småretter' },
+      { headerId: 'drikke-kategori', listId: 'drikke-retter', name: 'Drikke meny' }
+    ];
 
-    if (pizzaHeader) makeHeaderClickable(pizzaHeader, 'pizza-retter', 'Pizza meny');
-    if (grillHeader) makeHeaderClickable(grillHeader, 'grillmat-retter', 'Grill meny');
-    if (drikkeHeader) makeHeaderClickable(drikkeHeader, 'drikke-retter', 'Drikke meny');
-  }, 500);
+    categories.forEach(cat => {
+      const header = document.querySelector(`#${cat.headerId} .menu-category-header h3`);
+      if (header) makeHeaderClickable(header, cat.listId, cat.name);
+    });
+
+    // Skjul 'Sveip for mer' når brukeren begynner å scrolle menyen
+    const stickyNav = document.getElementById('menuStickyNav');
+    const scrollHint = document.querySelector('.scroll-hint-mobile');
+    if (stickyNav && scrollHint) {
+      stickyNav.addEventListener('scroll', () => {
+        if (stickyNav.scrollLeft > 10) {
+          scrollHint.style.transition = 'opacity 0.5s ease';
+          scrollHint.style.opacity = '0';
+          setTimeout(() => { scrollHint.style.display = 'none'; }, 500);
+        }
+      }, { once: true });
+    }
+  }, 100);
 }
 
 function makeHeaderClickable(headerElement, menuId, menuName) {

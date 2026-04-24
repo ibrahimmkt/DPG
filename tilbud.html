@@ -142,7 +142,7 @@
   <title>Tilbud – Drammen Pizza & Grill</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Great+Vibes&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="bilder/logo.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -155,7 +155,7 @@
   </div>
 
   <!-- Hero -->
-  <section class="hero hero-meny" style="background-image: url('bilder/MixGrillTallerkenFIn.jpeg')">
+  <section class="hero hero-tilbud">
     <header>
       <div class="logo-container">
         <img src="bilder/logo.png" alt="dpg-logo" class="header-logo" />
@@ -191,16 +191,14 @@
 
   <!-- Tilbud – Grid -->
   <main class="tilbud-wrapper section">
-    <!-- Info-strip (valgfri) -->
-    <section class="levering-band" style="margin-top: 0; margin-bottom: 1.5rem">
-      <div class="levering-band__inner">
-        <span class="lead"><span class="emoji">💡</span> Husk</span>
-        <span class="sep" aria-hidden="true"></span>
-        <span>Tilbud kan ikke kombineres med andre rabatter</span>
-        <span class="sep" aria-hidden="true"></span>
-        <span>Gjelder i åpningstiden</span>
+    <!-- Premium Tilbud Info -->
+    <div class="tilbud-info-box">
+      <div class="tilbud-info-icon">💡</div>
+      <div class="tilbud-info-text">
+        <strong>Viktig informasjon om våre tilbud:</strong>
+        <p>Tilbud kan ikke kombineres med andre rabatter og gjelder kun i våre ordinære åpningstider.</p>
       </div>
-    </section>
+    </div>
 
     <div class="tilbud-grid">
       <!-- Studentrabatt -->
@@ -254,23 +252,61 @@
   </main>
 
   <!-- Footer -->
+  <!-- Premium Leveringsinformasjon -->
+  <section class="delivery-info-section">
+    <div class="delivery-info-grid">
+      <!-- Område -->
+      <div class="delivery-card">
+        <div class="delivery-card-icon">🚚</div>
+        <div class="delivery-card-content">
+          <h4>Leveringsområde</h4>
+          <p>Vi leverer i hele Drammen og omegn</p>
+          <div class="delivery-details-list">
+            <span class="delivery-tag">0–5 km: 80,-</span>
+            <small style="display: block; margin-top: 8px; font-size: 0.8rem; color: #777;">Pris kan øke ved lengre avstander enn 5 km.</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Åpningstider -->
+      <div class="delivery-card">
+        <div class="delivery-card-icon">⏰</div>
+        <div class="delivery-card-content">
+          <h4>Åpningstider</h4>
+          <div class="opening-times">
+            <span><strong>Man–Lør:</strong> 11:00 – 23:00</span>
+            <span><strong>Søndag:</strong> 12:00 – 23:00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kontakt -->
+      <div class="delivery-card">
+        <div class="delivery-card-icon">📞</div>
+        <div class="delivery-card-content">
+          <h4>Bestill levering</h4>
+          <p>Ring oss for rask service</p>
+          <a href="tel:32830500" class="delivery-call-btn">Ring 328 30 500</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="footer-content">
-      <p>Drammen Pizza og Grill <br />Org.nr. 914 812 801</p>
+      <p>
+        Drammen Pizza og Grill <br />
+        Org.nr. 914 812 801
+      </p>
       <p>Følg oss på Instagram og Facebook</p>
       <p style="margin-top: 10px; font-size: 0.95rem">
         Designet og utviklet av
-        <a href="https://webplug.no" target="_blank"
-          style="color: #fff; text-decoration: underline"><strong>WebPlug</strong></a>
+        <a href="https://webplug.no" target="_blank" style="color: #fff; text-decoration: underline">
+          <strong>WebPlug</strong>
+        </a>
       </p>
     </div>
   </footer>
-
-  <!-- Order Modal (Bestill nå popup med to valg) -->
-  <!-- Order Modal Fjernet -->
-
-  <!-- WPBooking Sticky Banner (Fjernet) -->
-
   <script src="script.js"></script>
   <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>

@@ -144,7 +144,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="icon" type="image/png" href="bilder/logo.png" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Great+Vibes&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -197,12 +197,16 @@
     <!-- Sticky Sub-nav (Hurtigvalg) -->
 
     <!-- Sticky Sub-nav (Hurtigvalg) -->
+    <!-- Scroll Hint for mobil -->
+    <div class="scroll-hint-mobile">Sveip for mer <span class="pulse-arrow">→</span></div>
+    
     <div class="menu-nav-sticky" id="menuStickyNav">
-      <div class="menu-nav-item active" onclick="showCategory('pizza-kategori')" data-cat="pizza-kategori">🍕 Pizza
-      </div>
-      <div class="menu-nav-item" onclick="showCategory('grillmat-kategori')" data-cat="grillmat-kategori">🔥 Grill &
-        Kebab</div>
+      <div class="menu-nav-item active" onclick="showCategory('pizza-kategori')" data-cat="pizza-kategori">🍕 Pizza</div>
+      <div class="menu-nav-item" onclick="showCategory('kebab-kategori')" data-cat="kebab-kategori">🥙 Kebab</div>
+      <div class="menu-nav-item" onclick="showCategory('rullekebab-kategori')" data-cat="rullekebab-kategori">🌯 Rullekebab</div>
       <div class="menu-nav-item" onclick="showCategory('burger-kategori')" data-cat="burger-kategori">🍔 Burgere</div>
+      <div class="menu-nav-item" onclick="showCategory('grillmat-kategori')" data-cat="grillmat-kategori">🔥 Grill & Snadder</div>
+      <div class="menu-nav-item" onclick="showCategory('smaretter-kategori')" data-cat="smaretter-kategori">🍟 Småretter</div>
       <div class="menu-nav-item" onclick="showCategory('drikke-kategori')" data-cat="drikke-kategori">🥤 Drikke</div>
     </div>
 
@@ -223,8 +227,7 @@
       <div class="menu-category-header">
         <h3>🍕 Pizza meny</h3>
         <p style="text-align: center; color: #b23e3e; font-weight: 700;">NB! Vi har også glutenfri bunn!</p>
-        <p style="text-align: center; font-size: 0.9rem; margin-top: 5px;">Spise her: 15,- mer pr. liten | 20,- mer pr.
-          stor</p>
+        <p style="text-align: center; font-size: 0.9rem; margin-top: 5px;">Spise her: 15,- mer pr. liten | 20,- mer pr. stor</p>
       </div>
 
       <div class="retter-list" id="pizza-retter">
@@ -574,15 +577,13 @@
       <!-- (Allergener-detaljer for pizza er fjernet) -->
     </div>
 
-    <!-- Grillmeny -->
-    <div class="menu-category" id="grillmat-kategori">
+    <!-- Kebabmeny -->
+    <div class="menu-category" id="kebab-kategori">
       <div class="menu-category-header">
-        <h3>🔥 Grill meny</h3>
-        <p style="text-align: center; font-size: 0.9rem; margin-top: 5px;">Spise her: 10,- mer pr. rett | 5,- mer pr.
-          drikke</p>
+        <h3>🥙 Kebab meny</h3>
+        <p style="text-align: center; font-size: 0.9rem; margin-top: 5px;">Spise her: 10,- mer pr. rett</p>
       </div>
-
-      <div class="retter-list" id="grillmat-retter">
+      <div class="retter-list" id="kebab-retter">
         <!-- Kebabmeny -->
         <div class="rett-flex no-image">
           <div class="rett-info">
@@ -641,10 +642,50 @@
           </div>
         </div>
 
-        <!-- Hamburgermeny -->
-        <div id="burger-kategori" class="menu-category-header">
-          <h3>🍔 Burgere</h3>
+      </div>
+    </div>
+
+    <!-- Rullekebab (Drammenspesial) -->
+    <div class="menu-category" id="rullekebab-kategori">
+      <div class="menu-category-header">
+        <h3>🌯 Rullekebab</h3>
+        <p style="text-align: center; font-size: 0.9rem; margin-top: 5px;">Hjemmelaget Shawarma</p>
+      </div>
+      <div class="retter-list" id="rullekebab-retter">
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Rullekebab (Shawarma) m/kebab</h3>
+              <div class="pris"><span>Liten: 140,-</span> / <span>Stor: 160,-</span></div>
+            </div>
+          </div>
         </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Rullekebab (Shawarma) m/kylling</h3>
+              <div class="pris"><span>Liten: 149,-</span> / <span>Stor: 170,-</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="rett-flex no-image">
+          <div class="rett-info">
+            <div class="rett-top">
+              <h3>Rullekebab (Shawarma) m/Falafel NYHET</h3>
+              <div class="pris"><span>Liten: 149,-</span> / <span>Stor: 170,-</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hamburgermeny -->
+    <div class="menu-category" id="burger-kategori">
+      <div class="menu-category-header">
+        <h3>🍔 Burgere</h3>
+        <p style="text-align: center; font-size: 0.9rem; margin-top: 5px;">Saftige burgere med norske råvarer</p>
+      </div>
+      <div class="retter-list" id="burger-retter">
 
 
         <div class="rett-flex no-image">
@@ -844,13 +885,17 @@
           </div>
         </div>
 
+      </div>
+    </div>
+
+    <div class="menu-category" id="grillmat-kategori">
+      <div class="menu-category-header">
+        <h3>🔥 Grill & Snadder</h3>
+        <p style="text-align: center; font-size: 0.9rem; margin-top: 5px;">Mix Grill, Nuggets og mer</p>
+      </div>
+      <div class="retter-list" id="grill-snadder-retter">
         <!-- Nuggets -->
-        <div style="
-              margin: 2rem 0;
-              font-weight: 700;
-              font-size: 1.1rem;
-              color: #b23e3e;
-            ">
+        <div style="margin: 2rem 0; font-weight: 700; font-size: 1.1rem; color: #b23e3e;">
           Nuggets
         </div>
 
@@ -931,48 +976,7 @@
           </div>
         </div>
 
-        <!-- Drammenspesial -->
-        <div style="
-              margin: 2rem 0;
-              font-weight: 700;
-              font-size: 1.1rem;
-              color: #b23e3e;
-            ">
-          Drammenspesial
-        </div>
-
-        <div class="rett-flex no-image">
-          <div class="rett-info">
-            <div class="rett-top">
-              <h3>Rullekebab (Shawarma) m/kebab</h3>
-              <div class="pris">
-                <span>Liten: 140,-</span> / <span>Stor: 160,-</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="rett-flex no-image">
-          <div class="rett-info">
-            <div class="rett-top">
-              <h3>Rullekebab (Shawarma) m/kylling</h3>
-              <div class="pris">
-                <span>Liten: 149,-</span> / <span>Stor: 170,-</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="rett-flex no-image">
-          <div class="rett-info">
-            <div class="rett-top">
-              <h3>Rullekebab (Shawarma) m/Falafel NYHET</h3>
-              <div class="pris">
-                <span>Liten: 149,-</span> / <span>Stor: 170,-</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- Drammenspesial Flyttet til toppen -->
 
         <div class="rett-flex no-image">
           <div class="rett-info">
@@ -983,38 +987,32 @@
           </div>
         </div>
 
-        <!-- Småretter -->
-        <div style="
-              margin: 2rem 0;
-              font-weight: 700;
-              font-size: 1.1rem;
-              color: #b23e3e;
-            ">
-          Småretter
-        </div>
+      </div>
+    </div>
 
+    <!-- Småretter -->
+    <div class="menu-category" id="smaretter-kategori">
+      <div class="menu-category-header">
+        <h3>🍟 Småretter</h3>
+        <p style="text-align: center; font-size: 0.9rem; margin-top: 5px;">Mindre retter og tilbehør</p>
+      </div>
+      <div class="retter-list" id="smaretter-retter">
         <div class="rett-flex no-image">
           <div class="rett-info">
             <div class="rett-top">
               <h3>Masala frites NYHET</h3>
-              <div class="pris">
-                <span>Liten: 59,-</span> / <span>Stor: 69,-</span>
-              </div>
+              <div class="pris"><span>Liten: 59,-</span> / <span>Stor: 69,-</span></div>
             </div>
           </div>
         </div>
-
         <div class="rett-flex no-image">
           <div class="rett-info">
             <div class="rett-top">
               <h3>Pommes frites</h3>
-              <div class="pris">
-                <span>Liten: 59,-</span> / <span>Stor: 69,-</span>
-              </div>
+              <div class="pris"><span>Liten: 59,-</span> / <span>Stor: 69,-</span></div>
             </div>
           </div>
         </div>
-
         <div class="rett-flex no-image">
           <div class="rett-info">
             <div class="rett-top">
@@ -1023,7 +1021,6 @@
             </div>
           </div>
         </div>
-
         <div class="rett-flex no-image">
           <div class="rett-info">
             <div class="rett-top">
@@ -1032,7 +1029,6 @@
             </div>
           </div>
         </div>
-
         <div class="rett-flex no-image">
           <div class="rett-info">
             <div class="rett-top">
@@ -1041,13 +1037,7 @@
             </div>
           </div>
         </div>
-
-        <div style="margin-top: 1rem; font-style: italic">
-          Alle middagsretter serveres med pommes frites, salat, dressing og
-          mais.
-        </div>
       </div>
-      <!-- (Allergener-detaljer for grillmat er fjernet) -->
     </div>
 
     <!-- Drikke -->
@@ -1082,24 +1072,43 @@
     </div>
   </section>
 
-  <!-- Leveringsinformasjon -->
-  <section class="levering-band" style="margin: 3rem 1rem;">
-    <div class="levering-band__inner">
-      <span class="lead"><span class="emoji">🚚</span> Levering</span>
-      <span class="sep"></span>
-      <span>Vi leverer i hele Drammen (0-5 km: 80,-)</span>
-      <span class="sep"></span>
-      <strong>11:00 – 23:00</strong>
-      <span class="sep"></span>
-      <small>(Man–Lør)</small>
-      <span class="sep"></span>
-      <strong>12:00 – 23:00</strong>
-      <span class="sep"></span>
-      <small>(Søn)</small>
-      <span class="sep"></span>
-      <a href="tel:32830500" style="color: #fff; text-decoration: underline; font-weight: 800; margin-left: auto;">Ring
-        328
-        30 500</a>
+  <!-- Premium Leveringsinformasjon -->
+  <section class="delivery-info-section">
+    <div class="delivery-info-grid">
+      <!-- Område -->
+      <div class="delivery-card">
+        <div class="delivery-card-icon">🚚</div>
+        <div class="delivery-card-content">
+          <h4>Leveringsområde</h4>
+          <p>Vi leverer i hele Drammen og omegn</p>
+          <div class="delivery-details-list">
+            <span class="delivery-tag">0–5 km: 80,-</span>
+            <small style="display: block; margin-top: 8px; font-size: 0.8rem; color: #777;">Pris kan øke ved lengre avstander enn 5 km.</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Åpningstider -->
+      <div class="delivery-card">
+        <div class="delivery-card-icon">⏰</div>
+        <div class="delivery-card-content">
+          <h4>Åpningstider</h4>
+          <div class="opening-times">
+            <span><strong>Man–Lør:</strong> 11:00 – 23:00</span>
+            <span><strong>Søndag:</strong> 12:00 – 23:00</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kontakt -->
+      <div class="delivery-card">
+        <div class="delivery-card-icon">📞</div>
+        <div class="delivery-card-content">
+          <h4>Bestill levering</h4>
+          <p>Ring oss for rask service</p>
+          <a href="tel:32830500" class="delivery-call-btn">Ring 328 30 500</a>
+        </div>
+      </div>
     </div>
   </section>
 
