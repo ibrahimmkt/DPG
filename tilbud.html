@@ -142,7 +142,9 @@
   <title>Tilbud – Drammen Pizza & Grill</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Outfit:wght@400;600;800&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Outfit:wght@400;600;800&family=Great+Vibes&display=swap"
+    rel="stylesheet" />
   <link rel="icon" type="image/png" href="bilder/logo.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -222,32 +224,11 @@
       <!-- Pizza-deal -->
       <article class="deal-card pizza-deal">
         <figure class="deal-media">
-          <img src="bilder/Deal2026.png" alt="Pizza-deal – 2 store pizza" />
+          <img src="bilder/deal2026Kort.png" alt="Pizza-deal – 2 store pizza" />
         </figure>
-        <div class="deal-card__body">
-          <h3 style="font-size: 1.4rem;">Pizza & Kebab-deal</h3>
-          
-          <div style="margin-bottom: 0.8rem; padding-bottom: 0.8rem; border-bottom: 1px dashed #e0e0e0;">
-            <p class="deal-time" style="margin-bottom: 0.3rem;">🍕 Pizza-deal <span style="font-size: 0.85rem; font-weight: normal; color: #555;">(Gjelder hele dagen)</span></p>
-            <ul class="deal-points" style="margin-bottom: 0; padding-left: 1.5rem;">
-               <li><b>2 store pizza</b> – <strong>Fra 499,-</strong></li>
-               <li style="font-size: 0.85rem; list-style: none; margin-left: -1rem; margin-top: 5px; color: #555;">
-                 <strong>499,-</strong> (nr. 1, 2, 5, 6, 9, 11, 18, 21, 22, 23)<br>
-                 <strong>539,-</strong> (nr. 3, 7, 8, 10, 12, 13, 14, 16, 17, 19, 24, 25, 26)
-               </li>
-               <li>Vi har også <b>glutenfri bunn</b>!</li>
-            </ul>
-          </div>
-
-          <div>
-            <p class="deal-time" style="margin-bottom: 0.3rem;">🌯 Lunsj-deal <span style="font-size: 0.85rem; font-weight: normal; color: #555;">(Hverdager 10.00–13.00)</span></p>
-            <ul class="deal-points" style="margin-bottom: 0; padding-left: 1.5rem;">
-              <li><b>Liten Kebab</b> – <strong>99,-</strong></li>
-            </ul>
-          </div>
-        </div>
-        <div class="deal-card__cta">
-          <a class="deal-btn" href="#order" onclick="document.getElementById('orderBtn').click()">Bestill nå</a>
+        <div class="deal-card__cta" style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; padding-top: 1.5rem;">
+          <a class="deal-btn" href="tel:+4732830500">📞 Bestill nå</a>
+          <a class="deal-btn" href="meny.html" style="background: #ffffff; color: #cc0000; border: 1px solid #eee;">📖 Se meny</a>
         </div>
       </article>
 
@@ -257,44 +238,6 @@
 
   <!-- Footer -->
   <!-- Premium Leveringsinformasjon -->
-  <section class="delivery-info-section">
-    <div class="delivery-info-grid">
-      <!-- Område -->
-      <div class="delivery-card">
-        <div class="delivery-card-icon">🚚</div>
-        <div class="delivery-card-content">
-          <h4>Leveringsområde</h4>
-          <p>Vi leverer i hele Drammen og omegn</p>
-          <div class="delivery-details-list">
-            <span class="delivery-tag">0–5 km: 80,-</span>
-            <small style="display: block; margin-top: 8px; font-size: 0.8rem; color: #777;">Pris kan øke ved lengre avstander enn 5 km.</small>
-          </div>
-        </div>
-      </div>
-
-      <!-- Åpningstider -->
-      <div class="delivery-card">
-        <div class="delivery-card-icon">⏰</div>
-        <div class="delivery-card-content">
-          <h4>Åpningstider</h4>
-          <div class="opening-times">
-            <span><strong>Man–Lør:</strong> 11:00 – 23:00</span>
-            <span><strong>Søndag:</strong> 12:00 – 23:00</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Kontakt -->
-      <div class="delivery-card">
-        <div class="delivery-card-icon">📞</div>
-        <div class="delivery-card-content">
-          <h4>Bestill levering</h4>
-          <p>Ring oss for rask service</p>
-          <a href="tel:32830500" class="delivery-call-btn">Ring 328 30 500</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <footer>
     <div class="footer-content">

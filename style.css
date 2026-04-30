@@ -895,30 +895,83 @@ nav a:hover {
    ============================================== */
 
 .pizza-deal-container {
-  padding: 4rem 2rem;
+  padding: 6rem 2rem;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 4rem auto;
+  background: linear-gradient(135deg, #fff5f5 0%, #ffffff 50%, #fff5f5 100%);
+  border-radius: 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 100px rgba(204, 0, 0, 0.03);
+}
+
+.deal-header {
+  margin-bottom: 3rem;
+}
+
+.deal-header h2 {
+  font-size: 3rem;
+  color: #cc0000;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+
+.deal-header p {
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 500;
 }
 
 .pizza-deal-card {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 3rem;
-  background: #fff;
-  border-radius: 24px;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(15px);
+  border-radius: 40px;
   padding: 3rem;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 1);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  max-width: fit-content;
+  margin: 0 auto;
 }
 
 .pizza-deal-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-12px) rotate(1deg);
+  box-shadow: 0 45px 80px -20px rgba(204, 0, 0, 0.18);
+}
+
+.deal-footer {
+  margin-top: 3rem;
+}
+
+.order-now-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #cc0000 0%, #ff4d4d 100%);
+  color: #fff;
+  padding: 1.2rem 3rem;
+  border-radius: 100px;
+  font-weight: 800;
+  font-size: 1.2rem;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(204, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.order-now-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 15px 35px rgba(204, 0, 0, 0.4);
+  color: #fff;
 }
 
 .pizza-deal-image {
-  flex: 1;
-  max-width: 450px;
+  position: relative;
+  flex: none;
+  max-width: 320px;
 }
 
 .pizza-deal-image img {
@@ -934,15 +987,20 @@ nav a:hover {
 }
 
 .deal-badge {
-  display: inline-block;
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
   background: #ff4444;
   color: #fff;
-  padding: 0.5rem 1.2rem;
+  padding: 0.6rem 1.4rem;
   border-radius: 50px;
   font-weight: 800;
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 10px rgba(255, 68, 68, 0.3);
+  font-size: 0.85rem;
+  margin-bottom: 0;
+  box-shadow: 0 6px 15px rgba(255, 68, 68, 0.4);
+  white-space: nowrap;
 }
 
 .pizza-deal-content h2 {
@@ -1007,23 +1065,11 @@ nav a:hover {
 
 @media screen and (max-width: 992px) {
   .pizza-deal-card {
-    flex-direction: column;
-    padding: 2rem;
-    text-align: center;
-    gap: 2rem;
+    padding: 1rem;
   }
 
   .pizza-deal-image {
-    max-width: 100%;
-  }
-
-  .pizza-deal-content h2 {
-    text-align: center;
-    font-size: 2.2rem;
-  }
-
-  .deal-actions {
-    justify-content: center;
+    max-width: 280px;
   }
 }
 
@@ -1405,8 +1451,8 @@ section.show {
 
 .retter-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 30px;
   margin-top: 2rem;
 }
 
@@ -1446,14 +1492,22 @@ section.show {
 
 .rett-top {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 0.8rem;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 400px) {
+  .rett-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .rett-info h3 {
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   color: #cc0000;
   margin: 0;
   font-weight: 800;
@@ -1461,37 +1515,45 @@ section.show {
 }
 
 .rett-info p {
-  font-size: 0.95rem;
-  color: #444;
-  margin: 0;
-  line-height: 1.5;
-  margin-top: auto; /* Pushes to bottom if title is short */
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0.5rem 0 0;
+  line-height: 1.4;
 }
 
 /* Pris styling med skjult skråstrek og pille-design */
-.rett-info .pris {
+.pris {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   align-items: flex-end;
-  font-size: 0; /* Skjuler skråstreken ( / ) */
+  flex-shrink: 0;
+  font-size: 0;
   color: transparent;
 }
 
-.rett-info .pris span {
-  font-size: 0.95rem;
+.pris span {
+  font-size: 0.85rem;
   font-weight: 700;
   color: #111;
   background: #fff;
   border: 1.5px solid #e60000;
   border-radius: 50px;
-  padding: 6px 14px;
+  padding: 4px 10px;
   white-space: nowrap;
   transition: all 0.2s ease;
   cursor: default;
+  display: inline-block;
 }
 
-.rett-info .pris span:hover {
+/* Spesifikk styling for lange piller */
+.pris span {
+  font-size: 0.82rem;
+  /* Litt mindre for å få plass til alt */
+  padding: 4px 10px;
+}
+
+.pris span:hover {
   background: #e60000;
   color: #fff;
   transform: scale(1.05);
@@ -1501,12 +1563,109 @@ section.show {
 .menu-subcategory-title {
   grid-column: 1 / -1;
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.8rem;
+  font-size: 2.2rem;
+  /* Litt større enn retter, men ikke overveldende */
   color: #cc0000;
-  margin: 1.5rem 0 0.5rem 0;
-  padding-bottom: 5px;
+  text-align: center;
+  margin: 3rem 0 1.5rem;
   border-bottom: 2px solid #ffd700;
-  width: fit-content;
+  padding-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Grupperings-bokser (Fisk, Falafel, etc.) */
+.menu-group-box {
+  grid-column: 1 / -1;
+  border: 3px solid #cc0000;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  background: #fff;
+  position: relative;
+}
+
+.menu-group-box-title {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #cc0000;
+  color: #fff;
+  padding: 4px 20px;
+  border-radius: 50px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  white-space: nowrap;
+}
+
+.menu-group-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 0.8rem;
+}
+
+.menu-group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 0;
+  border-bottom: 1px dashed #cc0000;
+  gap: 1.5rem;
+}
+
+.menu-group-item:last-child {
+  border-bottom: none;
+}
+
+.menu-group-item-info {
+  flex: 1;
+}
+
+.menu-group-item-info h4 {
+  font-size: 1.25rem;
+  color: #cc0000;
+  margin: 0;
+  font-weight: 800;
+}
+
+.menu-group-item-info p {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 4px 0 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+  .menu-group-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .menu-group-item .pris {
+    align-items: flex-start;
+  }
+}
+
+/* News Badge */
+.news-badge {
+  display: inline-block;
+  background: #ff0000;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-left: 8px;
+  vertical-align: middle;
+  box-shadow: 0 2px 4px rgba(255, 0, 0, 0.3);
+}
+
+.news-badge i {
+  margin-right: 4px;
 }
 
 /* Mobiltilpasning for meny og retter */
@@ -4647,9 +4806,25 @@ mark {
 
 .deal-media img {
   width: 100%;
-  height: 280px;
-  object-fit: cover;
+  height: auto;
+  min-height: 280px;
+  object-fit: contain;
   display: block;
+  background: #000;
+}
+
+.pizza-deal-poster-only {
+  background: #000 !important;
+  border: none !important;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 !important;
+}
+
+.pizza-deal-poster-only .deal-media {
+  width: 100%;
 }
 
 .deal-card__body {
