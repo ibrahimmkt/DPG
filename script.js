@@ -231,13 +231,15 @@ function toggleMeny(id) {
 function initMenuHeaderClicks() {
   setTimeout(() => {
     const categories = [
-      { headerId: 'pizza-kategori', listId: 'pizza-retter', name: 'Pizza meny' },
-      { headerId: 'rullekebab-kategori', listId: 'rullekebab-retter', name: 'Rullekebab meny' },
-      { headerId: 'kebab-kategori', listId: 'kebab-retter', name: 'Kebab meny' },
+      { headerId: 'pizza-kategori', listId: 'pizza-retter', name: 'Pizza' },
+      { headerId: 'kebab-kategori', listId: 'kebab-retter', name: 'Kebab' },
       { headerId: 'burger-kategori', listId: 'burger-retter', name: 'Burgere' },
-      { headerId: 'grillmat-kategori', listId: 'grill-snadder-retter', name: 'Grill & Snadder' },
-      { headerId: 'smaretter-kategori', listId: 'smaretter-retter', name: 'Småretter' },
-      { headerId: 'drikke-kategori', listId: 'drikke-retter', name: 'Drikke meny' }
+      { headerId: 'rullekebab-kategori', listId: 'rullekebab-retter', name: 'Rullekebab' },
+      { headerId: 'nuggets-kategori', listId: 'nuggets-retter', name: 'Nuggets' },
+      { headerId: 'grillmat-kategori', listId: 'grill-snadder-retter', name: 'Andre retter' },
+      { headerId: 'smaretter-kategori', listId: 'smaretter-retter', name: 'Små retter' },
+      { headerId: 'nyheter-kategori', listId: 'nyheter-retter', name: 'Nyheter' },
+      { headerId: 'drikke-kategori', listId: 'drikke-retter', name: 'Drikke' }
     ];
 
     categories.forEach(cat => {

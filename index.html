@@ -30,7 +30,7 @@
         "image": "https://drammenpizza.no/bilder/logo.png",
         "logo": "https://drammenpizza.no/bilder/logo.png",
         "telephone": "+47 32830500",
-        "priceRange": "NOK 100–250",
+        "priceRange": "NOK 100–300",
         "servesCuisine": [
           "Pizza",
           "Kebab",
@@ -87,18 +87,18 @@
                   "description": "Steinovnsbakt pizza.",
                   "offers": {
                     "@type": "Offer",
-                    "price": "165",
+                    "price": "180",
                     "priceCurrency": "NOK",
                     "availability": "https://schema.org/InStock"
                   }
                 },
                 {
                   "@type": "MenuItem",
-                  "name": "Kebab i pita – fra",
+                  "name": "Kebab – fra",
                   "description": "Kebab i pita med salat og dressing.",
                   "offers": {
                     "@type": "Offer",
-                    "price": "119",
+                    "price": "125",
                     "priceCurrency": "NOK",
                     "availability": "https://schema.org/InStock"
                   }
@@ -109,7 +109,7 @@
                   "description": "Saftig burger med tilbehør.",
                   "offers": {
                     "@type": "Offer",
-                    "price": "109",
+                    "price": "110",
                     "priceCurrency": "NOK",
                     "availability": "https://schema.org/InStock"
                   }
@@ -146,7 +146,7 @@
             "name": "Hva koster en pizza hos Drammen Pizza & Grill?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Hos oss starter prisene på 165 kr for en liten pizza."
+              "text": "Hos oss starter prisene på 180 kr for en liten pizza."
             }
           },
           {
@@ -154,7 +154,7 @@
             "name": "Hvor mye koster kebab i pita?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "En kebab i pita starter fra 119 kr."
+              "text": "En kebab i pita starter fra 125 kr."
             }
           },
           {
@@ -162,7 +162,7 @@
             "name": "Hvor mye koster en burger?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "En burger starter fra 109 kr."
+              "text": "En burger starter fra 110 kr."
             }
           },
           {
@@ -208,7 +208,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="icon" type="image/png" href="bilder/logo.png" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@800;900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Outfit:wght@400;600;800&family=Great+Vibes&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -251,6 +253,27 @@
       </div>
     </div>
   </section>
+  <section class="pizza-deal-container">
+    <div class="pizza-deal-card">
+      <div class="pizza-deal-image">
+        <img src="bilder/Deal2026.png" alt="Pizza Deal - 2 store pizza for 499 kr" />
+      </div>
+      <div class="pizza-deal-content">
+        <span class="deal-badge">SUPERTILBUD 🔥</span>
+        <h2>To store pizzaer</h2>
+        <p class="deal-price">Fra 499,-</p>
+        <p class="deal-desc">
+          <strong>2 store pizza: 499,-</strong> (nr. 1, 2, 5, 6, 9, 11, 18, 21, 22, 23)<br>
+          <strong>2 store pizza: 539,-</strong> (nr. 3, 7, 8, 10, 12, 13, 14, 16, 17, 19, 24, 25, 26)
+        </p>
+        <div class="deal-actions">
+          <a href="tel:+4732830500" class="deal-btn deal-btn-primary">📞 Ring og bestill</a>
+          <a href="meny.html" class="deal-btn deal-btn-secondary">📖 Se menyen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="retter" class="section">
     <h2>Drammens Klassikere</h2>
 
@@ -294,17 +317,7 @@
         </div>
       </a>
 
-      <a class="rett-flex">
-        <img src="bilder/Kylling shawarma fin.jpeg" alt="kylling shawarma" />
-        <div class="rett-info">
-          <h3>Kylling Rull – Smakfull og praktisk</h3>
-          <p>
-            Vår kylling rull er fylt med saftig, krydret kylling, friske
-            grønnsaker og gode sauser, alt rullet inn i en myk og varm
-            tortilla. Perfekt som et raskt og smakfullt måltid på farten! .
-          </p>
-        </div>
-      </a>
+
 
       <!-- Flere retter kan legges til uten bestillingslink -->
     </div>
@@ -343,7 +356,7 @@
       <div class="rett-info">
         <h3>Hva koster en pizza hos Drammen Pizza & Grill?</h3>
         <p>
-          Hos oss starter prisene på <strong>165 kr</strong> for en liten
+          Hos oss starter prisene på <strong>180 kr</strong> for en liten
           pizza. NB! Vi har også glutenfri bunn!
         </p>
       </div>
@@ -353,7 +366,7 @@
     <div class="faq-item rett-flex no-image">
       <div class="rett-info">
         <h3>Hvor mye koster kebab i pita?</h3>
-        <p>En kebab i pita starter fra <strong>119 kr</strong>.</p>
+        <p>En kebab i pita starter fra <strong>125 kr</strong>.</p>
       </div>
     </div>
     <br />

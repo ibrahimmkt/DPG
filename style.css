@@ -15,6 +15,13 @@ body {
   line-height: 1.6;
 }
 
+h1,
+h2,
+h3 {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.5px;
+}
+
 /* ==============================================
    2. NAVIGASJON OG HEADER - FIKSET VERSJON
    ============================================== */
@@ -33,19 +40,30 @@ header {
 .logo {
   text-decoration: none;
   color: white;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 1.5px;
+  line-height: 0.9;
+  transition: all 0.3s ease;
+  display: block;
+  text-shadow: 3px 3px 0px #ff0000;
 }
 
 .logo:hover {
-  opacity: 0.8;
-  color: #FCEEDC;
+  color: #ffd700;
+  transform: translateY(-1px) scale(1.05);
+  text-shadow: 3px 3px 0px #cc0000;
+}
+
+.logo-container h1 {
+  line-height: 1;
+  margin: 0;
 }
 
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
   z-index: 900;
   /* LAVERE z-index enn nav på mobil */
   position: relative;
@@ -395,11 +413,13 @@ nav a:hover {
 /* Hero content styles moved to generic or specific blocks */
 
 .hero-content h2 {
-  font-size: 3.5rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.5rem;
   font-weight: 800;
   color: #fff;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  text-shadow: 6px 6px 0px #ff0000;
   margin-bottom: 0.5rem;
+  line-height: 1;
 }
 
 .hero-section {
@@ -435,21 +455,33 @@ nav a:hover {
   color: #fff;
 }
 
-.velkommen-tekst {
-  font-family: 'Great Vibes', cursive;
-  font-size: 3.5rem;
+.hero-content h2.velkommen-tekst {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 5.5rem;
   color: #fff;
-  margin-bottom: 1rem;
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  margin-bottom: -0.5rem;
+  text-shadow: 6px 6px 0px #ff0000;
+  letter-spacing: 2px;
+  line-height: 1;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.hero-content h2.velkommen-tekst:hover {
+  transform: scale(1.03);
+  color: #ffd700;
+  text-shadow: 6px 6px 0px #cc0000;
 }
 
 .tagline {
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
   color: #ffd700;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
   display: block;
   letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 .logo-animasjon {
@@ -474,10 +506,13 @@ nav a:hover {
   .hero-bedrift {
     min-height: 60vh;
     padding: 1rem;
+    padding-bottom: 2.5rem;
+    height: auto;
   }
 
   .hero-content h2 {
-    font-size: 2rem;
+    font-size: 3.5rem;
+    text-shadow: 4px 4px 0px #ff0000;
   }
 
   .hero-content p {
@@ -488,8 +523,8 @@ nav a:hover {
     font-size: 1.6rem;
   }
 
-  .velkommen-tekst {
-    font-size: 2rem;
+  .hero-content h2.velkommen-tekst {
+    font-size: 3.5rem;
   }
 
   .logo-animasjon {
@@ -512,15 +547,16 @@ nav a:hover {
 
 @media screen and (max-width: 480px) {
   .hero-content h2 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
+    text-shadow: 3px 3px 0px #ff0000;
   }
 
   .tagline {
     font-size: 1.3rem;
   }
 
-  .velkommen-tekst {
-    font-size: 1.5rem;
+  .hero-content h2.velkommen-tekst {
+    font-size: 2.5rem;
   }
 
   .logo-animasjon {
@@ -851,6 +887,161 @@ nav a:hover {
 
   .back-to-top::before {
     font-size: 24px;
+  }
+}
+
+/* ==============================================
+   4.5 PIZZA DEAL SEKSJON
+   ============================================== */
+
+.pizza-deal-container {
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.pizza-deal-card {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  background: #fff;
+  border-radius: 24px;
+  padding: 3rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.pizza-deal-card:hover {
+  transform: translateY(-5px);
+}
+
+.pizza-deal-image {
+  flex: 1;
+  max-width: 450px;
+}
+
+.pizza-deal-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.pizza-deal-content {
+  flex: 1.2;
+}
+
+.deal-badge {
+  display: inline-block;
+  background: #ff4444;
+  color: #fff;
+  padding: 0.5rem 1.2rem;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 10px rgba(255, 68, 68, 0.3);
+}
+
+.pizza-deal-content h2 {
+  font-size: 3rem;
+  color: #111;
+  margin-bottom: 0.5rem !important;
+  text-align: left;
+}
+
+.deal-price {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #cc0000;
+  margin-bottom: 1.5rem;
+}
+
+.deal-desc {
+  font-size: 1.15rem;
+  color: #555;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.deal-actions {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.deal-btn {
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-size: 1.05rem;
+  text-align: center;
+}
+
+.deal-btn-primary {
+  background: #cc0000;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(204, 0, 0, 0.2);
+}
+
+.deal-btn-primary:hover {
+  background: #b30000;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(204, 0, 0, 0.3);
+}
+
+.deal-btn-secondary {
+  background: #f8f8f8;
+  color: #111;
+  border: 1px solid #ddd;
+}
+
+.deal-btn-secondary:hover {
+  background: #eee;
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 992px) {
+  .pizza-deal-card {
+    flex-direction: column;
+    padding: 2rem;
+    text-align: center;
+    gap: 2rem;
+  }
+
+  .pizza-deal-image {
+    max-width: 100%;
+  }
+
+  .pizza-deal-content h2 {
+    text-align: center;
+    font-size: 2.2rem;
+  }
+
+  .deal-actions {
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .pizza-deal-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .pizza-deal-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .deal-price {
+    font-size: 2.5rem;
+  }
+
+  .deal-btn {
+    width: 100%;
   }
 }
 
@@ -1213,86 +1404,109 @@ section.show {
 }
 
 .retter-list {
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
   margin-top: 2rem;
 }
 
 .rett-flex {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1.5rem;
+  flex-direction: column;
   background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
-  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  padding: 1.5rem;
   text-decoration: none;
   color: inherit;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  border: 2px solid transparent;
+  border: 2px solid #e60000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  height: 100%;
 }
 
 .rett-flex:hover {
-  transform: scale(1.015);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.18);
-  border-color: #f80505;
-  background-color: #fff8f8;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(230, 0, 0, 0.15);
+  background-color: #fff9f9;
 }
 
 .rett-flex img {
-  width: 360px;
-  height: 240px;
+  width: 100%;
+  height: 200px;
   object-fit: cover;
-  border-radius: 14px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.3s ease;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.rett-flex:hover img {
-  transform: scale(1.04);
-}
-
-/* Justert rett-info for å støtte pris på høyreside */
 .rett-info {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
 }
 
-/* Flex mellom tittel og pris */
 .rett-top {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
 }
 
 .rett-info h3 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #cc0000;
   margin: 0;
-  font-weight: 700;
+  font-weight: 800;
+  line-height: 1.2;
 }
 
 .rett-info p {
-  font-size: 1rem;
-  color: #333;
+  font-size: 0.95rem;
+  color: #444;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.5;
+  margin-top: auto; /* Pushes to bottom if title is short */
 }
 
+/* Pris styling med skjult skråstrek og pille-design */
 .rett-info .pris {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
+  font-size: 0; /* Skjuler skråstreken ( / ) */
+  color: transparent;
 }
 
 .rett-info .pris span {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #000;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #111;
+  background: #fff;
+  border: 1.5px solid #e60000;
+  border-radius: 50px;
+  padding: 6px 14px;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.rett-info .pris span:hover {
+  background: #e60000;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Underoverskrifter i grid */
+.menu-subcategory-title {
+  grid-column: 1 / -1;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.8rem;
+  color: #cc0000;
+  margin: 1.5rem 0 0.5rem 0;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #ffd700;
+  width: fit-content;
 }
 
 /* Mobiltilpasning for meny og retter */
@@ -2836,7 +3050,9 @@ body.bedriftsavtale .footer {
 
   /* Hero */
   .hero {
-    height: 35vh;
+    height: auto;
+    min-height: 60vh;
+    padding-bottom: 2.5rem;
   }
 
   .hero-content h2 {
@@ -3141,7 +3357,9 @@ body.bedriftsavtale .footer {
 
   /* Hero */
   .hero {
-    height: 30vh;
+    height: auto;
+    min-height: 60vh;
+    padding-bottom: 2.5rem;
   }
 
   .hero-content h2 {
@@ -4284,7 +4502,7 @@ mark {
   .delivery-info-section {
     margin: 3rem auto;
   }
-  
+
   .delivery-card {
     padding: 1.5rem;
     flex-direction: column;
@@ -4292,7 +4510,7 @@ mark {
     align-items: center;
     gap: 1rem;
   }
-  
+
   .delivery-card-icon {
     width: 60px;
     height: 60px;
@@ -4525,7 +4743,8 @@ mark {
    ========================================================== */
 body.nav-open .menu-nav-sticky,
 body.nav-open .deal-ribbon-section,
-body.nav-open .levering-band-meny {
+body.nav-open .levering-band-meny,
+body.nav-open .scroll-hint-mobile {
   display: none !important;
 }
 
@@ -4739,13 +4958,13 @@ body.nav-open .levering-band-meny {
   top: 15px;
   z-index: 2010;
   margin: 0 auto 2.5rem auto;
-  width: 94%;
+  width: fit-content;
   max-width: 850px;
   border-radius: 100px;
   background: rgba(255, 255, 255, 0.98);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.18);
   padding: 6px 12px;
-  justify-content: center;
+  justify-content: flex-start;
   overflow-x: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -4767,6 +4986,7 @@ body.nav-open .levering-band-meny {
   transition: all 0.2s ease;
   white-space: nowrap;
   flex-shrink: 0;
+  min-width: fit-content;
 }
 
 .menu-nav-item:hover {
@@ -4804,9 +5024,9 @@ body.nav-open .levering-band-meny {
   }
 }
 
-/* Skjuler scroll-hint på PC som standard */
+/* Skjuler scroll-hint på PC */
 .scroll-hint-mobile {
-  display: none !important;
+  display: none;
 }
 
 /* ========================================================
@@ -4824,6 +5044,8 @@ body.nav-open .levering-band-meny {
     text-transform: uppercase;
     letter-spacing: 1px;
     animation: fadeInOut 2s infinite ease-in-out;
+    position: relative;
+    z-index: 2005;
   }
 
   .pulse-arrow {
@@ -4832,13 +5054,27 @@ body.nav-open .levering-band-meny {
   }
 
   @keyframes fadeInOut {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+      opacity: 0.4;
+    }
+
+    50% {
+      opacity: 1;
+    }
   }
 
   @keyframes pulseX {
-    0%, 100% { transform: translateX(0); }
-    50% { transform: translateX(3px); }
+
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+
+    50% {
+      transform: translateX(3px);
+    }
   }
 
   /* Sentrallager for mobiloptimale stiler */
@@ -4854,17 +5090,13 @@ body.nav-open .levering-band-meny {
     overflow-x: auto !important;
     -webkit-overflow-scrolling: touch !important;
     justify-content: flex-start !important;
-    padding: 6px 10px !important;
+    padding: 6px 10px 6px 18px !important;
     gap: 6px !important;
     scrollbar-width: none !important;
     background: rgba(255, 255, 255, 0.98) !important;
     border-radius: 100px !important;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
     border: 1px solid #f0f0f0 !important;
-    
-    /* Indikator for scrolling */
-    mask-image: linear-gradient(to right, black 85%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
   }
 
   .menu-nav-sticky::-webkit-scrollbar {
@@ -4881,7 +5113,63 @@ body.nav-open .levering-band-meny {
   .retter-list {
     display: flex !important;
     flex-direction: column !important;
-    gap: 1rem !important;
+    gap: 1.2rem !important;
+    padding: 0 8px;
+  }
+
+  .rett-flex {
+    padding: 1rem !important;
+    text-align: center;
+  }
+
+  .rett-top {
+    flex-direction: column;
+    align-items: center !important;
+    gap: 8px;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .rett-info {
+    align-items: center;
+  }
+
+  .rett-info h3 {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 2px !important;
+  }
+
+  /* Gule streken under tittelen sentrert */
+  .rett-info h3::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 3px;
+    background: #ffd700;
+    margin: 4px auto 0;
+  }
+
+  .rett-info .pris {
+    justify-content: center !important;
+    align-items: center !important;
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .rett-info .pris span {
+    font-size: 0.85rem !important;
+    padding: 4px 10px !important;
+  }
+
+  .rett-info p {
+    text-align: center;
+    margin-top: 8px !important;
+  }
+
+  .meny-wrapper {
+    padding: 0.8rem 0.2rem;
   }
 
   .menu-category {
