@@ -79,8 +79,8 @@ function updateOpenStatus() {
   const second = now.getSeconds();
   const currentSeconds = hour * 3600 + minute * 60 + second;
 
-  // Mandag-Lørdag: 11-23. Søndag: 12-23.
-  const openHour = (day === 0) ? 12 : 11;
+  // Mandag-Lørdag: 10-23. Søndag: 11-23.
+  const openHour = (day === 0) ? 11 : 10;
   const closeHour = 23;
   const openTime = openHour * 3600;
   const closeTime = closeHour * 3600;
@@ -100,7 +100,7 @@ function updateOpenStatus() {
     } else {
       // Åpner i morgen (må sjekke morgendagens åpningstid)
       const tomorrow = (day + 1) % 7;
-      const tomorrowOpenHour = (tomorrow === 0) ? 12 : 11;
+      const tomorrowOpenHour = (tomorrow === 0) ? 11 : 10;
       secondsUntilOpen = (24 * 3600 - currentSeconds) + (tomorrowOpenHour * 3600);
     }
     statusText.textContent = `❌ Vi har stengt nå.`;
